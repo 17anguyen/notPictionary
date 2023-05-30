@@ -1,9 +1,13 @@
 import React from 'react';
+import '../css/home.css';
+
 
 export default function Home() {
     return (
-        <main className=''>
-            <h1>home</h1>
-        </main >
+        <a href="/userselect">
+            <main className='homebg'>
+
+            </main >
+        </a>
     );
 }
