@@ -1,0 +1,7 @@
+.RoomSelectbg {
+    background-image: url('../../Assets/backgrounds/createuserbg.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: auto;
+}
