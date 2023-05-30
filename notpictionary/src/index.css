@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Sniglet:wght@400;800&display=swap');
+
+h1,
+h2 {
+  font-family: 'Sniglet', cursive;
+}
+
+h3 {
+  font-family: 'Luckiest Guy', cursive;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
