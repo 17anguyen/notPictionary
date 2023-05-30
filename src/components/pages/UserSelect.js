@@ -1,10 +1,10 @@
 import React from 'react';
-import background from '../../Assets/backgrounds/createuserbg.gif';
+import '../css/UserSelect.css';
 
 export default function createUser () {
     return (
-        <main> <img alt="background" src={background} className="position-absolute translate-middle" />
-            
+        
+        <main className='UserSelectbg'>
             <div className="card">
     
                 <div className="card-body">
