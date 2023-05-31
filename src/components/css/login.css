@@ -1,0 +1,16 @@
+.loginbg {
+    background-image: url('../../Assets/backgrounds/login.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: auto;
+}
+
+. {
+    display: block;
+    margin-left: auto;
+
+    margin-right: auto;
+    width: 40%;
+    padding: 70px 0;
+}
