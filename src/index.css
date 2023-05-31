@@ -2,11 +2,16 @@
 
 h1,
 h2 {
-  font-family: 'Sniglet', cursive;
+  font-family: 'Luckiest Guy'
 }
 
-h3 {
-  font-family: 'Luckiest Guy', cursive;
+h3,
+h4 {
+  font-family: 'Sniglet';
+}
+
+h5 {
+  font-family: 'Sniglet';
 }
 
 body {
