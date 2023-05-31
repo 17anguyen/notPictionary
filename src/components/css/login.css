@@ -4,13 +4,24 @@
     background-size: cover;
     height: 100vh;
     width: auto;
+    display: block;
 }
 
-. {
-    display: block;
-    margin-left: auto;
+.container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
 
-    margin-right: auto;
-    width: 40%;
-    padding: 70px 0;
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+h2.title {
+    font-size: 5vw;
+    padding-top: 1vw;
 }
