@@ -1,41 +1,94 @@
 import React from "react";
 import "../css/SignUp.css";
+import banner from '../../Assets/buttons/loginsignupbanner.svg'
 
-export default function SignUp() {
+
+
+export default function Login() {
   return (
-    <main className="SignUpbg">
-      <div className="card">
-        <div className="card-body">
-          <div className="input-group">
-            <span className="input-group-text bg-success">Username</span>
-            <input
-              type="text"
-              aria-label="First name"
-              className="form-control"
-            />
-            <input
-              type="text"
-              aria-label="Last name"
-              className="form-control"
-            />
-          </div>
+    <div className='SignUpbg' >
+      <div className='container' style={{ width: '100%' }}>
 
-          <div className="mb-3">
-            <label for="exampleFormControlTextarea1" className="form-label">
-              Password
-            </label>
-            <textarea
-              className="form-control"
-              id="exampleFormControlTextarea1"
-              rows="3"
-            ></textarea>
-          </div>
+        <img src={banner}
+          className='mx-auto'
+          style={{ width: '60%', height: 'auto', marginTop: '10px' }}></img>
+        <div className='centered'>
+          <h2 className='title'>Sign Up</h2>
 
-          <button type="button" class="btn btn-success btn-lg">
-            Create
-          </button>
         </div>
       </div>
-    </main>
+
+      <div className='row'>
+
+        <div
+          className="card position-absolute top-50 start-50 translate-middle"
+          style={{
+            backgroundColor: 'black', color: 'white', border: 'solid 3px #FE00FE', borderRadius: '25px', width: '80%', height: '50%',
+          }}>
+          < div
+            className="card-body positon-relative"
+            style={{ paddingTop: '10%' }}>
+
+            <form>
+
+              <div className="form-floating mb-3">
+                <input type="input"
+                  className="form-control"
+                  id="floatingInput"
+                  placeholder="Username"
+                  style={{
+                    borderRadius: '25px',
+                    height: '55px',
+                  }} />
+                <label for="floatingInput"
+                  style={{
+                    color: '#797979'
+                  }}>
+                  Username
+                </label>
+              </div>
+
+              <div className="form-floating">
+                <input type="password"
+                  className="form-control"
+                  id="floatingPassword"
+                  placeholder="Password"
+                  style={{
+                    borderRadius: '25px',
+                    height: '55px'
+                  }} />
+                <label for="floatingPassword"
+                  style={{
+                    color: '#797979'
+                  }}>
+                  Password
+                </label>
+              </div>
+
+              <div
+                className='text-center'
+                style={{ paddingTop: '15px' }}>
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  style={{
+                    borderRadius: '25px', height: '50px',
+                    backgroundColor: '#FF6E27', width: 'auto', fontSize: '25px'
+                  }}>
+                  Submit
+                </button>
+
+              </div>
+            </form>
+
+
+          </div>
+        </div >
+
+      </div>
+
+
+
+    </div >
   );
 }

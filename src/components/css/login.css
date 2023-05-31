@@ -1,9 +1,10 @@
-.SignUpbg {
+.loginbg {
     background-image: url('../../Assets/backgrounds/login.svg');
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
     width: auto;
+    display: block;
 }
 
 .container {
