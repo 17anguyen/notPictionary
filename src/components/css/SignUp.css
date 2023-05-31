@@ -1,7 +1,26 @@
 .SignUpbg {
-    background-image: url('../../Assets/backgrounds/createprofile.svg');
+    background-image: url('../../Assets/backgrounds/login.svg');
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
     width: auto;
+}
+
+.container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+h2.title {
+    font-size: 5vw;
+    padding-top: 1vw;
 }

@@ -8,12 +8,11 @@ export default function Login() {
     return (
         <div className='loginbg' >
             <div className='container' style={{ width: '100%' }}>
-                {/* <h2 className='z-1 position-absolute'>Login</h2> */}
                 <img src={banner}
                     className='mx-auto'
                     style={{ width: '60%', height: 'auto', marginTop: '10px' }}></img>
                 <div className='centered'>
-                    <h2 className='title'>Login</h2>
+                    <h2 className='title'>Log In</h2>
 
                 </div>
             </div>
