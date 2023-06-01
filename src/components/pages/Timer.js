@@ -1,29 +1,3 @@
-const words = [waffle,
-    bird,
-    cake,
-    house,
-    cookie,
-    couch,
-    car,
-    computer,
-    tree,
-    hand,
-    cheese,
-    snowman,
-    leaf,
-    king,
-    motorcycle,
-    sun,
-    shoe,
-    window,
-    crayon,
-    apple,
-    basketball,
-    snail,
-    bridge,
-    sunglasses,
-    coat]
-
 const word = words[Math.floor(Math.random()*words.length)];
 alert('You got ' + word);
 
