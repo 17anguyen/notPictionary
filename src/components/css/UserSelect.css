@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Sniglet:wght@400;800&display=swap');
 
 .UserSelectbg {
-    background-image: url('../../Assets/backgrounds/createuserbg.gif');
+    background-image: url('../../Assets/backgrounds/usersroombg.svg');
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
