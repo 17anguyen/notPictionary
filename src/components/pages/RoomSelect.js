@@ -1,19 +1,20 @@
-import React from 'react';
-import '../css/RoomSelect.css';
+import React from "react";
+import "../css/RoomSelect.css";
+import top from "../../Assets/buttons/greenlargebutton.svg";
+import bottom from "../../Assets/buttons/bluesmallbutton.svg";
 
 export default function createRoom() {
-    return (
+  return (
+    <div className="RoomSelectbg">
+      <div className="container">
+        <div className="buttontop">
+          <img src={top} />
+        </div>
 
-        <main className='RoomSelectbg'>
-            <div className="card">
-                <h1> RoomSelect</h1>
-
-                <div className="card-body">
-                    <button type="button" class="btn btn-success btn-lg">Enter a Room Code</button>
-                    <button type="button" class="btn btn-success btn-lg">Create a Room</button>
-                </div>
-
-            </div>
-        </main>
-    );
+        <div className="buttonbottom z-1" style={{ paddingTop: "20%" }}>
+          <img src={bottom} />
+        </div>
+      </div>
+    </div>
+  );
 }
