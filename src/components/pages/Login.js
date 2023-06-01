@@ -4,7 +4,12 @@ import banner from '../../Assets/buttons/loginsignupbanner.svg'
 
 
 
-export default function Login() {
+export default function Login({
+    loggedIn,
+    loggedOut, 
+    username,
+    handleInputChange, 
+    loginInfo}) {
     return (
         <div className='loginbg' >
             <div className='container' style={{ width: '100%' }}>
@@ -34,6 +39,7 @@ export default function Login() {
                                 <input type="input"
                                     className="form-control"
                                     id="floatingInput"
+                                    value={loginInfo.username}
                                     placeholder="Username"
                                     style={{
                                         borderRadius: '25px',
@@ -52,6 +58,7 @@ export default function Login() {
                                     className="form-control"
                                     id="floatingPassword"
                                     placeholder="Password"
+                                    value={loginInfo.password}
                                     style={{
                                         borderRadius: '25px',
                                         height: '55px'
