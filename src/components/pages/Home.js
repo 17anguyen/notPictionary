@@ -12,7 +12,7 @@ export default function Home() {
                 <img className='z-1 position-absolute top-0 start-0' src={gameboy} style={{ width: '20%' }} />
                 <img className='z-1 position-absolute bottom-0 end-0' src={cd} style={{ width: '20%' }} />
 
-                <div className='container position-absolute top-50 start-50 translate-middle'>
+                <div className='home container position-absolute top-50 start-50 translate-middle'>
                     <img className='position-absolute top-50 start-50 translate-middle' src={banner} style={{ width: '100%' }} />
 
                 </div>

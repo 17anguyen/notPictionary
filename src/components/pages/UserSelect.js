@@ -1,18 +1,25 @@
 import React from 'react';
 import '../css/UserSelect.css';
+import top from '../../Assets/buttons/greenlargebutton.svg'
+import bottom from '../../Assets/buttons/bluesmallbutton.svg'
 
-export default function createUser () {
+export default function createUser() {
     return (
-        
-        <main className='UserSelectbg'>
-            <div className="card">
-    
-                <div className="card-body">
-                    <button type="button" class="btn btn-success btn-lg">Create User</button>
-                    <button type="button" class="btn btn-success btn-lg">Sign In</button>
+        <div className='UserSelectbg'>
+
+            <div className='container'>
+
+                <div className='buttontop'>
+                    <img src={top} />
                 </div>
-                
+
+                <div className='buttonbottom z-1' style={{ paddingTop: '20%' }}>
+                    <img src={bottom} />
+                </div>
+
             </div>
-        </main>
+
+
+        </div >
     );
 }
