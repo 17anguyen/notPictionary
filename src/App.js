@@ -34,25 +34,25 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-        setLoading(true)
-        API.getTokenData(token)
+      setLoading(true)
+      API.getTokenData(token)
         .then((data) => {
-              setLoading(false)
-              if (data.err) {
-                console.log(data.err);
-                localStorage.removeItem("token");
-              } else {
-                setUsername(data.username);
-                setToken(token);
-              }
-            })
-            .catch((err) => {
-                setLoading(false)
-                console.log("bad token");
-                console.log(err);
-            });
+          setLoading(false)
+          if (data.err) {
+            console.log(data.err);
+            localStorage.removeItem("token");
+          } else {
+            setUsername(data.username);
+            setToken(token);
+          }
+        })
+        .catch((err) => {
+          setLoading(false)
+          console.log("bad token");
+          console.log(err);
+        });
     }
-}, []);
+  }, []);
 
 const registered = async (e) => {
   e.preventDefault();
@@ -78,10 +78,7 @@ const registered = async (e) => {
       console.log(registerInfo)
       console.log(loginInfo)
     }
-  } catch (err) {
-    console.log(err)
   }
-}
   return (
     <BrowserRouter>
       <Routes>

@@ -6,7 +6,7 @@
     width: auto;
 }
 
-.select {
+.lobby {
     background-image: url('../../Assets/backgrounds/wavesbg.svg');
     background-repeat: no-repeat;
     background-size: contain;
@@ -18,36 +18,16 @@
     width: auto;
 }
 
-.centered-signup {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
+.smolbox {
+    background-color: black;
+    border: solid 2px #FE00FE;
+    border-radius: 25px;
+    /* margin-top: 2%; */
+    height: 60%;
+    width: 90%;
+    /* top: 30%; */
 }
 
-h2.title-signup {
+h2.startbutton {
     font-size: 5vw;
-    padding-bottom: 10vw;
-    color: #37319D;
 }
-
-.signup {
-    padding-bottom: 10vw;
-}
-
-.centered-login {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-}
-
-h3.title-login {
-    font-size: 3vw;
-    padding-top: 20vw;
-    color: #37319D;
-}
-
-.login {}
