@@ -3,8 +3,14 @@ import "../css/SignUp.css";
 import banner from '../../Assets/buttons/loginsignupbanner.svg'
 
 
-
-export default function Login() {
+export default function SignUp({
+  username,
+  registerInfo,
+  handleInputChangeRegister,
+  registerSubmit,
+  loading
+}) {
+  console.log(registerInfo)
   return (
     <div className='SignUpbg' >
       <div className='container' style={{ width: '100%' }}>
@@ -36,6 +42,9 @@ export default function Login() {
                   className="form-control"
                   id="floatingInput"
                   placeholder="Username"
+                  value={registerInfo.username}
+                  onChange={handleInputChangeRegister}
+                  name='username'
                   style={{
                     borderRadius: '25px',
                     height: '55px',
@@ -53,6 +62,9 @@ export default function Login() {
                   className="form-control"
                   id="floatingPassword"
                   placeholder="Password"
+                  name='password'
+                  value={registerInfo.password}
+                  onChange={handleInputChangeRegister}
                   style={{
                     borderRadius: '25px',
                     height: '55px'
@@ -74,7 +86,8 @@ export default function Login() {
                   style={{
                     borderRadius: '25px', height: '50px',
                     backgroundColor: '#FF6E27', width: 'auto', fontSize: '25px'
-                  }}>
+                  }}
+                  onClick={registerSubmit}>
                   Submit
                 </button>
 

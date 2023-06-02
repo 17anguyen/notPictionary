@@ -5,7 +5,7 @@ import Lobby from './Lobby'
 import { io } from "socket.io-client";
 import { useParams } from "react-router-dom";
 const local_url = 'http://localhost:4000/'
-// const server_url = 'https://doodledash.herokuapp.com/'
+//const server_url = 'https://doodledash.herokuapp.com/'
 
 const socket = io(local_url);
 
@@ -50,23 +50,24 @@ function InGame() {
                 sender: userName,
                 message: message
             };
-            data.socket.emit("send-message", messageData);
+            socket.emit("send-message", messageData);
             setMessageReceived((list) => [...list, messageData]);
             setSendMessage('');
         }
     };
 
     useEffect(() => {
-        data.socket.on('receive-message', (data) => {
+        socket.on('receive-message', (data) => {
             setMessageReceived((list) => [...list, data]);
         });
     }, [socket])
 
     const startGame = async(e) =>{
-        e.preventDefault
+        e.preventDefault();
+
         console.log(e.target)
         setPregame(false)
-        console.log
+        console.log(pregame)
 
     }
 

@@ -7,3 +7,10 @@
     height: 100vh;
     width: auto;
 }
+
+.home {
+    background-color: white;
+    border: 5px solid #FE00FE;
+    border-radius: 25px;
+    height: 80%;
+}

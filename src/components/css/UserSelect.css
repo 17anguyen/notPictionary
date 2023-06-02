@@ -1,9 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Sniglet:wght@400;800&display=swap');
 
 .UserSelectbg {
-    background-image: url('../../Assets/backgrounds/createuserbg.gif');
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: #7700A6;
     height: 100vh;
     width: auto;
 }
+
+.select {
+    background-image: url('../../Assets/backgrounds/wavesbg.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-y: bottom;
+    background-color: black;
+    border: solid 5px #FE00FE;
+    border-radius: 25px;
+    height: 95%;
+    width: auto;
+}
+
+.centered-signup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+h2.title-signup {
+    font-size: 5vw;
+    padding-bottom: 10vw;
+    color: #37319D;
+}
+
+.signup {
+    padding-bottom: 10vw;
+}
+
+.centered-login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+h3.title-login {
+    font-size: 3vw;
+    padding-top: 20vw;
+    color: #37319D;
+}
+
+.login {}
