@@ -5,7 +5,6 @@ import CorrectAnswer from './components/pages/CorrectAnswer'
 import Final from './components/pages/FinalWinner'
 import InGame from './components/pages/InGame'
 import Lead from './components/pages/InGameLeader'
-import Lobby from './components/pages/Lobby'
 import Home from './components/pages/Home'
 import Login from './components/pages/Login'
 import RoomSelect from './components/pages/RoomSelect'
@@ -54,32 +53,9 @@ function App() {
     }
   }, []);
 
-  const registered = async (e) => {
-    e.preventDefault();
-    console.log("testing submit", registerInfo);
-    try {
-      setLoading(true)
-      const response = await API.createUser(
-        registerInfo.username,
-        registerInfo.password
-      );
-      setLoading(false)
-      if (response.code === 1064) {
-        alert("please choose another username");
-        setRegisterInfo({
-          username: '',
-          password: '',
-        });
-        setLoginInfo({
-          username: '',
-          password: ''
-        })
-      } else {
-        console.log(registerInfo)
-        console.log(loginInfo)
-      }
-    }
-  return (
+  
+
+      return (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home username={username} />} />
@@ -93,10 +69,7 @@ function App() {
           <Route path="/signup" element={<Signup
             username={username}
             registerInfo={registerInfo}
-            handleInputChangeRegister={(e) => setRegisterInfo((prvState) => ({
-              ...prvState, [e.target.name]: e.target.value
-            }))}
-            registerSubmit={registered}
+            setLoading={setLoading}
             loading={loading}
           />} />
           <Route path="/userselect" element={<UserSelect />} />
@@ -106,5 +79,4 @@ function App() {
       </BrowserRouter>
     );
   }
-
   export default App;

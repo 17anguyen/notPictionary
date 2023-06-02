@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import '../css/UserSelect.css';
 import top from '../../Assets/buttons/greenlargebutton.svg'
 import bottom from '../../Assets/buttons/bluesmallbutton.svg'
-import { Link } from 'react-router-dom'
 import arrows from '../../Assets/page elements/arrows.svg'
 import planet from '../../Assets/page elements/planet.svg'
 
