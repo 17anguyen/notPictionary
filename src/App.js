@@ -54,57 +54,57 @@ function App() {
     }
   }, []);
 
-const registered = async (e) => {
-  e.preventDefault();
-  console.log("testing submit",registerInfo);
-  try {
-    setLoading(true)
-    const response = await API.createUser(
-      registerInfo.username,
-      registerInfo.password
-    );
-    setLoading(false)
-    if (response.code === 1064) {
-      alert("please choose another username");
-      setRegisterInfo({
-        username: '',
-        password: '',
-      });
-      setLoginInfo({
-        username:'',
-        password:''
-      })
-    } else {
-      console.log(registerInfo)
-      console.log(loginInfo)
+  const registered = async (e) => {
+    e.preventDefault();
+    console.log("testing submit", registerInfo);
+    try {
+      setLoading(true)
+      const response = await API.createUser(
+        registerInfo.username,
+        registerInfo.password
+      );
+      setLoading(false)
+      if (response.code === 1064) {
+        alert("please choose another username");
+        setRegisterInfo({
+          username: '',
+          password: '',
+        });
+        setLoginInfo({
+          username: '',
+          password: ''
+        })
+      } else {
+        console.log(registerInfo)
+        console.log(loginInfo)
+      }
     }
-  }
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home username={username} />} />
-        <Route path="/correctanswer" element={<CorrectAnswer />} />
-        <Route path="/final" element={<Final />} />
-        <Route path="/game" element={<InGame />} />
-        <Route path="/lead" element={<Lead />} />
-        <Route path="/lobby" element={<Lobby />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/room" element={<RoomSelect />} />
-        <Route path="/signup" element={<Signup 
-        username={username}
-        registerInfo={registerInfo}
-        handleInputChangeRegister={(e) => setRegisterInfo((prvState) => ({
-          ...prvState,[e.target.name]: e.target.value
-        }))}
-        registerSubmit={registered}
-        loading={loading}        
-        />} />
-        <Route path="/userselect" element={<UserSelect />} />
-        <Route path="/word" element={<Word />} />
-        <Route path="/wronganswer" element={<WrongAnswer />} />
-      </Routes>
-    </BrowserRouter>
-  );
-}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home username={username} />} />
+          <Route path="/correctanswer" element={<CorrectAnswer />} />
+          <Route path="/final" element={<Final />} />
+          <Route path="/game" element={<InGame />} />
+          <Route path="/lead" element={<Lead />} />
+          {/* <Route path="/lobby" element={<Lobby />} /> */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/room/*" element={<RoomSelect />} />
+          <Route path="/signup" element={<Signup
+            username={username}
+            registerInfo={registerInfo}
+            handleInputChangeRegister={(e) => setRegisterInfo((prvState) => ({
+              ...prvState, [e.target.name]: e.target.value
+            }))}
+            registerSubmit={registered}
+            loading={loading}
+          />} />
+          <Route path="/userselect" element={<UserSelect />} />
+          <Route path="/word" element={<Word />} />
+          <Route path="/wronganswer" element={<WrongAnswer />} />
+        </Routes>
+      </BrowserRouter>
+    );
+  }
 
-export default App;
+  export default App;
