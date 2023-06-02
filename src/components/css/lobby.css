@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Sniglet:wght@400;800&display=swap');
+
+.UserSelectbg {
+    background-color: #7700A6;
+    height: 100vh;
+    width: auto;
+}
+
+.lobby {
+    background-image: url('../../Assets/backgrounds/wavesbg.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-y: bottom;
+    background-color: black;
+    border: solid 5px #FE00FE;
+    border-radius: 25px;
+    height: 95%;
+    width: auto;
+}
+
+.smolbox {
+    background-color: black;
+    border: solid 2px #FE00FE;
+    border-radius: 25px;
+    /* margin-top: 2%; */
+    height: 60%;
+    width: 90%;
+    /* top: 30%; */
+}
+
+h2.startbutton {
+    font-size: 5vw;
+}
