@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../css/UserSelect.css";
 import top from '../../Assets/buttons/greenlargebutton.svg'
 import bottom from '../../Assets/buttons/bluesmallbutton.svg'
@@ -37,6 +38,9 @@ export default function createRoom() {
 
           <div className='centered-login'>
             <h3 className='title-login'>Join a room</h3>
+            <Link to="/game/1" className="btn btn-success btn-lg">Join room 1</Link>
+                    <Link to="/game/2" className="btn btn-success btn-lg">Join room 2</Link>
+                    <Link to="/game/3" className="btn btn-success btn-lg">Join room 3</Link>
 
           </div>
         </div>
@@ -44,10 +48,7 @@ export default function createRoom() {
 
       </div>
 
-
-
-
-
     </div >
   );
+              
 }

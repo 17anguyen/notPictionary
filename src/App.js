@@ -78,7 +78,9 @@ function App() {
         console.log(registerInfo)
         console.log(loginInfo)
       }
-    }
+    }catch(err){
+      console.log(err)
+    }}
   return (
       <BrowserRouter>
         <Routes>
