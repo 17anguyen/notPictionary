@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+    border: 2px;
+  }
+  
+  .whiteboard {
+    height: 70%;
+    width:60%;
+    border:1px;
+    border-color: solid red;
+    /* position: absolute; */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+  }
+  
+  .colors {
+    position: fixed;
+  }
+  
+  .color {
+    display: inline-block;
+    height: 48px;
+    width: 48px;
+  }
+  
+  .color.black { background-color: black; }
+  .color.red { background-color: red; }
+  .color.green { background-color: green; }
+  .color.blue { background-color: blue; }
+  .color.yellow { background-color: yellow; }

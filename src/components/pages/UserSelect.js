@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import '../css/UserSelect.css';
 import top from '../../Assets/buttons/greenlargebutton.svg'
 import bottom from '../../Assets/buttons/bluesmallbutton.svg'
