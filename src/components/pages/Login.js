@@ -6,10 +6,10 @@ import banner from '../../Assets/buttons/loginsignupbanner.svg'
 
 export default function Login({
     loggedIn,
-    loggedOut, 
+    loggedOut,
     username,
-    handleInputChange, 
-    loginInfo}) {
+    handleInputChange,
+    loginInfo }) {
     return (
         <div className='loginbg' >
             <div className='container' style={{ width: '100%' }}>

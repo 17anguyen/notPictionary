@@ -34,54 +34,54 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-        setLoading(true)
-        API.getTokenData(token)
+      setLoading(true)
+      API.getTokenData(token)
         .then((data) => {
-              setLoading(false)
-              if (data.err) {
-                console.log(data.err);
-                localStorage.removeItem("token");
-              } else {
-                setUsername(data.username);
-                setToken(token);
-              }
-            })
-            .catch((err) => {
-                setLoading(false)
-                console.log("bad token");
-                console.log(err);
-            });
+          setLoading(false)
+          if (data.err) {
+            console.log(data.err);
+            localStorage.removeItem("token");
+          } else {
+            setUsername(data.username);
+            setToken(token);
+          }
+        })
+        .catch((err) => {
+          setLoading(false)
+          console.log("bad token");
+          console.log(err);
+        });
     }
-}, []);
+  }, []);
 
-const registered = async (e) => {
-  e.preventDefault();
-  console.log("testing submit");
-  try {
-    setLoading(true)
-    const response = await API.createUser(
-      registerInfo.username,
-      registerInfo.password
-    );
-    setLoading(false)
-    if (response.code === 1064) {
-      alert("please choose another username");
-      setRegisterInfo({
-        username: '',
-        password: '',
-      });
-      setLoginInfo({
-        username:'',
-        password:''
-      })
-    } else {
-      console.log(registerInfo)
-      console.log(loginInfo)
+  const registered = async (e) => {
+    e.preventDefault();
+    console.log("testing submit");
+    try {
+      setLoading(true)
+      const response = await API.createUser(
+        registerInfo.username,
+        registerInfo.password
+      );
+      setLoading(false)
+      if (response.code === 1064) {
+        alert("please choose another username");
+        setRegisterInfo({
+          username: '',
+          password: '',
+        });
+        setLoginInfo({
+          username: '',
+          password: ''
+        })
+      } else {
+        console.log(registerInfo)
+        console.log(loginInfo)
+      }
+    } catch (err) {
+      console.log(err)
     }
-  } catch (err) {
-    console.log(err)
   }
-}
   return (
     <BrowserRouter>
       <Routes>
