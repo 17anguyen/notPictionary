@@ -14,15 +14,16 @@ import Word from './components/pages/Word'
 import WrongAnswer from './components/pages/WrongAnswer'
 
 function App() {
+  // username state, token stuff, logout function
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/correctanswer" element={<CorrectAnswer />} />
         <Route path="/final" element={<Final />} />
-        <Route path="/game" element={<InGame />} />
+        <Route path="/game/*" element={<InGame />} />
         <Route path="/lead" element={<Lead />} />
-        <Route path="/lobby" element={<Lobby />} />
+        {/* <Route path="/lobby" element={<Lobby />} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/room" element={<RoomSelect />} />
         <Route path="/signup" element={<Signup />} />
