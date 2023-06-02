@@ -10,6 +10,7 @@ export default function SignUp({
   registerSubmit,
   loading
 }) {
+  console.log(registerInfo)
   return (
     <div className='SignUpbg' >
       <div className='container' style={{ width: '100%' }}>
@@ -42,6 +43,7 @@ export default function SignUp({
                   id="floatingInput"
                   placeholder="Username"
                   value={registerInfo.username}
+                  onChange={handleInputChangeRegister}
                   name='username'
                   style={{
                     borderRadius: '25px',

@@ -9,22 +9,7 @@ const API = {
         }
       });
       return await response.json();
-    },
-  
-    signUp: async (username, password) => {
-      const response = await fetch (`${BASEURL}/`, {
-        method: 'POST',
-        body: JSON.stringify({
-          username: username,
-          password: password
-        }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-      return await response.json();
-    },
-  
+    },  
     login: async (username, password) => {
       const response = await fetch(`${BASEURL}/login`, {
         method: "POST",
@@ -63,4 +48,4 @@ const API = {
       return await response.json();
     }
   };
-  
+   export default API

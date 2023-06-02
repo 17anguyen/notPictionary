@@ -56,7 +56,7 @@ function App() {
 
 const registered = async (e) => {
   e.preventDefault();
-  console.log("testing submit");
+  console.log("testing submit",registerInfo);
   try {
     setLoading(true)
     const response = await API.createUser(
@@ -85,7 +85,7 @@ const registered = async (e) => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home username={username} />} />
         <Route path="/correctanswer" element={<CorrectAnswer />} />
         <Route path="/final" element={<Final />} />
         <Route path="/game" element={<InGame />} />
@@ -93,7 +93,15 @@ const registered = async (e) => {
         <Route path="/lobby" element={<Lobby />} />
         <Route path="/login" element={<Login />} />
         <Route path="/room" element={<RoomSelect />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/signup" element={<Signup 
+        username={username}
+        registerInfo={registerInfo}
+        handleInputChangeRegister={(e) => setRegisterInfo((prvState) => ({
+          ...prvState,[e.target.name]: e.target.value
+        }))}
+        registerSubmit={registered}
+        loading={loading}        
+        />} />
         <Route path="/userselect" element={<UserSelect />} />
         <Route path="/word" element={<Word />} />
         <Route path="/wronganswer" element={<WrongAnswer />} />
