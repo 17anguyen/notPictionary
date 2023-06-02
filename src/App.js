@@ -90,9 +90,9 @@ function App() {
         <Route path="/final" element={<Final />} />
         <Route path="/game" element={<InGame />} />
         <Route path="/lead" element={<Lead />} />
-        <Route path="/lobby" element={<Lobby />} />
+        {/* <Route path="/lobby" element={<Lobby />} /> */}
         <Route path="/login" element={<Login />} />
-        <Route path="/room" element={<RoomSelect />} />
+        <Route path="/room/*" element={<RoomSelect />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/userselect" element={<UserSelect />} />
         <Route path="/word" element={<Word />} />
