@@ -16,7 +16,6 @@ function InGame() {
         borderColor: 'red'
     }
     const [pregame, setPregame] = useState(true)
-    const [roomId, setRoom] = useState(null)
     const userName = 'carito'
     const [message, setSendMessage] = useState('');
     const [messageReceived, setMessageReceived] = useState([]);
@@ -24,23 +23,19 @@ function InGame() {
 
     // figure what room were in by urlparams
     const params = useParams();
-    setRoom(params)
-    console.log(params)
+    const roomId = `room${params.roomId}`
+    console.log(roomId)
 
+   
     // socket.join that room
-    useEffect(() => {
-        joinRoom()
-
-    },[setRoom])
 
     const joinRoom = ()=>{
-        if (roomId !== '' && userName !== '' ) {
-    
-        socket.emit("join-room", roomId,userName)
-
-        
+        console.log("-------hello")
+        if (roomId !== '' && userName !== '' ) {  
+            socket.emit("join-room", roomId,userName)  
         }
     }
+    
 
     const sendMessage = (e) => {
         e.preventDefault()
@@ -56,27 +51,31 @@ function InGame() {
         }
     };
 
+    const startGame = async(e) =>{
+        e.preventDefault();
+        socket.emit("start-game",roomId);
+        setPregame(false)
+    }
+
+//socket.on ge selected player and word
+    
+   
     useEffect(() => {
         socket.on('receive-message', (data) => {
             setMessageReceived((list) => [...list, data]);
         });
-    }, [socket])
-
-    const startGame = async(e) =>{
-        e.preventDefault();
-
-        console.log(e.target)
-        setPregame(false)
-        console.log(pregame)
-
-    }
+      }, [message]);
+    
+    useEffect(() => {
+      joinRoom();
+    }, []);
+    
 
     return (  
     <>
         {pregame ?(
             <div>
-            <Lobby startGame={startGame} />
-            
+            <Lobby startGame={startGame} socket={socket} userName={userName} roomId={roomId}/>   
             </div>
             
         ):(

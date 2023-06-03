@@ -1,10 +1,36 @@
 import React from "react";
 import "../css/lobby.css";
 import "../css/UserSelect.css";
-import start from "../../Assets/buttons/startbutton.svg"
+import { useState,useEffect} from 'react';
+// import start from "../../Assets/buttons/startbutton.svg"
 
 
-function Lobby({startGame,isHost}){
+function Lobby({startGame,socket,userName,roomId}){
+
+    const [message, setSendMessage] = useState('');
+    const [messageReceived, setMessageReceived] = useState([]);
+    const isHost = true;
+
+    const sendMessage = (e) => {
+        e.preventDefault()
+        if (message !== '') {
+            const messageData = {
+                room: roomId,
+                sender: userName,
+                message: message
+            };
+            socket.emit("send-message", messageData);
+            setMessageReceived((list) => [...list, messageData]);
+            setSendMessage('');
+        }
+    };
+
+   useEffect(() => {
+     socket.on('receive-message', (data) => {
+         setMessageReceived((list) => [...list, data]);
+     });
+   }, [message])
+   
 
 
     return(
@@ -27,7 +53,7 @@ function Lobby({startGame,isHost}){
     //     </div>
     // </div >
         <div>
-            {/* <input
+            <input
                 type="text"
                 name='message'
                 value={message}
@@ -48,7 +74,7 @@ function Lobby({startGame,isHost}){
                     <button type='submit' onClick={startGame}>Start Game</button>
                     </div>
 
-                ):null}         */}
+                ):null}        
         </div>
     );
 
