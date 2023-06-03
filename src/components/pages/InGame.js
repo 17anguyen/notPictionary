@@ -57,7 +57,7 @@ function InGame() {
         setPregame(false)
     }
 
-//socket.on ge selected player and word
+//socket.on get selected player and word and show to selected user
     
    
     useEffect(() => {
