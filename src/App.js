@@ -63,7 +63,7 @@ function App() {
           <Route path="/lead" element={<Lead />} />
           {/* <Route path="/lobby" element={<Lobby />} /> */}
           <Route path="/login" element={<Login />} />
-          <Route path="/room/11" element={<RoomSelect />} />
+          <Route path="/room" element={<RoomSelect />} />
           <Route path="/signup" element={<Signup
             username={username}
             registerInfo={registerInfo}
