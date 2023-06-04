@@ -12,17 +12,22 @@ const API = {
       return await response.json();
     },  
     login: async (username, password) => {
-      const response = await fetch(`${BASEURL}/login`, {
-        method: "POST",
-        body: JSON.stringify({
-          username: username,
-          password: password
-        }),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      });
-      return await response.json();
+      try {
+        const response = await fetch(`${BASEURL}/api/users/login`, {
+          method: "POST",
+          body: JSON.stringify({
+            username: username,
+            password: password
+          }),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        return await response.json();
+      } catch (err) {
+        console.log(err)
+        console.log("not working")
+      }
     },
   
     createUser: async (username, password) => {
