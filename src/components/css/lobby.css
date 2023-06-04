@@ -16,18 +16,85 @@
     border-radius: 25px;
     height: 95%;
     width: auto;
+    top: 3%;
 }
 
 .smolbox {
     background-color: black;
     border: solid 2px #FE00FE;
     border-radius: 25px;
-    /* margin-top: 2%; */
     height: 60%;
     width: 90%;
-    /* top: 30%; */
+    top: 6%;
 }
 
 h2.startbutton {
     font-size: 5vw;
+}
+
+.container-lobby {
+    margin: 5%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+}
+
+.lobby-text {
+    background-color: #DEFE47;
+    width: 50%;
+    height: 150px;
+    border-radius: 35px;
+    box-shadow: 20px 15px #37319D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-text-lobby {
+    font-size: 50px;
+    color: #37319D;
+}
+
+.message-box {
+    background-color: white;
+    color: black;
+    justify-content: center;
+    top: 5%;
+    left: 25%;
+}
+
+.container .message-box {
+    width: 50%;
+    height: 90%;
+    border-radius: 30px;
+}
+
+.message-input {
+    position: absolute;
+    display: block;
+    flex-wrap: wrap;
+    bottom: 3%;
+    width: 100%;
+}
+
+.user-text {
+    width: 80%;
+    flex-wrap: wrap;
+}
+
+.user-submit {
+    width: 15%;
+    flex-wrap: wrap;
+    border-radius: 20px;
+
+}
+
+.message-body {
+    position: relative;
+    color: black;
+    text-align: start;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 80%;
 }

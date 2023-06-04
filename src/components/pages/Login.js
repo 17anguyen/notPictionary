@@ -37,9 +37,9 @@ export default function Login({setUsername}) {
             } catch (err){
             alert("login failed!")
             console.log('login failed', err)
-            }
-          }
-          
+        }
+    }
+
     return (
         <div className='loginbg' >
             <div className='container' style={{ width: '100%' }}>
@@ -63,15 +63,13 @@ export default function Login({setUsername}) {
                         className="card-body positon-relative"
                         style={{ paddingTop: '10%' }}>
 
-                    <form onSubmit={handleLogin}>
+                        <form>
 
                             <div className="form-floating mb-3">
                                 <input type="input"
                                     className="form-control"
                                     id="floatingInput"
-                                    name="username"
                                     value={loginInfo.username}
-                                    onChange={handleInputChange}
                                     placeholder="Username"
                                     style={{
                                         borderRadius: '25px',
@@ -89,10 +87,8 @@ export default function Login({setUsername}) {
                                 <input type="password"
                                     className="form-control"
                                     id="floatingPassword"
-                                    name="password"
                                     placeholder="Password"
                                     value={loginInfo.password}
-                                    onChange={handleInputChange}
                                     style={{
                                         borderRadius: '25px',
                                         height: '55px'
@@ -114,22 +110,21 @@ export default function Login({setUsername}) {
                                     style={{
                                         borderRadius: '25px', height: '50px',
                                         backgroundColor: '#FF6E27', width: 'auto', fontSize: '25px'
-                                    }}
-                                    onClick={handleLogin}>
+                                    }}>
                                     Submit
                                 </button>
 
-                            </div>
-                        </form>
+//                             </div>
+//                         </form>
 
 
-                    </div>
-                </div >
+//                     </div>
+//                 </div >
 
-            </div>
+//             </div>
 
 
 
-        </div >
+//         </div >
     );
 }
