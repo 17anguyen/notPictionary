@@ -1,6 +1,8 @@
 import React from 'react';
 import '../css/UserSelect.css';
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
+import top from '../../Assets/buttons/greenlargebutton.svg'
+import bottom from '../../Assets/buttons/bluesmallbutton.svg'
 import arrows from '../../Assets/page elements/arrows.svg'
 import planet from '../../Assets/page elements/planet.svg'
 

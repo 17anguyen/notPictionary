@@ -8,7 +8,8 @@ import { useNavigate } from "react-router-dom/dist";
 export default function SignUp({
   username,
   setLoading,
-  loading
+  loading,
+  setUsername
 }) {
   const [registerInfo, setRegisterInfo] = useState({
     username: '',
@@ -28,7 +29,7 @@ export default function SignUp({
         registerInfo.password
       );
       setLoading(false)
-      if (!username) {
+      if (!response) {
         alert("please enter valid credentials");
         setRegisterInfo({
           username: '',
@@ -36,6 +37,7 @@ export default function SignUp({
         });
       } else {        
         console.log(registerInfo)
+        setUsername(registerInfo.username)
       }} catch (err) {
         console.log(err)
       }
