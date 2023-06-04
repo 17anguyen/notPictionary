@@ -53,6 +53,12 @@ function InGame({username}) {
         }
     };
 
+    useEffect(() => {
+        socket.on('receive-message', (data) => {
+            setMessageReceived((list) => [...list, data]);
+        });
+    }, [socket])
+
     const startGame = async(e) =>{
         e.preventDefault();
         socket.emit("start-game",roomId);
@@ -120,9 +126,9 @@ console.log(correctAnswer);
                     })}
                     
                     </div>
-                    </div>
-                    
-                    )}
+                </div>
+
+            )}
 
         </>
     );

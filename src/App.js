@@ -14,6 +14,7 @@ import Word from './components/pages/Word'
 import WrongAnswer from './components/pages/WrongAnswer'
 
 function App() {
+
   const [username, setUsername] = useState("");
   const [token, setToken] = useState("");
   const [loading, setLoading] = useState(false)
@@ -51,7 +52,7 @@ function App() {
           console.log(err);
         });
     }
-  }, []); 
+  }, []);
 
       return (
       <BrowserRouter>
