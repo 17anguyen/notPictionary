@@ -31,14 +31,14 @@ function InGame() {
     useEffect(() => {
         joinRoom()
 
-    },[setRoom])
+    }, [setRoom])
 
-    const joinRoom = ()=>{
-        if (roomId !== '' && userName !== '' ) {
-    
-        socket.emit("join-room", roomId,userName)
+    const joinRoom = () => {
+        if (roomId !== '' && userName !== '') {
 
-        
+            socket.emit("join-room", roomId, userName)
+
+
         }
     }
 
@@ -62,7 +62,7 @@ function InGame() {
         });
     }, [socket])
 
-    const startGame = async(e) =>{
+    const startGame = async (e) => {
         e.preventDefault();
 
         console.log(e.target)
@@ -71,51 +71,51 @@ function InGame() {
 
     }
 
-    return (  
-    <>
-        {pregame ?(
-            <div>
-            <Lobby startGame={startGame} />
-            
-            </div>
-            
-        ):(
-         <div className='row'>
-         <div className='col-lg-6'>
-         <div style={styleBoard}>
-         <Board socket={socket} />
-         
-         </div>
+    return (
+        <>
+            {pregame ? (
+                <div>
+                    <Lobby startGame={startGame} />
 
-            </div>
-            
-            <div className='col-lg-6'>
-                <input
-                type="text"
-                name='message'
-                value={message}
-                placeholder='message'
-                onChange={(e) => {
-                    setSendMessage(e.target.value)
-                }} />
-                <button type='submit' onClick={sendMessage}>send</button>
-                <h1>Message: </h1>
-                {messageReceived.map((item) => {
-                    return (
-                        <div key={item.sender} id={userName === item.sender ? 'sender' : 'receiver'}>
-                        <div>{item.message}</div>
-                        <p>--{item.sender}</p>
+                </div>
+
+            ) : (
+                <div className='row'>
+                    <div className='col-lg-6'>
+                        <div style={styleBoard}>
+                            <Board socket={socket} />
+
                         </div>
-                        
-                        )
-                        
-                        
-                    })}
-                    
+
                     </div>
+
+                    <div className='col-lg-6'>
+                        <input
+                            type="text"
+                            name='message'
+                            value={message}
+                            placeholder='message'
+                            onChange={(e) => {
+                                setSendMessage(e.target.value)
+                            }} />
+                        <button type='submit' onClick={sendMessage}>send</button>
+                        <h1>Message: </h1>
+                        {messageReceived.map((item) => {
+                            return (
+                                <div key={item.sender} id={userName === item.sender ? 'sender' : 'receiver'}>
+                                    <div>{item.message}</div>
+                                    <p>--{item.sender}</p>
+                                </div>
+
+                            )
+
+
+                        })}
+
                     </div>
-                    
-                    )}
+                </div>
+
+            )}
 
         </>
     );
