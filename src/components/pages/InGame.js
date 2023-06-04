@@ -43,12 +43,12 @@ function InGame({username}) {
     const sendAnswers = (e) => {
         e.preventDefault()
         if (answers !== '') {
-            // const messageData = {
-            //     room: roomId,
-            //     sender: username,
-            //     message: message
-            // };
-            socket.emit("send-answers", answers);
+            const answersData = {
+                room: roomId,
+                sender: username,
+                message: answers
+            };
+            socket.emit("send-answers", answersData);
             setAnswerdReceived((list) => [...list, answers]);
             setAnswerMessage('');
         }
