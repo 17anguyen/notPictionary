@@ -10,15 +10,17 @@ const local_url = 'http://localhost:4000/'
 const socket = io(local_url);
 
 
-function InGame() {
+function InGame({username}) {
+    console.log("=====Username:"+username)
     const styleBoard = {
         border: '2px',
         borderColor: 'red'
     }
     const [pregame, setPregame] = useState(true)
-    const userName = 'carito'
-    const [message, setSendMessage] = useState('');
-    const [messageReceived, setMessageReceived] = useState([]);
+    const [answers, setAnswerMessage] = useState('');
+    const [answerReceived, setAnswerdReceived] = useState([]);
+    const [correctAnswer,setCorrectAnswer] = useState("")
+    const [selectedUser, setSelectedUser] = useState("")
 
 
     // figure what room were in by urlparams
@@ -30,24 +32,24 @@ function InGame() {
     // socket.join that room
 
     const joinRoom = ()=>{
-        console.log("-------hello")
-        if (roomId !== '' && userName !== '' ) {  
-            socket.emit("join-room", roomId,userName)  
+        if (roomId !== '' && username ) {  
+           
+            socket.emit("join-room", roomId,username)  
         }
     }
     
 
-    const sendMessage = (e) => {
+    const sendAnswers = (e) => {
         e.preventDefault()
-        if (message !== '') {
-            const messageData = {
-                room: roomId,
-                sender: userName,
-                message: message
-            };
-            socket.emit("send-message", messageData);
-            setMessageReceived((list) => [...list, messageData]);
-            setSendMessage('');
+        if (answers !== '') {
+            // const messageData = {
+            //     room: roomId,
+            //     sender: username,
+            //     message: message
+            // };
+            socket.emit("send-answers", answers);
+            setAnswerdReceived((list) => [...list, answers]);
+            setAnswerMessage('');
         }
     };
 
@@ -58,13 +60,19 @@ function InGame() {
     }
 
 //socket.on get selected player and word and show to selected user
+socket.on("selected-props", (userSelected,selectedWord) =>{
+setCorrectAnswer(selectedWord);
+setSelectedUser(userSelected);
+console.log(selectedUser);
+console.log(correctAnswer);
+})
     
    
-    useEffect(() => {
-        socket.on('receive-message', (data) => {
-            setMessageReceived((list) => [...list, data]);
-        });
-      }, [message]);
+    // useEffect(() => {
+    //     socket.on('receive-message', (data) => {
+    //         setAnswerdReceived((list) => [...list, data]);
+    //     });
+    //   }, [answers]);
     
     useEffect(() => {
       joinRoom();
@@ -75,7 +83,7 @@ function InGame() {
     <>
         {pregame ?(
             <div>
-            <Lobby startGame={startGame} socket={socket} userName={userName} roomId={roomId}/>   
+            <Lobby startGame={startGame} socket={socket} userName={username} roomId={roomId}/>   
             </div>
             
         ):(
@@ -91,17 +99,17 @@ function InGame() {
             <div className='col-lg-6'>
                 <input
                 type="text"
-                name='message'
-                value={message}
-                placeholder='message'
+                name='answers'
+                value={answers}
+                placeholder='type your guess'
                 onChange={(e) => {
-                    setSendMessage(e.target.value)
+                    setAnswerMessage(e.target.value)
                 }} />
-                <button type='submit' onClick={sendMessage}>send</button>
-                <h1>Message: </h1>
-                {messageReceived.map((item) => {
+                <button type='submit' onClick={sendAnswers}>send</button>
+                <h1>Answers: </h1>
+                {answerReceived.map((item) => {
                     return (
-                        <div key={item.sender} id={userName === item.sender ? 'sender' : 'receiver'}>
+                        <div key={item.sender} id={username === item.sender ? 'sender' : 'receiver'}>
                         <div>{item.message}</div>
                         <p>--{item.sender}</p>
                         </div>

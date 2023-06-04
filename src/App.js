@@ -59,16 +59,17 @@ function App() {
           <Route path="/" element={<Home username={username} />} />
           <Route path="/correctanswer" element={<CorrectAnswer />} />
           <Route path="/final" element={<Final />} />
-          <Route path="/game/:roomId" element={<InGame />} />
+          <Route path="/game/:roomId" element={<InGame username={username} />} />
           <Route path="/lead" element={<Lead />} />
           {/* <Route path="/lobby" element={<Lobby />} /> */}
           <Route path="/login" element={<Login />} />
           <Route path="/room" element={<RoomSelect />} />
           <Route path="/signup" element={<Signup
             username={username}
-            registerInfo={registerInfo}
+            setUsername={setUsername}
             setLoading={setLoading}
             loading={loading}
+            registerInfo={registerInfo}
           />} />
           <Route path="/userselect" element={<UserSelect />} />
           <Route path="/word" element={<Word />} />

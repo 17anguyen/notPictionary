@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import '../css/Board.css'
 
-export default function Board ({ socket }) {
+export default function Board ({ socket,room}) {
   console.log(socket)
   const canvasRef = useRef(null);
   const colorsRef = useRef(null);
@@ -126,7 +126,7 @@ export default function Board ({ socket }) {
     }
 
     socketRef.current = socket;
-    socketRef.current.on('drawing', onDrawingEvent);
+    socketRef.current.on('drawing', onDrawingEvent,room);
   }, []);
 
   // ------------- The Canvas and color elements --------------------------
