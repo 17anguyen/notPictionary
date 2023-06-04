@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom/dist';
+import API from "../../utils/api"
 import '../css/login.css';
 import banner from '../../Assets/buttons/loginsignupbanner.svg'
 
 
 
-export default function Login({
-    loggedIn,
-    loggedOut,
-    username,
-    handleInputChange,
-    loginInfo }) {
+export default function Login(props) {
+        const navigate = useNavigate();
+        username,
+        loggedIn,
+        loggedOut,
+        handleInputChange     
+        const [loginInfo, setLoginInfo] = useState({
+            username: '',
+            password: '',
+          })
+          
     return (
         <div className='loginbg' >
             <div className='container' style={{ width: '100%' }}>
