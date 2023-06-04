@@ -12,7 +12,7 @@ const API = {
       return await response.json();
     },  
     login: async (username, password) => {
-      const response = await fetch(`${BASEURL}/login`, {
+      const response = await fetch(`${BASEURL}/api/users/login`, {
         method: "POST",
         body: JSON.stringify({
           username: username,
