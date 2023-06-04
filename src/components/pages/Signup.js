@@ -1,15 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../css/SignUp.css";
 import banner from '../../Assets/buttons/loginsignupbanner.svg'
+import API from '../../utils/api'
+import { useNavigate } from "react-router-dom/dist";
 
 
 export default function SignUp({
   username,
-  registerInfo,
-  handleInputChangeRegister,
-  registerSubmit,
+  setLoading,
   loading
 }) {
+  const [registerInfo, setRegisterInfo] = useState({
+    username: '',
+    password: '',
+  });
+  const navigate = useNavigate()
+  const handleInputChangeRegister=(e) => setRegisterInfo((prvState) => ({
+    ...prvState, [e.target.name]: e.target.value
+  }))
+  const registered = async (e) => {    
+    e.preventDefault();
+    console.log("testing submit", registerInfo);
+    try {
+      setLoading(true)
+      const response = await API.createUser(
+        registerInfo.username,
+        registerInfo.password
+      );
+      setLoading(false)
+      if (!username) {
+        alert("please enter valid credentials");
+        setRegisterInfo({
+          username: '',
+          password: '',
+        });
+      } else {        
+        console.log(registerInfo)
+      }} catch (err) {
+        console.log(err)
+      }
+      navigate('/room')
+    } 
   console.log(registerInfo)
   return (
     <div className='SignUpbg' >
@@ -87,7 +118,7 @@ export default function SignUp({
                     borderRadius: '25px', height: '50px',
                     backgroundColor: '#FF6E27', width: 'auto', fontSize: '25px'
                   }}
-                  onClick={registerSubmit}>
+                  onClick={registered}>
                   Submit
                 </button>
 
