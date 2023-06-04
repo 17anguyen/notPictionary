@@ -21,11 +21,6 @@ function App() {
 
   var loggedIn = false;
 
-  const [loginInfo, setLoginInfo] = useState({
-    username: '',
-    password: '',
-  })
-
   const [registerInfo, setRegisterInfo] = useState({
     username: '',
     password: '',
@@ -63,7 +58,8 @@ function App() {
           <Route path="/game/:roomId" element={<InGame username={username} />} />
           <Route path="/lead" element={<Lead />} />
           {/* <Route path="/lobby" element={<Lobby />} /> */}
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login 
+          username={username}/>} />
           <Route path="/room" element={<RoomSelect />} />
           <Route path="/signup" element={<Signup
             username={username}
