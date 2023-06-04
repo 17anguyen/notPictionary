@@ -15,6 +15,7 @@ import Word from './components/pages/Word'
 import WrongAnswer from './components/pages/WrongAnswer'
 
 function App() {
+
   const [username, setUsername] = useState("");
   const [token, setToken] = useState("");
   const [loading, setLoading] = useState(false)
@@ -78,35 +79,36 @@ function App() {
         console.log(registerInfo)
         console.log(loginInfo)
       }
-    }catch(err){
+    } catch (err) {
       console.log(err)
-    }}
-  return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home username={username} />} />
-          <Route path="/correctanswer" element={<CorrectAnswer />} />
-          <Route path="/final" element={<Final />} />
-          <Route path="/game" element={<InGame />} />
-          <Route path="/lead" element={<Lead />} />
-          {/* <Route path="/lobby" element={<Lobby />} /> */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/room/*" element={<RoomSelect />} />
-          <Route path="/signup" element={<Signup
-            username={username}
-            registerInfo={registerInfo}
-            handleInputChangeRegister={(e) => setRegisterInfo((prvState) => ({
-              ...prvState, [e.target.name]: e.target.value
-            }))}
-            registerSubmit={registered}
-            loading={loading}
-          />} />
-          <Route path="/userselect" element={<UserSelect />} />
-          <Route path="/word" element={<Word />} />
-          <Route path="/wronganswer" element={<WrongAnswer />} />
-        </Routes>
-      </BrowserRouter>
-    );
+    }
   }
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home username={username} />} />
+        <Route path="/correctanswer" element={<CorrectAnswer />} />
+        <Route path="/final" element={<Final />} />
+        <Route path="/game" element={<InGame />} />
+        <Route path="/lead" element={<Lead />} />
+        {/* <Route path="/lobby" element={<Lobby />} /> */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/room/*" element={<RoomSelect />} />
+        <Route path="/signup" element={<Signup
+          username={username}
+          registerInfo={registerInfo}
+          handleInputChangeRegister={(e) => setRegisterInfo((prvState) => ({
+            ...prvState, [e.target.name]: e.target.value
+          }))}
+          registerSubmit={registered}
+          loading={loading}
+        />} />
+        <Route path="/userselect" element={<UserSelect />} />
+        <Route path="/word" element={<Word />} />
+        <Route path="/wronganswer" element={<WrongAnswer />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
 
-  export default App;
+export default App;

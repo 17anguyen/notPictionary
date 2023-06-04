@@ -18,36 +18,62 @@
     width: auto;
 }
 
+.signup {
+    background-color: #DEFE47;
+    width: 50%;
+    height: 150px;
+    border-radius: 35px;
+    box-shadow: 20px 15px #37319D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup .btn-text {
+    font-size: 50px;
+}
+
 .centered-signup {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 280px;
+    left: 36%;
+}
+
+
+.container-signup {
+    margin-top: 20%;
+    position: relative;
+    display: flex;
+    justify-content: center;
 
 }
 
-h2.title-signup {
-    font-size: 5vw;
-    padding-bottom: 10vw;
-    color: #37319D;
+.login {
+    background-color: #00B3FE;
+    width: 50%;
+    height: 80px;
+    border-radius: 25px;
+    box-shadow: 20px 15px #37319D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.signup {
-    padding-bottom: 10vw;
+.login .btn-text {
+    font-size: 50px;
 }
 
 .centered-login {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
+    top: 20px;
+    left: 36%;
 }
 
-h3.title-login {
-    font-size: 3vw;
-    padding-top: 20vw;
-    color: #37319D;
-}
 
-.login {}
+.container-login {
+    margin-top: 5%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+}
