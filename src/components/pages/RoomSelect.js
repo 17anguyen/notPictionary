@@ -1,16 +1,11 @@
 import React from 'react';
 import '../css/UserSelect.css';
 import { Link } from 'react-router-dom'
-import { Helmet } from "react-helmet";
 import arrows from '../../Assets/page elements/arrows.svg'
 import planet from '../../Assets/page elements/planet.svg'
 
 export default function createUser() {
   return (
-    //     <Helmet>
-    //  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-    //       </Helmet>
-
     <div className='UserSelectbg z-n1'>
       <img className='z-1 position-absolute top-0 start-0 mx-auto' src={planet} style={{ width: '20%' }} />
       <img className='z-1 position-absolute bottom-0 end-0 mx-auto' src={arrows} style={{ width: '10%' }} />
