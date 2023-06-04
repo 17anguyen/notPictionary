@@ -29,11 +29,12 @@ export default function Login() {
                     loginInfo.password
                 );
                 console.log(response)
-                if (response.status===200) {
+                if (response.user) {
                     console.log('login successful!')
                     navigate('/room')
                 }
             } catch (err){
+            alert("login failed!")
             console.log('login failed', err)
             }
           }
