@@ -55,9 +55,9 @@ function InGame({username}) {
 
     useEffect(() => {
         socket.on('receive-message', (data) => {
-            setMessageReceived((list) => [...list, data]);
+            setAnswerdReceived((list) => [...list, data]);
         });
-    }, [socket])
+    }, [answers])
 
     const startGame = async(e) =>{
         e.preventDefault();
