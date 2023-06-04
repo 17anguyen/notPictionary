@@ -55,7 +55,7 @@ function InGame({ username }) {
     };
 
     useEffect(() => {
-        socket.on('receive-message', (data) => {
+        socket.on('receive-answer', (data) => {
             setAnswerdReceived((list) => [...list, data]);
         });
     }, [answers])
@@ -70,16 +70,16 @@ function InGame({ username }) {
     socket.on("selected-props", (userSelected, selectedWord) => {
         setCorrectAnswer(selectedWord);
         setSelectedUser(userSelected);
-        console.log(selectedUser);
-        console.log(correctAnswer);
+        console.log("selected user:"+selectedUser);
+        console.log("selected word:"+correctAnswer);
     })
 
 
-    // useEffect(() => {
-    //     socket.on('receive-message', (data) => {
-    //         setAnswerdReceived((list) => [...list, data]);
-    //     });
-    //   }, [answers]);
+    useEffect(() => {
+        socket.on('receive-message', (data) => {
+            setAnswerdReceived((list) => [...list, data]);
+        });
+      }, [answers]);
 
     useEffect(() => {
         joinRoom();
