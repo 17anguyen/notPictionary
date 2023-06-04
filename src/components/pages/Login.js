@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom/dist';
+import { useNavigate } from 'react-router-dom';
 import API from "../../utils/api"
 import '../css/login.css';
 import banner from '../../Assets/buttons/loginsignupbanner.svg'
@@ -7,15 +7,34 @@ import banner from '../../Assets/buttons/loginsignupbanner.svg'
 
 
 export default function Login(props) {
-        const navigate = useNavigate();
-        username,
-        loggedIn,
-        loggedOut,
-        handleInputChange     
-        const [loginInfo, setLoginInfo] = useState({
-            username: '',
-            password: '',
-          })
+    // username,
+    // loggedIn,
+    // loggedOut,
+    // handleInputChange   
+    const [loginInfo, setLoginInfo] = useState({
+        username: '',
+        password: '',
+    })
+    const navigate = useNavigate();
+    const handleInputChange = (e) => 
+            // const { name, value } = event.target;
+            setLoginInfo((prvState) => ({
+                 ...prvState, [e.target.name]: e.target.value
+                 }));
+          
+          const handleLogin = async (e) => {
+            e.preventDefault();
+            try {
+                const response = await API.post(API + '/login', loginInfo);
+                if (response.status===200) {
+                    console.log('login successful!')
+                    navigate('/room')
+                }
+            } catch (err){
+
+                console.log('login failed', err)
+            }
+          }
           
     return (
         <div className='loginbg' >
@@ -40,13 +59,15 @@ export default function Login(props) {
                         className="card-body positon-relative"
                         style={{ paddingTop: '10%' }}>
 
-                        <form>
+                    <form onSubmit={handleLogin}>
 
                             <div className="form-floating mb-3">
                                 <input type="input"
                                     className="form-control"
                                     id="floatingInput"
+                                    name="username"
                                     value={loginInfo.username}
+                                    onChange={handleInputChange}
                                     placeholder="Username"
                                     style={{
                                         borderRadius: '25px',
@@ -64,8 +85,10 @@ export default function Login(props) {
                                 <input type="password"
                                     className="form-control"
                                     id="floatingPassword"
+                                    name="password"
                                     placeholder="Password"
                                     value={loginInfo.password}
+                                    onChange={handleInputChange}
                                     style={{
                                         borderRadius: '25px',
                                         height: '55px'
@@ -87,7 +110,8 @@ export default function Login(props) {
                                     style={{
                                         borderRadius: '25px', height: '50px',
                                         backgroundColor: '#FF6E27', width: 'auto', fontSize: '25px'
-                                    }}>
+                                    }}
+                                    onClick={Login}>
                                     Submit
                                 </button>
 
