@@ -6,7 +6,7 @@ import banner from '../../Assets/buttons/loginsignupbanner.svg'
 
 
 
-export default function Login() {
+export default function Login({setUsername}) {
     // username,
     // loggedIn,
     // loggedOut,
@@ -31,6 +31,7 @@ export default function Login() {
                 console.log(response)
                 if (response.user) {
                     console.log('login successful!')
+                    setUsername(loginInfo.username)
                     navigate('/room')
                 }
             } catch (err){
