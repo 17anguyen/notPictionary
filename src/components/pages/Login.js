@@ -6,7 +6,7 @@ import banner from '../../Assets/buttons/loginsignupbanner.svg'
 
 
 
-export default function Login(props) {
+export default function Login() {
     // username,
     // loggedIn,
     // loggedOut,
@@ -17,7 +17,6 @@ export default function Login(props) {
     })
     const navigate = useNavigate();
     const handleInputChange = (e) => 
-            // const { name, value } = event.target;
             setLoginInfo((prvState) => ({
                  ...prvState, [e.target.name]: e.target.value
                  }));
@@ -25,14 +24,17 @@ export default function Login(props) {
           const handleLogin = async (e) => {
             e.preventDefault();
             try {
-                const response = await API.post(API + '/login', loginInfo);
+                const response = await API.login(
+                    loginInfo.username,
+                    loginInfo.password
+                );
+                console.log(response)
                 if (response.status===200) {
                     console.log('login successful!')
                     navigate('/room')
                 }
             } catch (err){
-
-                console.log('login failed', err)
+            console.log('login failed', err)
             }
           }
           
@@ -111,7 +113,7 @@ export default function Login(props) {
                                         borderRadius: '25px', height: '50px',
                                         backgroundColor: '#FF6E27', width: 'auto', fontSize: '25px'
                                     }}
-                                    onClick={Login}>
+                                    onClick={handleLogin}>
                                     Submit
                                 </button>
 
