@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import '../css/Board.css'
 
-export default function Board ({ socket,room}) {
+export default function Board({ socket, room }) {
   console.log(socket)
   const canvasRef = useRef(null);
   const colorsRef = useRef(null);
@@ -126,14 +126,14 @@ export default function Board ({ socket,room}) {
     }
 
     socketRef.current = socket;
-    socketRef.current.on('drawing', onDrawingEvent,room);
+    socketRef.current.on('drawing', onDrawingEvent, room);
   }, []);
 
   // ------------- The Canvas and color elements --------------------------
 
   return (
     <div>
-      <canvas ref={canvasRef} className="whiteboard" style={{ border: '1px solid red',width:'600px',height:'600px' }} />
+      <canvas ref={canvasRef} className="whiteboard" style={{ borderRadius: '30px', width: '100%', height: '80vh', margin: '1%', backgroundColor: 'white' }} />
 
       <div ref={colorsRef} className="colors">
         <div className="color black" />
