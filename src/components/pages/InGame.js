@@ -5,10 +5,10 @@ import Lobby from './Lobby'
 import { io } from "socket.io-client";
 import { useParams } from "react-router-dom";
 const local_url = 'http://localhost:4000/'
-// const server_url = 'https://doodledash.herokuapp.com/'
+//const server_url = 'https://doodledash.herokuapp.com/'
 
 const socket = io(local_url);
-// const socket = io(server_url);
+//const socket = io(server_url);
 
 
 function InGame({ username }) {
@@ -97,7 +97,7 @@ function InGame({ username }) {
                 <div className='row'>
                     <div className='col-lg-6'>
                         <div style={styleBoard}>
-                            <Board socket={socket} />
+                            <Board socket={socket} room={roomId} />
 
                         </div>
 
