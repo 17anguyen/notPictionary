@@ -4,11 +4,11 @@ import Board from './Board';
 import Lobby from './Lobby'
 import { io } from "socket.io-client";
 import { useParams } from "react-router-dom";
-//const local_url = 'http://localhost:4000/'
+// const local_url = 'http://localhost:4000'
 const server_url = 'https://doodledash.herokuapp.com/'
 
-//const socket = io(local_url);
-const socket = io(server_url);
+const socket = io(local_url);
+// const socket = io(server_url);
 
 
 function InGame({ username }) {
@@ -48,6 +48,7 @@ function InGame({ username }) {
                 sender: username,
                 message: answers
             };
+            console.log("answers"+answersData)
             socket.emit("send-answers", answersData);
             setAnswerReceived((list) => [...list, answers]);
             setAnswerMessage('');
@@ -67,19 +68,15 @@ function InGame({ username }) {
     }
 
     //socket.on get selected player and word and show to selected user
-    socket.on("selected-props", (userSelected, selectedWord) => {
-        setCorrectAnswer(selectedWord);
-        setSelectedUser(userSelected);
-        console.log("selected user:" + selectedUser);
-        console.log("selected word:" + correctAnswer);
+    socket.on("selected-props", (data) => {
+        setCorrectAnswer(data.selectedWord);
+        setSelectedUser(data.userSelected);
+        console.log(data);
+        setPregame(false)
+       
     })
 
 
-    // useEffect(() => {
-    //     socket.on('receive-message', (data) => {
-    //         setAnswerReceived((list) => [...list, data]);
-    //     });
-    //   }, [answers]);
 
     useEffect(() => {
         joinRoom();
@@ -88,6 +85,7 @@ function InGame({ username }) {
 
     return (
         <>
+        <h3>Drawer: {selectedUser}</h3>
             {pregame ? (
                 <div>
                     <Lobby startGame={startGame} socket={socket} userName={username} roomId={roomId} />

@@ -1,10 +1,30 @@
-import React from 'react';
+import React, {useState, useEffect } from 'react';
 import '../css/UserSelect.css';
 import { Link } from 'react-router-dom'
+import API from '../../utils/api'
 import arrows from '../../Assets/page elements/arrows.svg'
 import planet from '../../Assets/page elements/planet.svg'
 
-export default function createUser() {
+export default function RoomSelect() {
+
+  const freeRooms = async ()=> {    
+    try {
+      const freeRoomsList = await API.getRooms();
+      console.log(freeRoomsList)
+      if (!freeRoomsList) {
+        alert("No rooms available")
+      }else{
+        console.log(freeRoomsList)
+      }
+    }catch(err){
+      console.log(err)
+    }
+  }
+
+   useEffect(()=>{
+   freeRooms()
+   },[])
+
   return (
     <div className='UserSelectbg z-n1'>
       <img className='z-1 position-absolute top-0 start-0 mx-auto' src={planet} style={{ width: '20%' }} />
