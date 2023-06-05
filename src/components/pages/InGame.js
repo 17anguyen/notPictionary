@@ -7,8 +7,8 @@ import { useParams } from "react-router-dom";
 // const local_url = 'http://localhost:4000'
 const server_url = 'https://doodledash.herokuapp.com/'
 
-const socket = io(local_url);
-// const socket = io(server_url);
+//const socket = io(local_url);
+const socket = io(server_url);
 
 
 function InGame({ username }) {
