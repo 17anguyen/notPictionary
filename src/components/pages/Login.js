@@ -6,7 +6,7 @@ import banner from '../../Assets/buttons/loginsignupbanner.svg'
 
 
 
-export default function Login({setUsername) {
+export default function Login({ setUsername }) {
     // username,
     // loggedIn,
     // loggedOut,
