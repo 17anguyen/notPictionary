@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import API from "./utils/api"
 // import CorrectAnswer from './components/pages/CorrectAnswer'
 // import Final from './components/pages/FinalWinner'
-// import InGame from './components/pages/InGame'
+ import InGame from './components/pages/InGame'
 // import Lead from './components/pages/InGameLeader'
 import Home from './components/pages/Home'
 import Login from './components/pages/Login'
@@ -67,7 +67,7 @@ function App() {
         <Route path="/" element={<Home username={username} />} />
         {/* <Route path="/correctanswer" element={<CorrectAnswer />} /> */}
         {/* <Route path="/final" element={<Final />} /> */}
-        {/* <Route path="/game/:roomId" element={<InGame username={username} />} /> */}
+         <Route path="/game/:roomId" element={<InGame username={username} />} /> 
         {/* <Route path="/lead" element={<Lead />} /> */}
         {/* <Route path="/lobby" element={<Lobby />} /> */}
         <Route path="/login" element={<Login
