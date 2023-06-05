@@ -1,5 +1,5 @@
-const BASEURL = "https://doodledash.herokuapp.com"
-// const BASEURL ="http://localhost:4000/"
+// const BASEURL = "https://doodledash.herokuapp.com"
+const BASEURL ="http://localhost:4000"
 
 const API = {
     getTokenData: async (token) => {
@@ -42,6 +42,17 @@ const API = {
         }
       });
       return await response.json();
+    },
+    getRooms: async() =>{
+      try{
+        const response = await fetch(`${BASEURL}/check-rooms`);
+        return await response.json();
+
+      }catch(err){
+        console.log(err)
+
+      }
+
     },
   
     getSingleUser: async (username) => {
