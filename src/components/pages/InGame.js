@@ -19,7 +19,7 @@ function InGame({ username }) {
     }
     const [pregame, setPregame] = useState(true)
     const [answers, setAnswerMessage] = useState('');
-    const [answerReceived, setAnswerdReceived] = useState([]);
+    const [answerReceived, setAnswerReceived] = useState([]);
     const [correctAnswer, setCorrectAnswer] = useState("")
     const [selectedUser, setSelectedUser] = useState("")
 
@@ -49,16 +49,16 @@ function InGame({ username }) {
             //     message: message
             // };
             socket.emit("send-answers", answers);
-            setAnswerdReceived((list) => [...list, answers]);
+            setAnswerReceived((list) => [...list, answers]);
             setAnswerMessage('');
         }
     };
 
     useEffect(() => {
         socket.on('receive-message', (data) => {
-            setAnswerdReceived((list) => [...list, data]);
+            setAnswerReceived((list) => [...list, data]);
         });
-    }, [answers])
+    }, [])
 
     const startGame = async (e) => {
         e.preventDefault();
@@ -77,7 +77,7 @@ function InGame({ username }) {
 
     // useEffect(() => {
     //     socket.on('receive-message', (data) => {
-    //         setAnswerdReceived((list) => [...list, data]);
+    //         setAnswerReceived((list) => [...list, data]);
     //     });
     //   }, [answers]);
 
