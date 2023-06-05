@@ -23,35 +23,35 @@ const API = {
             "Content-Type": "application/json"
           }
         });
+        // return await response.json();
         return response;
       } catch (err) {
         console.log(err)
         console.log("not working")
       }
     },
-  
-    createUser: async (username, password) => {
-      const response = await fetch(`${BASEURL}/api/users`, {
-        method: "POST",
-        body: JSON.stringify({
-          username: username,
-          password: password
-        }),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      });
-      return await response.json();
-    },
-  
-    getSingleUser: async (username) => {
-      const response = await fetch(`${BASEURL}/api/users/${username}`);
-      return await response.json();
-    },
-  
-    getUsers: async () => {
-      const response = await fetch(`${BASEURL}/api/users`);
-      return await response.json();
-    }
-  };
-   export default API
+  createUser: async (username, password) => {
+    const response = await fetch(`${BASEURL}/api/users`, {
+      method: "POST",
+      body: JSON.stringify({
+        username: username,
+        password: password
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+    return await response.json();
+  },
+
+  getSingleUser: async (username) => {
+    const response = await fetch(`${BASEURL}/api/users/${username}`);
+    return await response.json();
+  },
+
+  getUsers: async () => {
+    const response = await fetch(`${BASEURL}/api/users`);
+    return await response.json();
+  }
+};
+export default API
