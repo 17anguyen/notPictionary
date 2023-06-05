@@ -3,9 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import API from "../../utils/api"
 import '../css/login.css';
 import banner from '../../Assets/buttons/loginsignupbanner.svg'
-
-
-
 export default function Login({ setUsername }) {
     // username,
     // loggedIn,
@@ -20,7 +17,6 @@ export default function Login({ setUsername }) {
         setLoginInfo((prvState) => ({
             ...prvState, [e.target.name]: e.target.value
         }));
-
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
@@ -28,6 +24,7 @@ export default function Login({ setUsername }) {
                 loginInfo.username,
                 loginInfo.password
             );
+            console.log(response)
             if (response.user) {
                 console.log('login successful!')
                 setUsername(loginInfo.username)
