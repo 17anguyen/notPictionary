@@ -32,6 +32,8 @@ export default function Login({setUsername}) {
             if (response.user) {
                 console.log('login successful!')
                 setUsername(loginInfo.username)
+                localStorage.setItem('token', response.token)
+                localStorage.setItem('username',loginInfo.username)
                 navigate('/room')
             }
         } catch (err) {
