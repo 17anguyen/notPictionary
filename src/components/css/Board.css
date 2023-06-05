@@ -1,21 +1,35 @@
+.board-controller {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1%;
+}
+
 .whiteboard {
   height: auto;
   width: 100%;
   border: 1px;
   border-color: solid red;
-  /* position: absolute; */
+  position: relative;
 }
 
 .colors {
+  justify-content: center;
   position: relative;
+  background-color: #FE00FE;
+  border-radius: 35px;
+  width: 95%;
+  margin-top: 1%;
 }
 
 .color {
-  position: relative;
   display: inline-block;
   height: 60px;
   width: 60px;
-  margin: 1%;
+  margin-left: 12%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  border-radius: 50%;
 }
 
 .color.black {
