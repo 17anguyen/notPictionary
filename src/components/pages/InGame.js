@@ -104,31 +104,57 @@ function InGame({ username }) {
                             </div>
 
                             <div className='col-lg-6' style={{ color: 'white' }}>
-                                <h3>Drawer: {selectedUser}</h3>
+                                <h1 className='round'>ROUND # HERE</h1>
+                                <marquee
+                                    className='blink text-center'
+                                    behavior="slide"
+                                    direction="up">
+                                    <h3
+                                        style={{
+                                            textAlign: 'center',
+                                            paddingTop: '10%',
+                                            fontWeight: 'bold',
+                                            fontSize: '50px',
+                                            color: '#DEFE47'
+                                        }}>
+                                        {selectedUser} is drawing
+                                    </h3>
+                                </marquee>
+                                <div className='answerbox'>
+                                    <h3>Answers: </h3>
+                                    {answerReceived.map((item) => {
+                                        return (
+                                            <div className='message-bubbles' key={item.sender} id={username === item.sender ? 'sender' : 'receiver'}>
+                                                <h3>testttttttttttttttttttttt</h3>
+                                                <div>{item.message}</div>
+                                                <h3>{item.sender}</h3>
+                                            </div>
 
-                                <h1>Answers: </h1>
-                                <input
-                                    type="text"
-                                    name='answers'
-                                    value={answers}
-                                    placeholder='type your guess'
-                                    onChange={(e) => {
-                                        setAnswerMessage(e.target.value)
-                                    }} />
+                                        )
+                                    })}
 
-                                <button type='submit' onClick={sendAnswers}>send</button>
+                                    <div className='userinput-game'>
+                                        <input
+                                            className='userinput-body'
+                                            type="text"
+                                            name='answers'
+                                            value={answers}
+                                            placeholder='type your guess'
+                                            onChange={(e) => {
+                                                setAnswerMessage(e.target.value)
+                                            }} />
 
-                                {answerReceived.map((item) => {
-                                    return (
-                                        <div key={item.sender} id={username === item.sender ? 'sender' : 'receiver'}>
-                                            <div>{item.message}</div>
-                                            <p>{item.sender}</p>
-                                        </div>
+                                        <button
+                                            className='userinput-submitgame'
+                                            type='submit'
+                                            onClick={sendAnswers}>
+                                            send
+                                        </button>
+                                    </div>
+                                </div>
 
-                                    )
 
 
-                                })}
 
                             </div>
                         </div>
