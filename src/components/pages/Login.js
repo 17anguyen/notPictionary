@@ -32,6 +32,10 @@ export default function Login({ setUsername }) {
                 localStorage.setItem('username', loginInfo.username)
                 navigate('/room')
             }
+            if (response.status===400) {
+                alert("wrong login info!")
+            }
+            console.log(response)
         } catch (err) {
             alert("login failed!")
             console.log('login failed', err)
