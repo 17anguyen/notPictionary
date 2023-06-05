@@ -8,6 +8,11 @@
 }
 
 .container-ingame {
+    position: absolute;
     background-color: black;
-    border: 2px solid #FE00FE;
+    border: 5px solid #FE00FE;
+    border-radius: 35px;
+    /* height: 90vh; */
+    top: 5%;
+    left: 4%;
 }

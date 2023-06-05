@@ -14,7 +14,6 @@ export default function Board({ socket, room }) {
     const canvas = canvasRef.current;
     const test = colorsRef.current;
     const context = canvas.getContext('2d');
-
     // ----------------------- Colors --------------------------------------------------
 
     const colors = document.getElementsByClassName('color');
@@ -132,10 +131,10 @@ export default function Board({ socket, room }) {
   // ------------- The Canvas and color elements --------------------------
 
   return (
-    <div>
-      <canvas ref={canvasRef} className="whiteboard" style={{ borderRadius: '30px', width: '100%', height: '80vh', margin: '1%', backgroundColor: 'white' }} />
+    <div className='board-controller'>
+      <canvas ref={canvasRef} className="whiteboard" style={{ borderRadius: '30px', width: '100%', height: '80vh', backgroundColor: 'white' }} />
 
-      <div ref={colorsRef} className="colors">
+      <div ref={colorsRef} className="colors z-1">
         <div className="color black" />
         <div className="color red" />
         <div className="color green" />

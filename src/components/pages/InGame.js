@@ -4,6 +4,8 @@ import Board from './Board';
 import Lobby from './Lobby'
 import { io } from "socket.io-client";
 import { useParams } from "react-router-dom";
+import "../css/InGame.css";
+
 // const local_url = 'http://localhost:4000'
 const server_url = 'https://doodledash.herokuapp.com/'
 
@@ -48,7 +50,7 @@ function InGame({ username }) {
                 sender: username,
                 message: answers
             };
-            console.log("answers"+answersData)
+            console.log("answers" + answersData)
             socket.emit("send-answers", answersData);
             setAnswerReceived((list) => [...list, answers]);
             setAnswerMessage('');
@@ -73,7 +75,7 @@ function InGame({ username }) {
         setSelectedUser(data.userSelected);
         console.log(data);
         setPregame(false)
-       
+
     })
 
 
@@ -85,15 +87,14 @@ function InGame({ username }) {
 
     return (
         <>
-        <h3>Drawer: {selectedUser}</h3>
             {pregame ? (
                 <div>
                     <Lobby startGame={startGame} socket={socket} userName={username} roomId={roomId} />
                 </div>
 
             ) : (
-                <div className='InGamebg' style={{ backgroundImage: 'url("../../ Assets / backgrounds / gamebg.svg")' }}>
-                    <div className='container-ingame' style={{ backgroundColor: 'black', border: '5px solid #FE00FE', borderRadius: '35px', margin: '2%', height: '90vh' }}>
+                <div className='InGamebg' style={{ height: '100vh' }}>
+                    <div className='container-ingame'>
                         <div className='row'>
                             <div className='col-lg-6'>
                                 <div style={styleBoard}>
@@ -102,7 +103,9 @@ function InGame({ username }) {
                                 </div>
                             </div>
 
-                            <div className='col-lg-6'>
+                            <div className='col-lg-6' style={{ color: 'white' }}>
+                                <h3>Drawer: {selectedUser}</h3>
+
                                 <h1>Answers: </h1>
                                 <input
                                     type="text"
@@ -119,7 +122,7 @@ function InGame({ username }) {
                                     return (
                                         <div key={item.sender} id={username === item.sender ? 'sender' : 'receiver'}>
                                             <div>{item.message}</div>
-                                            <p>--{item.sender}</p>
+                                            <p>{item.sender}</p>
                                         </div>
 
                                     )
