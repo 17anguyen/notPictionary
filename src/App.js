@@ -36,7 +36,9 @@ function App() {
   });
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    setToken(localStorage.getItem("token"));
+    setUsername(localStorage.getItem("username"));
+
     if (token) {
       setLoading(true)
       API.getTokenData(token)
@@ -56,7 +58,8 @@ function App() {
           console.log(err);
         });
     }
-  }, []);
+    console.log("USERNAME!!!!!!!!!!!!!!!!", username)
+  }, [username]);
 
   return (
     <BrowserRouter>
