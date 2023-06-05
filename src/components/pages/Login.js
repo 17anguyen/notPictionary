@@ -25,7 +25,7 @@ export default function Login({ setUsername }) {
                 loginInfo.password
             );
             console.log(response)
-            if (response.user) {
+            if (response.status===200) {
                 console.log('login successful!')
                 setUsername(loginInfo.username)
                 localStorage.setItem('token', response.token)
