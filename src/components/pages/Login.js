@@ -6,7 +6,7 @@ import banner from '../../Assets/buttons/loginsignupbanner.svg'
 
 
 
-export default function Login({setUsername}) {
+export default function Login() {
     // username,
     // loggedIn,
     // loggedOut,
@@ -16,25 +16,24 @@ export default function Login({setUsername}) {
         password: '',
     })
     const navigate = useNavigate();
-    const handleInputChange = (e) => 
-            setLoginInfo((prvState) => ({
-                 ...prvState, [e.target.name]: e.target.value
-                 }));
-          
-          const handleLogin = async (e) => {
-            e.preventDefault();
-            try {
-                const response = await API.login(
-                    loginInfo.username,
-                    loginInfo.password
-                );
-                console.log(response)
-                if (response.user) {
-                    console.log('login successful!')
-                    setUsername(loginInfo.username)
-                    navigate('/room')
-                }
-            } catch (err){
+    const handleInputChange = (e) =>
+        setLoginInfo((prvState) => ({
+            ...prvState, [e.target.name]: e.target.value
+        }));
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await API.login(
+                loginInfo.username,
+                loginInfo.password
+            );
+            console.log(response)
+            if (response.user) {
+                console.log('login successful!')
+                navigate('/room')
+            }
+        } catch (err) {
             alert("login failed!")
             console.log('login failed', err)
         }
@@ -63,13 +62,15 @@ export default function Login({setUsername}) {
                         className="card-body positon-relative"
                         style={{ paddingTop: '10%' }}>
 
-                        <form>
+                        <form onSubmit={handleLogin}>
 
                             <div className="form-floating mb-3">
                                 <input type="input"
                                     className="form-control"
                                     id="floatingInput"
+                                    name="username"
                                     value={loginInfo.username}
+                                    onChange={handleInputChange}
                                     placeholder="Username"
                                     style={{
                                         borderRadius: '25px',
@@ -87,8 +88,10 @@ export default function Login({setUsername}) {
                                 <input type="password"
                                     className="form-control"
                                     id="floatingPassword"
+                                    name="password"
                                     placeholder="Password"
                                     value={loginInfo.password}
+                                    onChange={handleInputChange}
                                     style={{
                                         borderRadius: '25px',
                                         height: '55px'
@@ -110,21 +113,22 @@ export default function Login({setUsername}) {
                                     style={{
                                         borderRadius: '25px', height: '50px',
                                         backgroundColor: '#FF6E27', width: 'auto', fontSize: '25px'
-                                    }}>
+                                    }}
+                                    onClick={handleLogin}>
                                     Submit
                                 </button>
 
-//                             </div>
-//                         </form>
+                            </div>
+                        </form>
 
 
-//                     </div>
-//                 </div >
+                    </div>
+                </div >
 
-//             </div>
+            </div>
 
 
 
-//         </div >
+        </div >
     );
 }
