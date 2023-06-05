@@ -28,10 +28,11 @@ export default function Login({ setUsername }) {
                 loginInfo.username,
                 loginInfo.password
             );
-            console.log(response)
             if (response.user) {
                 console.log('login successful!')
                 setUsername(loginInfo.username)
+                localStorage.setItem('token', response.token)
+                localStorage.setItem('username', loginInfo.username)
                 navigate('/room')
             }
         } catch (err) {
@@ -39,7 +40,6 @@ export default function Login({ setUsername }) {
             console.log('login failed', err)
         }
     }
-
     return (
         <div className='loginbg' >
             <div className='container' style={{ width: '100%' }}>
@@ -48,12 +48,9 @@ export default function Login({ setUsername }) {
                     style={{ width: '60%', height: 'auto', marginTop: '10px' }}></img>
                 <div className='centered'>
                     <h2 className='title'>Log In</h2>
-
                 </div>
             </div>
-
             <div className='row'>
-
                 <div
                     className="card position-absolute top-50 start-50 translate-middle"
                     style={{
@@ -62,9 +59,7 @@ export default function Login({ setUsername }) {
                     < div
                         className="card-body positon-relative"
                         style={{ paddingTop: '10%' }}>
-
                         <form onSubmit={handleLogin}>
-
                             <div className="form-floating mb-3">
                                 <input type="input"
                                     className="form-control"
@@ -84,7 +79,6 @@ export default function Login({ setUsername }) {
                                     Username
                                 </label>
                             </div>
-
                             <div className="form-floating">
                                 <input type="password"
                                     className="form-control"
@@ -104,7 +98,6 @@ export default function Login({ setUsername }) {
                                     Password
                                 </label>
                             </div>
-
                             <div
                                 className='text-center'
                                 style={{ paddingTop: '15px' }}>
@@ -118,18 +111,11 @@ export default function Login({ setUsername }) {
                                     onClick={handleLogin}>
                                     Submit
                                 </button>
-
                             </div>
                         </form>
-
-
                     </div>
                 </div >
-
             </div>
-
-
-
         </div >
     );
 }
