@@ -1,0 +1,39 @@
+.whiteboard {
+  height: auto;
+  width: 100%;
+  border: 1px;
+  border-color: solid red;
+  /* position: absolute; */
+}
+
+.colors {
+  position: relative;
+}
+
+.color {
+  position: relative;
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+  margin: 1%;
+}
+
+.color.black {
+  background-color: black;
+}
+
+.color.red {
+  background-color: red;
+}
+
+.color.green {
+  background-color: green;
+}
+
+.color.blue {
+  background-color: blue;
+}
+
+.color.yellow {
+  background-color: yellow;
+}

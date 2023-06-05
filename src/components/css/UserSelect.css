@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Sniglet:wght@400;800&display=swap');
+
+.UserSelectbg {
+    background-color: #7700A6;
+    height: 100vh;
+    width: auto;
+}
+
+.select {
+    background-image: url('../../Assets/backgrounds/wavesbg.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-y: bottom;
+    background-color: black;
+    border: solid 5px #FE00FE;
+    border-radius: 25px;
+    height: 95%;
+    width: auto;
+    top: 3%;
+}
+
+.signup {
+    background-color: #DEFE47;
+    width: 50%;
+    height: 150px;
+    border-radius: 35px;
+    box-shadow: 20px 15px #37319D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup .btn-text {
+    font-size: 50px;
+}
+
+.centered-signup {
+    position: absolute;
+    top: 280px;
+    left: 36%;
+}
+
+
+.container-signup {
+    margin-top: 20%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+}
+
+.login {
+    background-color: #00B3FE;
+    width: 50%;
+    height: 80px;
+    border-radius: 25px;
+    box-shadow: 20px 15px #37319D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login .btn-text {
+    font-size: 50px;
+}
+
+.centered-login {
+    position: absolute;
+    top: 20px;
+    left: 36%;
+}
+
+
+.container-login {
+    margin-top: 5%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+}
