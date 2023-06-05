@@ -15,7 +15,7 @@ export default function createUser() {
 
         <div className='signup position-absolute top-50 start-50 translate-middle dropdown-center' >
           <h1 className="btn-text btn dropdown-toggle" style={{ color: '#37319D' }} type="button" data-bs-toggle="dropdown" aria-expanded="false">Select a room</h1>
-          <ul class="dropdown-menu">
+          <ul className="dropdown-menu">
             <li><Link to="/game/1" className="dropdown-item" >Join Room 1</Link></li>
             <li><Link to="/game/2" className="dropdown-item" >Join Room 2</Link></li>
             <li><Link to="/game/3" className="dropdown-item" >Join Room 3</Link></li>
