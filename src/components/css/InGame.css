@@ -1,0 +1,13 @@
+.InGamebg {
+    background-image: url('../../Assets/backgrounds/gamebg.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: auto;
+    display: block;
+}
+
+.container-ingame {
+    background-color: black;
+    border: 2px solid #FE00FE;
+}

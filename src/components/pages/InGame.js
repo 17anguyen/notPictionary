@@ -4,8 +4,8 @@ import Board from './Board';
 import Lobby from './Lobby'
 import { io } from "socket.io-client";
 import { useParams } from "react-router-dom";
-const local_url = 'http://localhost:4000'
-// const server_url = 'https://doodledash.herokuapp.com/'
+// const local_url = 'http://localhost:4000'
+const server_url = 'https://doodledash.herokuapp.com/'
 
 const socket = io(local_url);
 // const socket = io(server_url);
@@ -92,38 +92,43 @@ function InGame({ username }) {
                 </div>
 
             ) : (
-                <div className='row'>
-                    <div className='col-lg-6'>
-                        <div style={styleBoard}>
-                            <Board socket={socket} room={roomId} />
+                <div className='InGamebg' style={{ backgroundImage: 'url("../../ Assets / backgrounds / gamebg.svg")' }}>
+                    <div className='container-ingame' style={{ backgroundColor: 'black', border: '5px solid #FE00FE', borderRadius: '35px', margin: '2%', height: '90vh' }}>
+                        <div className='row'>
+                            <div className='col-lg-6'>
+                                <div style={styleBoard}>
+                                    <Board socket={socket} room={roomId} />
 
-                        </div>
-
-                    </div>
-
-                    <div className='col-lg-6'>
-                        <input
-                            type="text"
-                            name='answers'
-                            value={answers}
-                            placeholder='type your guess'
-                            onChange={(e) => {
-                                setAnswerMessage(e.target.value)
-                            }} />
-                        <button type='submit' onClick={sendAnswers}>send</button>
-                        <h1>Answers: </h1>
-                        {answerReceived.map((item) => {
-                            return (
-                                <div key={item.sender} id={username === item.sender ? 'sender' : 'receiver'}>
-                                    <div>{item.message}</div>
-                                    <p>--{item.sender}</p>
                                 </div>
+                            </div>
 
-                            )
+                            <div className='col-lg-6'>
+                                <h1>Answers: </h1>
+                                <input
+                                    type="text"
+                                    name='answers'
+                                    value={answers}
+                                    placeholder='type your guess'
+                                    onChange={(e) => {
+                                        setAnswerMessage(e.target.value)
+                                    }} />
+
+                                <button type='submit' onClick={sendAnswers}>send</button>
+
+                                {answerReceived.map((item) => {
+                                    return (
+                                        <div key={item.sender} id={username === item.sender ? 'sender' : 'receiver'}>
+                                            <div>{item.message}</div>
+                                            <p>--{item.sender}</p>
+                                        </div>
+
+                                    )
 
 
-                        })}
+                                })}
 
+                            </div>
+                        </div>
                     </div>
                 </div>
 

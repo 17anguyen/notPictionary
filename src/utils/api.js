@@ -1,4 +1,4 @@
-// const BASEURL = "https://doodledash.herokuapp.com"
+//const BASEURL = "https://doodledash.herokuapp.com"
 const BASEURL ="http://localhost:4000"
 
 const API = {
@@ -23,7 +23,8 @@ const API = {
             "Content-Type": "application/json"
           }
         });
-        return await response.json();
+        // return await response.json();
+        return response;
       } catch (err) {
         console.log(err)
         console.log("not working")
@@ -66,3 +67,4 @@ const API = {
     }
   };
    export default API
+ 
