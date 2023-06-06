@@ -4,7 +4,7 @@ import Board from './Board';
 import Lobby from './Lobby'
 import { io } from "socket.io-client";
 import { useParams } from "react-router-dom";
-// import Word from "./Word"
+import Word from "./Word"
 import "../css/InGame.css";
 
 const local_url = 'http://localhost:4000'
@@ -25,7 +25,7 @@ function InGame({ username }) {
     const [answerReceived, setAnswerReceived] = useState([]);
     const [correctAnswer, setCorrectAnswer] = useState("")
     const [selectedUser, setSelectedUser] = useState("")
-    const isDrawerReady = false
+    const [isDrawerReady,setDrawerReady] = useState(false)
 
 
     // figure what room were in by urlparams
@@ -101,7 +101,7 @@ function InGame({ username }) {
 
                     {(username == selectedUser && !isDrawerReady)? (
                     <>
-                     {/* <Word isDrawerReady={isDrawerReady} correctAnswer={correctAnswer}/> */}
+                     <Word setDrawerReady={setDrawerReady} correctAnswer={correctAnswer}/>
                     </>
                     ):(
                         <div className='InGamebg' style={{ height: '100vh' }}>
