@@ -132,9 +132,9 @@ export default function Board({ socket, room }) {
 
   return (
     <div className='board-controller'>
-      <canvas ref={canvasRef} className="whiteboard" style={{ borderRadius: '30px', width: '100%', height: '80vh', backgroundColor: 'white' }} />
+      <canvas ref={canvasRef} className="whiteboard" style={{ borderRadius: '30px', width: '100%', height: '75vh', backgroundColor: 'white' }} />
 
-      <div ref={colorsRef} className="colors z-1">
+      <div ref={colorsRef} className="colors">
         <div className="color black" />
         <div className="color red" />
         <div className="color green" />
