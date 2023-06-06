@@ -131,8 +131,8 @@ function InGame({ username }) {
                                         console.log("WE ARE HERE WE ARE HERE", item)
                                         return (
                                             <div className='message-bubbles' key={item.sender} id={username === item.sender ? 'sender' : 'receiver'}>
-                                                <div>{item.message}</div>
-                                                <h3>{item.sender}</h3>
+                                                <h4>{item.sender}</h4>
+                                                <h3>{item.message}</h3>
                                             </div>
 
                                         )
