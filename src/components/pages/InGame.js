@@ -101,6 +101,7 @@ function InGame({ username }) {
                     <div className='container-ingame'>
                         <div className='row'>
                             <div className='col-lg-6 left'>
+                                {/* <iframe src="https://socketio-whiteboard-zmx4.herokuapp.com/" width='800' height="1000" className='iframe-class' style={{ backgroundColor: 'white' }} /> */}
                                 <div style={styleBoard}>
                                     <Board socket={socket} roomId={roomId} />
 

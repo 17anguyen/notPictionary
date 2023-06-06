@@ -102,6 +102,12 @@
     font-size: 40px;
 }
 
+.iframe-class {
+    border-radius: 35px;
+    margin: 2%;
+    padding: 2%;
+}
+
 @keyframes blinker {
     50% {
         opacity: 0;
