@@ -6,11 +6,11 @@ import { io } from "socket.io-client";
 import { useParams } from "react-router-dom";
 import "../css/InGame.css";
 
-// const local_url = 'http://localhost:4000'
-const server_url = 'https://doodledash.herokuapp.com/'
+const local_url = 'http://localhost:4000'
+// const server_url = 'https://doodledash.herokuapp.com/'
 
-//const socket = io(local_url);
-const socket = io(server_url);
+const socket = io(local_url);
+// const socket = io(server_url);
 
 
 function InGame({ username }) {
@@ -50,6 +50,7 @@ function InGame({ username }) {
                 sender: username,
                 message: answers
             };
+            console.log(answers)
             console.log("answers" + answersData)
             socket.emit("send-answers", answersData);
             setAnswerReceived((list) => [...list, answers]);
@@ -58,7 +59,9 @@ function InGame({ username }) {
     };
 
     useEffect(() => {
-        socket.on('receive-message', (data) => {
+        console.log("running")
+        socket.on('receive-answer', (data) => {
+            console.log("responseData", data)
             setAnswerReceived((list) => [...list, data]);
         });
     }, [])
@@ -123,9 +126,9 @@ function InGame({ username }) {
                                 <div className='answerbox'>
                                     <h3>Answers: </h3>
                                     {answerReceived.map((item) => {
+                                        console.log("WE ARE HERE WE ARE HERE", item)
                                         return (
                                             <div className='message-bubbles' key={item.sender} id={username === item.sender ? 'sender' : 'receiver'}>
-                                                <h3>testttttttttttttttttttttt</h3>
                                                 <div>{item.message}</div>
                                                 <h3>{item.sender}</h3>
                                             </div>
