@@ -1,8 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import '../css/Board.css'
 
-export default function Board({ socket, room }) {
-  console.log(socket)
+export default function Board({ socket, roomId }) {
+  console.log("rooommmmmm==="+roomId)
   const canvasRef = useRef(null);
   const colorsRef = useRef(null);
   const socketRef = useRef();
@@ -56,7 +56,7 @@ export default function Board({ socket, room }) {
         x1: x1 / w,
         y1: y1 / h,
         color,
-      });
+      },roomId);
     };
 
     // ---------------- mouse movement --------------------------------------
@@ -125,7 +125,7 @@ export default function Board({ socket, room }) {
     }
 
     socketRef.current = socket;
-    socketRef.current.on('drawing', onDrawingEvent, room);
+    socketRef.current.on('drawing', onDrawingEvent);
   }, []);
 
   // ------------- The Canvas and color elements --------------------------

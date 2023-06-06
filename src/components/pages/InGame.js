@@ -6,7 +6,7 @@ import { io } from "socket.io-client";
 import { useParams } from "react-router-dom";
 import "../css/InGame.css";
 
-// const local_url = 'http://localhost:4000'
+//  const local_url = 'http://localhost:4000'
 const server_url = 'https://doodledash.herokuapp.com/'
 
 // const socket = io(local_url);
@@ -24,6 +24,7 @@ function InGame({ username }) {
     const [answerReceived, setAnswerReceived] = useState([]);
     const [correctAnswer, setCorrectAnswer] = useState("")
     const [selectedUser, setSelectedUser] = useState("")
+    const isDrawer = false
 
 
     // figure what room were in by urlparams
@@ -53,7 +54,7 @@ function InGame({ username }) {
             console.log(answers)
             console.log("answers" + answersData)
             socket.emit("send-answers", answersData);
-            setAnswerReceived((list) => [...list, answers]);
+            setAnswerReceived((list) => [...list, answersData]);
             setAnswerMessage('');
         }
     };
@@ -78,7 +79,6 @@ function InGame({ username }) {
         setSelectedUser(data.userSelected);
         console.log(data);
         setPregame(false)
-
     })
 
 
@@ -96,12 +96,13 @@ function InGame({ username }) {
                 </div>
 
             ) : (
+
                 <div className='InGamebg' style={{ height: '100vh' }}>
                     <div className='container-ingame'>
                         <div className='row'>
                             <div className='col-lg-6 left'>
                                 <div style={styleBoard}>
-                                    <Board socket={socket} room={roomId} />
+                                    <Board socket={socket} roomId={roomId} />
 
                                 </div>
                             </div>
