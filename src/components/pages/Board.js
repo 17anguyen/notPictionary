@@ -56,7 +56,7 @@ export default function Board({ socket, roomId }) {
         x1: x1 / w,
         y1: y1 / h,
         color,
-      });
+      },roomId);
     };
 
     // ---------------- mouse movement --------------------------------------
@@ -125,7 +125,7 @@ export default function Board({ socket, roomId }) {
     }
 
     socketRef.current = socket;
-    socketRef.current.on('drawing',roomId, onDrawingEvent);
+    socketRef.current.on('drawing', onDrawingEvent);
   }, []);
 
   // ------------- The Canvas and color elements --------------------------
