@@ -4,7 +4,9 @@ import Board from './Board';
 import Lobby from './Lobby'
 import { io } from "socket.io-client";
 import { useParams } from "react-router-dom";
- const local_url = 'http://localhost:4000'
+import "../css/InGame.css";
+
+const local_url = 'http://localhost:4000'
 // const server_url = 'https://doodledash.herokuapp.com/'
 
 const socket = io(local_url);
@@ -48,7 +50,8 @@ function InGame({ username }) {
                 sender: username,
                 message: answers
             };
-            console.log("answers"+answersData)
+            console.log(answers)
+            console.log("answers" + answersData)
             socket.emit("send-answers", answersData);
             setAnswerReceived((list) => [...list, answers]);
             setAnswerMessage('');
@@ -56,7 +59,9 @@ function InGame({ username }) {
     };
 
     useEffect(() => {
-        socket.on('receive-message', (data) => {
+        console.log("running")
+        socket.on('receive-answer', (data) => {
+            console.log("responseData", data)
             setAnswerReceived((list) => [...list, data]);
         });
     }, [])
@@ -73,7 +78,7 @@ function InGame({ username }) {
         setSelectedUser(data.userSelected);
         console.log(data);
         setPregame(false)
-       
+
     })
 
 
@@ -85,15 +90,14 @@ function InGame({ username }) {
 
     return (
         <>
-        <h3>Drawer: {selectedUser}</h3>
             {pregame ? (
                 <div>
                     <Lobby startGame={startGame} socket={socket} userName={username} roomId={roomId} />
                 </div>
 
             ) : (
-                <div className='InGamebg' style={{ backgroundImage: 'url("../../ Assets / backgrounds / gamebg.svg")' }}>
-                    <div className='container-ingame' style={{ backgroundColor: 'black', border: '5px solid #FE00FE', borderRadius: '35px', margin: '2%', height: '90vh' }}>
+                <div className='InGamebg' style={{ height: '100vh' }}>
+                    <div className='container-ingame'>
                         <div className='row'>
                             <div className='col-lg-6'>
                                 <div style={styleBoard}>
@@ -102,30 +106,58 @@ function InGame({ username }) {
                                 </div>
                             </div>
 
-                            <div className='col-lg-6'>
-                                <h1>Answers: </h1>
-                                <input
-                                    type="text"
-                                    name='answers'
-                                    value={answers}
-                                    placeholder='type your guess'
-                                    onChange={(e) => {
-                                        setAnswerMessage(e.target.value)
-                                    }} />
+                            <div className='col-lg-6' style={{ color: 'white' }}>
+                                <h1 className='round'>ROUND # HERE</h1>
+                                <marquee
+                                    className='blink text-center'
+                                    behavior="slide"
+                                    direction="up">
+                                    <h3
+                                        style={{
+                                            textAlign: 'center',
+                                            paddingTop: '10%',
+                                            fontWeight: 'bold',
+                                            fontSize: '50px',
+                                            color: '#DEFE47'
+                                        }}>
+                                        {selectedUser} is drawing
+                                    </h3>
+                                </marquee>
+                                <div className='answerbox'>
+                                    <h3>Answers: </h3>
+                                    {answerReceived.map((item) => {
+                                        console.log("WE ARE HERE WE ARE HERE", item)
+                                        return (
+                                            <div className='message-bubbles' key={item.sender} id={username === item.sender ? 'sender' : 'receiver'}>
+                                                <div>{item.message}</div>
+                                                <h3>{item.sender}</h3>
+                                            </div>
 
-                                <button type='submit' onClick={sendAnswers}>send</button>
+                                        )
+                                    })}
 
-                                {answerReceived.map((item) => {
-                                    return (
-                                        <div key={item.sender} id={username === item.sender ? 'sender' : 'receiver'}>
-                                            <div>{item.message}</div>
-                                            <p>--{item.sender}</p>
-                                        </div>
+                                    <div className='userinput-game'>
+                                        <input
+                                            className='userinput-body'
+                                            type="text"
+                                            name='answers'
+                                            value={answers}
+                                            placeholder='type your guess'
+                                            onChange={(e) => {
+                                                setAnswerMessage(e.target.value)
+                                            }} />
 
-                                    )
+                                        <button
+                                            className='userinput-submitgame'
+                                            type='submit'
+                                            onClick={sendAnswers}>
+                                            send
+                                        </button>
+                                    </div>
+                                </div>
 
 
-                                })}
+
 
                             </div>
                         </div>
