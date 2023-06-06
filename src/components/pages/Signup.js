@@ -51,6 +51,12 @@ export default function SignUp({
       navigate('/room')
     } 
   console.log(registerInfo)
+  useEffect(() =>  {
+    if (localStorage.getItem('token')){
+        navigate('/room')
+    }
+}
+,[])
   return (
     <div className='SignUpbg' >
       <div className='container' style={{ width: '100%' }}>
