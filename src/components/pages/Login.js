@@ -25,18 +25,28 @@ export default function Login({ setUsername }) {
                 loginInfo.password
             );
             console.log(response)
-            if (response.user) {
+            if (response.status===200) {
                 console.log('login successful!')
                 setUsername(loginInfo.username)
                 localStorage.setItem('token', response.token)
                 localStorage.setItem('username', loginInfo.username)
                 navigate('/room')
             }
+            if (response.status===400) {
+                alert("wrong login info!")
+            }
+            console.log(response)
         } catch (err) {
             alert("login failed!")
             console.log('login failed', err)
         }
     }
+    useEffect(() =>  {
+        if (localStorage.getItem('token')){
+            navigate('/room')
+        }
+    }
+    ,[])
     return (
         <div className='loginbg' >
             <div className='container' style={{ width: '100%' }}>

@@ -1,8 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import '../css/Board.css'
 
-export default function Board({ socket, room }) {
-  console.log(socket)
+export default function Board({ socket, roomId }) {
+  console.log("rooommmmmm==="+roomId)
   const canvasRef = useRef(null);
   const colorsRef = useRef(null);
   const socketRef = useRef();
@@ -14,7 +14,6 @@ export default function Board({ socket, room }) {
     const canvas = canvasRef.current;
     const test = colorsRef.current;
     const context = canvas.getContext('2d');
-
     // ----------------------- Colors --------------------------------------------------
 
     const colors = document.getElementsByClassName('color');
@@ -57,7 +56,7 @@ export default function Board({ socket, room }) {
         x1: x1 / w,
         y1: y1 / h,
         color,
-      });
+      },roomId);
     };
 
     // ---------------- mouse movement --------------------------------------
@@ -126,14 +125,14 @@ export default function Board({ socket, room }) {
     }
 
     socketRef.current = socket;
-    socketRef.current.on('drawing', onDrawingEvent, room);
+    socketRef.current.on('drawing', onDrawingEvent);
   }, []);
 
   // ------------- The Canvas and color elements --------------------------
 
   return (
-    <div>
-      <canvas ref={canvasRef} className="whiteboard" style={{ borderRadius: '30px', width: '100%', height: '80vh', margin: '1%', backgroundColor: 'white' }} />
+    <div className='board-controller'>
+      <canvas ref={canvasRef} className="whiteboard" style={{ borderRadius: '30px', width: '100%', height: '75vh', backgroundColor: 'white' }} />
 
       <div ref={colorsRef} className="colors">
         <div className="color black" />

@@ -1,4 +1,4 @@
-.InGamebg {
+#root {
     background-image: url('../../Assets/backgrounds/gamebg.svg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -7,7 +7,103 @@
     display: block;
 }
 
+/* 
+.right {
+    background-image: url('../../Assets/backgrounds/gamebg.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+    width: auto;
+} */
+
 .container-ingame {
+    position: absolute;
     background-color: black;
-    border: 2px solid #FE00FE;
+    border: 5px solid #FE00FE;
+    border-radius: 35px;
+    height: 100%;
+    width: auto;
+    margin: 2%;
+}
+
+.answerbox {
+    margin: 1%;
+    position: relative;
+    background-color: black;
+    border: 5px solid#FE00FE;
+    border-radius: 30px;
+    color: black;
+    text-align: start;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 500px;
+}
+
+.message-bubbles {
+    color: #0016EE;
+    background-color: #DEFE47;
+    height: fit-content;
+    width: fit-content;
+    padding: 2px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 25px;
+    margin: 10px;
+}
+
+
+
+.round {
+    color: #00B3FE;
+    text-shadow:
+        0 0 7px #fff,
+        0 0 100px #00B3FE,
+        0 0 82px #00B3FE;
+    font-size: 50px;
+    text-align: center;
+    letter-spacing: 25px;
+}
+
+.userinput-game {
+    position: sticky;
+    display: block;
+    flex-wrap: wrap;
+    width: 100%;
+    /* position: sticky; */
+    /* margin: 1%; */
+    /* bottom: 6%; */
+}
+
+.userinput-body {
+    line-height: 40px;
+    width: 85%;
+    margin-left: 1%;
+    border-radius: 25px;
+    background-color: #DEFE47;
+    font-family: 'Sniglet';
+    font-size: 30px;
+    padding: 2px;
+}
+
+.userinput-submitgame {
+    line-height: 40px;
+    width: 10%;
+    margin-left: 1%;
+    border-radius: 25px;
+    background-color: #DEFE47;
+    font-family: 'Sniglet';
+    font-size: 30px;
+    padding: 2px;
+}
+
+.blink {
+    animation: blinker 3s linear infinite;
+    color: rgb(213, 227, 208);
+    font-size: 40px;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
 }

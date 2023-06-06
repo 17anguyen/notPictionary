@@ -24,6 +24,13 @@ export default function SignUp({
     console.log("testing submit", registerInfo);
     try {
       setLoading(true)
+      const checkUser = await API.getSingleUser(
+        registerInfo.username
+      )
+      if (checkUser.username) {
+        return alert("username taken!")
+      }
+      console.log(checkUser)
       const response = await API.createUser(
         registerInfo.username,
         registerInfo.password
@@ -44,6 +51,12 @@ export default function SignUp({
       navigate('/room')
     } 
   console.log(registerInfo)
+  useEffect(() =>  {
+    if (localStorage.getItem('token')){
+        navigate('/room')
+    }
+}
+,[])
   return (
     <div className='SignUpbg' >
       <div className='container' style={{ width: '100%' }}>
