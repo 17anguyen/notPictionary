@@ -1,22 +1,24 @@
-const word = words[Math.floor(Math.random()*words.length)];
-alert('You got ' + word);
+// const word = words[Math.floor(Math.random()*words.length)];
+// alert('You got ' + word);
 
 import React, { useState, useEffect } from 'react';
 
-const Timer = () => {
-  const [seconds, setSeconds] = useState(30);
+export default function Timer({setDrawerReady}){
+  const [seconds, setSeconds] = useState(10);
 
   useEffect(() => {
     const timer = setInterval(() => {
       if (seconds > 0) {
         setSeconds(prevSeconds => prevSeconds - 1);
+      }else{
+        setDrawerReady(true)
       }
     }, 1000);
 
     return () => {
       clearInterval(timer);
     };
-  }, []);
+  }, [seconds]);
 
   return (
     <div>
@@ -25,4 +27,3 @@ const Timer = () => {
   );
 };
 
-export default Timer;
