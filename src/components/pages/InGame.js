@@ -7,8 +7,8 @@ import { useParams } from "react-router-dom";
 import Word from "./Word"
 import "../css/InGame.css";
 
-const local_url = 'http://localhost:4000'
-// const server_url = 'https://doodledash.herokuapp.com/'
+// const local_url = 'http://localhost:4000'
+const server_url = 'https://doodledash.herokuapp.com/'
 
  const socket = io(local_url);
 // const socket = io(server_url);
