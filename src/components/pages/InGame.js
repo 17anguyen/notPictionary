@@ -96,18 +96,18 @@ function InGame({ username }) {
                 </div>
 
             ) : (
-        
+
                 <div className='InGamebg' style={{ height: '100vh' }}>
                     <div className='container-ingame'>
                         <div className='row'>
-                            <div className='col-lg-6'>
+                            <div className='col-lg-6 left'>
                                 <div style={styleBoard}>
                                     <Board socket={socket} roomId={roomId} />
 
                                 </div>
                             </div>
 
-                            <div className='col-lg-6' style={{ color: 'white' }}>
+                            <div className='col-lg-6 right' style={{ color: 'white' }}>
                                 <h1 className='round'>ROUND # HERE</h1>
                                 <marquee
                                     className='blink text-center'
@@ -116,10 +116,10 @@ function InGame({ username }) {
                                     <h3
                                         style={{
                                             textAlign: 'center',
-                                            paddingTop: '10%',
+                                            // paddingTop: '10%',
                                             fontWeight: 'bold',
                                             fontSize: '50px',
-                                            color: '#DEFE47'
+                                            color: '#DEFE47',
                                         }}>
                                         {selectedUser} is drawing
                                     </h3>
@@ -137,24 +137,24 @@ function InGame({ username }) {
                                         )
                                     })}
 
-                                    <div className='userinput-game'>
-                                        <input
-                                            className='userinput-body'
-                                            type="text"
-                                            name='answers'
-                                            value={answers}
-                                            placeholder='type your guess'
-                                            onChange={(e) => {
-                                                setAnswerMessage(e.target.value)
-                                            }} />
+                                </div>
+                                <div className='userinput-game'>
+                                    <input
+                                        className='userinput-body'
+                                        type="text"
+                                        name='answers'
+                                        value={answers}
+                                        placeholder='type your guess'
+                                        onChange={(e) => {
+                                            setAnswerMessage(e.target.value)
+                                        }} />
 
-                                        <button
-                                            className='userinput-submitgame'
-                                            type='submit'
-                                            onClick={sendAnswers}>
-                                            send
-                                        </button>
-                                    </div>
+                                    <button
+                                        className='userinput-submitgame'
+                                        type='submit'
+                                        onClick={sendAnswers}>
+                                        send
+                                    </button>
                                 </div>
 
 
@@ -163,9 +163,10 @@ function InGame({ username }) {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div >
 
-            )}
+            )
+            }
 
         </>
     );
