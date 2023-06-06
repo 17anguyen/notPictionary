@@ -41,6 +41,12 @@ export default function Login({ setUsername }) {
             console.log('login failed', err)
         }
     }
+    useEffect(() =>  {
+        if (localStorage.getItem('token')){
+            navigate('/room')
+        }
+    }
+    ,[])
     return (
         <div className='loginbg' >
             <div className='container' style={{ width: '100%' }}>
