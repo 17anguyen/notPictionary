@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import API from '../../utils/api'
 import arrows from '../../Assets/page elements/arrows.svg'
 import planet from '../../Assets/page elements/planet.svg'
+
 export default function RoomSelect() {
   const [roomList, setFreeRooms] = useState([])
   const allLi = document.querySelectorAll(".dropdown-item");
@@ -20,6 +21,7 @@ export default function RoomSelect() {
   })
   const freeRooms = async () => {
     try {
+      
       const freeRoomsList = await API.getRooms();
       console.log(freeRoomsList)
       if (!freeRoomsList[0]) {
@@ -40,6 +42,7 @@ export default function RoomSelect() {
     navigate('/userselect')
   }
   return (
+  
     <div className='UserSelectbg z-n1'>
       <img className='z-1 position-absolute top-0 start-0 mx-auto' src={planet} style={{ width: '20%' }} />
       <img className='z-1 position-absolute bottom-0 end-0 mx-auto' src={arrows} style={{ width: '10%' }} />

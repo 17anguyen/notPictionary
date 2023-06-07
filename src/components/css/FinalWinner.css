@@ -1,0 +1,8 @@
+.finalWinner {
+    background-image: url('../../Assets/backgrounds/final-with\ image.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: auto;
+    display: block;
+}
