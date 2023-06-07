@@ -99,7 +99,7 @@ export default function Board({ socket, roomId }) {
     canvas.addEventListener('mousedown', onMouseDown, false);
     canvas.addEventListener('mouseup', onMouseUp, false);
     canvas.addEventListener('mouseout', onMouseUp, false);
-    canvas.addEventListener('mousemove', throttle(onMouseMove, 10), false);
+    canvas.addEventListener('mousemove', throttle(onMouseMove, 5), false);
 
     // Touch support for mobile devices
     canvas.addEventListener('touchstart', onMouseDown, false);
@@ -108,16 +108,15 @@ export default function Board({ socket, roomId }) {
     canvas.addEventListener('touchmove', throttle(onMouseMove, 10), false);
 
     // -------------- make the canvas fill its parent component -----------------
-    const whiteboard = document.querySelector(".whiteboard")
+    const boardS = document.querySelector(".board-controller")
 
     const onResize = () => {
-      // const verticalMargin = whiteboard.getBoundingClientRect().top * 2;
-      // const horizontalMargin = whiteboard.getBoundingClientRect().left * 2;
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+
+      canvas.width =  boardS.getBoundingClientRect().width;
+      canvas.height =  boardS.getBoundingClientRect().height;
     };
     console.log(whiteboard)
-    whiteboard.addEventListener('resize', onResize, false);
+    boardS.addEventListener('resize', onResize, false);
     onResize();
 
     // ----------------------- socket.io connection ----------------------------
@@ -134,9 +133,10 @@ export default function Board({ socket, roomId }) {
   // ------------- The Canvas and color elements --------------------------
 
   return (
+    <>
     <div className='board-controller'>
-      <canvas ref={canvasRef} className="whiteboard" style={{ borderRadius: '30px', width: '100%', height: '100%', backgroundColor: 'white' }} />
-
+      <canvas ref={canvasRef} className="whiteboard" style={{ borderRadius: '30px', backgroundColor: 'white' }} />
+  </div>
       <div ref={colorsRef} className="colors">
         <div className="color black" />
         <div className="color red" />
@@ -144,7 +144,8 @@ export default function Board({ socket, roomId }) {
         <div className="color blue" />
         <div className="color yellow" />
       </div>
-    </div>
+    
+    </>
   );
 };
 
