@@ -1,17 +1,17 @@
 // const word = words[Math.floor(Math.random()*words.length)];
 // alert('You got ' + word);
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-export default function Timer({setDrawerReady}){
+export default function Timer({ setDrawerReady }) {
   const [seconds, setSeconds] = useState(10);
 
   useEffect(() => {
     const timer = setInterval(() => {
       if (seconds > 0) {
-        setSeconds(prevSeconds => prevSeconds - 1);
-      }else{
-        setDrawerReady(true)
+        setSeconds((prevSeconds) => prevSeconds - 1);
+      } else {
+        setDrawerReady(true);
       }
     }, 1000);
 
@@ -25,5 +25,4 @@ export default function Timer({setDrawerReady}){
       <h1>{seconds}s</h1>
     </div>
   );
-};
-
+}
