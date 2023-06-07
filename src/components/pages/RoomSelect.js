@@ -7,18 +7,18 @@ import planet from '../../Assets/page elements/planet.svg'
 // import { Dropdown } from 'bootstrap';
 
 export default function RoomSelect() {
-  const [roomList,setFreeRooms] = useState([])
+  const [roomList, setFreeRooms] = useState([])
   const allLi = document.querySelectorAll(".dropdown-item");
   const navigate = useNavigate()
 
-  allLi.forEach((item)=>{
-    console.log("allLi"+ roomList)
-    
-    if(roomList.includes(item.id)&&roomList[0]){
+  allLi.forEach((item) => {
+    console.log("allLi" + roomList)
+
+    if (roomList.includes(item.id) && roomList[0]) {
       console.log(item.id)
       item.style.color = 'blue'
       item.style.display = 'block'
-    }else{
+    } else {
       item.style.display = 'none'
     }
   })
@@ -31,7 +31,7 @@ export default function RoomSelect() {
       if (!freeRoomsList[0]) {
         alert("No rooms available")
         setFreeRooms([" "])
-      }else{
+      } else {
         setFreeRooms(freeRoomsList)
       }
     } catch (err) {
@@ -39,11 +39,11 @@ export default function RoomSelect() {
     }
   }
 
-   useEffect(()=>{
-   freeRooms()
-   },[])   
+  useEffect(() => {
+    freeRooms()
+  }, [])
 
-   const handleLogout = () => {
+  const handleLogout = () => {
     localStorage.removeItem('token')
     navigate('/userselect')
   }
@@ -55,7 +55,7 @@ export default function RoomSelect() {
       <img className='z-1 position-absolute bottom-0 end-0 mx-auto' src={arrows} style={{ width: '10%' }} />
 
       <div className='select container '>
-        <button onClick ={handleLogout}>logout</button>
+        <button onClick={handleLogout}>logout</button>
         {/* <div className='container-signup '> */}
 
         <div className='signup position-absolute top-50 start-50 translate-middle dropdown-center' >

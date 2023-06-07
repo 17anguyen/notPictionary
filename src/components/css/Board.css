@@ -1,15 +1,18 @@
 .board-controller {
+  height: 695px;
+  width: 600px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 1%;
+  /* margin: 1%;  */
+
 }
 
 .whiteboard {
-  box-sizing: border-box;
-  height: auto;
-  width: 100%;
-  border: 1px;
+  box-sizing: border-box; 
+  /* height: auto;
+  width: 100%;  */
+   border: 1px;
   border-color: solid red;
   position: relative;
 }

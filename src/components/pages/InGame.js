@@ -53,10 +53,12 @@ function InGame({ username }) {
                 message: answers
             };
         if (answers === correctAnswer) {
+            console.log(answers)
+            const winnerUser = answersData.sender
+            
              //end round
             //+1 pt
         }
-            console.log(answers)
             console.log(correctAnswer)
             // console.log(answers)
             console.log("answers" + answersData)
@@ -114,7 +116,6 @@ function InGame({ username }) {
                             <div className='container-ingame'>
                                 <div className='row'>
                                     <div className='col-lg-6'>
-                                        {/* <iframe src="https://socketio-whiteboard-zmx4.herokuapp.com/" width='800' height="1000" className='iframe-class' style={{ backgroundColor: 'white' }} /> */}
                                         <div style={styleBoard}>
                                             <Board socket={socket} roomId={roomId} />
 
@@ -169,58 +170,6 @@ function InGame({ username }) {
                                                 send
                                             </button>
                                         </div>
-                                    </div>
-
-                                    <div className='col-lg-6 right' style={{ color: 'white' }}>
-                                        <h1 className='round'>ROUND # HERE</h1>
-                                        <marquee
-                                            className='blink text-center'
-                                            behavior="slide"
-                                            direction="up">
-                                            <h3
-                                                style={{
-                                                    textAlign: 'center',
-                                                    // paddingTop: '10%',
-                                                    fontWeight: 'bold',
-                                                    fontSize: '50px',
-                                                    color: '#DEFE47',
-                                                }}>
-                                                {selectedUser} is drawing
-                                            </h3>
-                                        </marquee>
-                                        <div className='answerbox'>
-                                            <h3>Answers: </h3>
-                                            {answerReceived.map((item) => {
-                                                console.log("WE ARE HERE WE ARE HERE", item)
-                                                return (
-                                                    <div className='message-bubbles' key={item.sender} id={username === item.sender ? 'sender' : 'receiver'}>
-                                                        <h4>{item.sender}</h4>
-                                                        <h3>{item.message}</h3>
-                                                    </div>
-
-                                                )
-                                            })}
-
-                                            <div className='userinput-game'>
-                                                <input
-                                                    className='userinput-body'
-                                                    type="text"
-                                                    name='answers'
-                                                    value={answers}
-                                                    placeholder='type your guess'
-                                                    onChange={(e) => {
-                                                        setAnswerMessage(e.target.value)
-                                                    }} />
-
-                                                <button
-                                                    className='userinput-submitgame'
-                                                    type='submit'
-                                                    onClick={sendAnswers}>
-                                                    send
-                                                </button>
-                                            </div>
-                                        </div>
-
                                     </div>
                                 </div>
                             </div>
