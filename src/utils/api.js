@@ -1,5 +1,5 @@
 // const BASEURL = "https://doodledash.herokuapp.com"
- const BASEURL ="http://localhost:4000"
+const BASEURL ="http://localhost:4000"
 
 const API = {
     getTokenData: async (token) => {
@@ -64,7 +64,7 @@ const API = {
     getUsers: async () => {
       const response = await fetch(`${BASEURL}/api/users`);
       return await response.json();
-    }
+    },
   };
    export default API
  

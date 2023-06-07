@@ -1,6 +1,6 @@
-import React, {useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/UserSelect.css';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import API from '../../utils/api'
 import arrows from '../../Assets/page elements/arrows.svg'
 import planet from '../../Assets/page elements/planet.svg'
@@ -8,18 +8,21 @@ import planet from '../../Assets/page elements/planet.svg'
 export default function RoomSelect() {
   const [roomList,setFreeRooms] = useState([])
   const allLi = document.querySelectorAll(".dropdown-item");
+  const navigate = useNavigate()
 
   allLi.forEach((item)=>{
     console.log("allLi"+ roomList)
-    console.log(item.id)
-    if(roomList.includes(item.id)){
+    
+    if(roomList.includes(item.id)&&roomList[0]){
+      console.log(item.id)
       item.style.color = 'blue'
+      item.style.display = 'block'
     }else{
       item.style.display = 'none'
     }
   })
 
-  const freeRooms = async ()=> {    
+  const freeRooms = async () => {
     try {
       const freeRoomsList = await API.getRooms();
       console.log(freeRoomsList)
@@ -29,14 +32,19 @@ export default function RoomSelect() {
       }else{
         setFreeRooms(freeRoomsList)
       }
-    }catch(err){
+    } catch (err) {
       console.log(err)
     }
   }
 
    useEffect(()=>{
    freeRooms()
-   },[])
+   },[])   
+
+   const handleLogout = () => {
+    localStorage.removeItem('token')
+    navigate('/userselect')
+  }
 
   return (
     <div className='UserSelectbg z-n1'>
@@ -44,6 +52,7 @@ export default function RoomSelect() {
       <img className='z-1 position-absolute bottom-0 end-0 mx-auto' src={arrows} style={{ width: '10%' }} />
 
       <div className='select container '>
+        <button onClick ={handleLogout}>logout</button>
         {/* <div className='container-signup '> */}
 
         <div className='signup position-absolute top-50 start-50 translate-middle dropdown-center' >
