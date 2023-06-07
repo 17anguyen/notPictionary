@@ -108,14 +108,10 @@ export default function Board({ socket, roomId }) {
     canvas.addEventListener('touchmove', throttle(onMouseMove, 10), false);
 
     // -------------- make the canvas fill its parent component -----------------
-    const whiteboard = document.querySelector(".whiteboard")
     const boardS = document.querySelector(".board-controller")
 
     const onResize = () => {
-      // const verticalMargin = whiteboard.getBoundingClientRect().top * 2;
-      // const horizontalMargin = whiteboard.getBoundingClientRect().left * 2;
-      // canvas.width = window.innerWidth;
-      // canvas.height = window.innerHeight;
+
       canvas.width =  boardS.getBoundingClientRect().width;
       canvas.height =  boardS.getBoundingClientRect().height;
     };
