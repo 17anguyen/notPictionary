@@ -52,7 +52,13 @@ function InGame({ username }) {
                 sender: username,
                 message: answers
             };
+        if (answers === correctAnswer) {
+             //end round
+            //+1 pt
+        }
             console.log(answers)
+            console.log(correctAnswer)
+            // console.log(answers)
             console.log("answers" + answersData)
             socket.emit("send-answers", answersData);
             setAnswerReceived((list) => [...list, answersData]);
