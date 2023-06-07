@@ -11,7 +11,16 @@ export default function RoomSelect() {
     try {
       const freeRoomsList = await API.getRooms();
       const li = document.querySelector('.test')
-      li.setAttribute("style", "")
+      for (i = 0; i < ) {
+        li[i].setAttribute("style", "")
+        console.log(li[i])
+
+
+      })
+
+
+
+
       console.log(freeRoomsList)
 
       if (!freeRoomsList) {
