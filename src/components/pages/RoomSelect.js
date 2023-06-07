@@ -4,16 +4,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import API from '../../utils/api'
 import arrows from '../../Assets/page elements/arrows.svg'
 import planet from '../../Assets/page elements/planet.svg'
-// import { Dropdown } from 'bootstrap';
-
 export default function RoomSelect() {
   const [roomList, setFreeRooms] = useState([])
   const allLi = document.querySelectorAll(".dropdown-item");
   const navigate = useNavigate()
-
   allLi.forEach((item) => {
     console.log("allLi" + roomList)
-
     if (roomList.includes(item.id) && roomList[0]) {
       console.log(item.id)
       item.style.color = 'blue'
@@ -22,7 +18,6 @@ export default function RoomSelect() {
       item.style.display = 'none'
     }
   })
-
   const freeRooms = async () => {
     try {
       
@@ -38,26 +33,21 @@ export default function RoomSelect() {
       console.log(err)
     }
   }
-
   useEffect(() => {
     freeRooms()
   }, [])
-
   const handleLogout = () => {
     localStorage.removeItem('token')
     navigate('/userselect')
   }
-
   return (
   
     <div className='UserSelectbg z-n1'>
       <img className='z-1 position-absolute top-0 start-0 mx-auto' src={planet} style={{ width: '20%' }} />
       <img className='z-1 position-absolute bottom-0 end-0 mx-auto' src={arrows} style={{ width: '10%' }} />
-
       <div className='select container '>
         <button onClick={handleLogout}>logout</button>
         {/* <div className='container-signup '> */}
-
         <div className='signup position-absolute top-50 start-50 translate-middle dropdown-center' >
           <h1 className="btn-text btn dropdown-toggle" style={{ color: '#37319D' }} type="button" data-bs-toggle="dropdown" aria-expanded="false">Select a room</h1>
           <ul className="dropdown-menu">
@@ -67,11 +57,7 @@ export default function RoomSelect() {
           </ul>
         </div>
         {/* </div> */}
-
-
       </div>
     </div >
-
-
   );
 }

@@ -112,8 +112,8 @@ export default function Board({ socket, roomId }) {
 
     const onResize = () => {
 
-      canvas.width =  boardS.getBoundingClientRect().width;
-      canvas.height =  boardS.getBoundingClientRect().height;
+      canvas.width = boardS.getBoundingClientRect().width;
+      canvas.height = boardS.getBoundingClientRect().height;
     };
     // console.log(whiteboard)
     boardS.addEventListener('resize', onResize, false);
@@ -134,9 +134,9 @@ export default function Board({ socket, roomId }) {
 
   return (
     <>
-    <div className='board-controller'>
-      <canvas ref={canvasRef} className="whiteboard" style={{ borderRadius: '30px', backgroundColor: 'white' }} />
-  </div>
+      <div className='board-controller'>
+        <canvas ref={canvasRef} className="whiteboard" style={{ borderRadius: '30px', backgroundColor: 'white' }} />
+      </div>
       <div ref={colorsRef} className="colors">
         <div className="color black" />
         <div className="color red" />
@@ -144,7 +144,7 @@ export default function Board({ socket, roomId }) {
         <div className="color blue" />
         <div className="color yellow" />
       </div>
-    
+
     </>
   );
 };
