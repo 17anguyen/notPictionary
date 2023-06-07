@@ -7,11 +7,11 @@ import { useParams } from "react-router-dom";
 import Word from "./Word"
 import "../css/InGame.css";
 
-// const local_url = 'http://localhost:4000'
-const server_url = 'https://doodledash.herokuapp.com/'
+ const local_url = 'http://localhost:4000'
+// const server_url = 'https://doodledash.herokuapp.com/'
 
- //const socket = io(local_url);
- const socket = io(server_url);
+ const socket = io(local_url);
+//  const socket = io(server_url);
 
 
 function InGame({ username }) {
@@ -52,8 +52,11 @@ function InGame({ username }) {
                 sender: username,
                 message: answers
             };
-            console.log(answers)
-            console.log("answers" + answersData)
+            if(answers == correctAnswer){
+                const winnerUser = answersData.sender;
+
+                console.log(winnerUser)
+            }
             socket.emit("send-answers", answersData);
             setAnswerReceived((list) => [...list, answersData]);
             setAnswerMessage('');
@@ -63,7 +66,7 @@ function InGame({ username }) {
     useEffect(() => {
         console.log("running")
         socket.on('receive-answer', (data) => {
-            console.log("responseData", data)
+            console.log( data.message)
             setAnswerReceived((list) => [...list, data]);
         });
     }, [])
@@ -78,7 +81,7 @@ function InGame({ username }) {
     socket.on("selected-props", (data) => {
         setCorrectAnswer(data.selectedWord);
         setSelectedUser(data.userSelected);
-        console.log(data);
+      
         setPregame(false)
     })
 
@@ -134,7 +137,7 @@ function InGame({ username }) {
                                     <div className='answerbox'>
                                         <h3>Answers: </h3>
                                         {answerReceived.map((item) => {
-                                            console.log("WE ARE HERE WE ARE HERE", item)
+                                            
                                             return (
                                                 <div className='message-bubbles' key={item.sender} id={username === item.sender ? 'sender' : 'receiver'}>
                                                     <div>{item.message}</div>

@@ -6,15 +6,28 @@ import arrows from '../../Assets/page elements/arrows.svg'
 import planet from '../../Assets/page elements/planet.svg'
 
 export default function RoomSelect() {
+  const [roomList,setFreeRooms] = useState([])
+  const allLi = document.querySelectorAll(".dropdown-item");
+
+  allLi.forEach((item)=>{
+    console.log("allLi"+ roomList)
+    console.log(item.id)
+    if(roomList.includes(item.id)){
+      item.style.color = 'blue'
+    }else{
+      item.style.display = 'none'
+    }
+  })
 
   const freeRooms = async ()=> {    
     try {
       const freeRoomsList = await API.getRooms();
       console.log(freeRoomsList)
-      if (!freeRoomsList) {
+      if (!freeRoomsList[0]) {
         alert("No rooms available")
+        setFreeRooms([" "])
       }else{
-        console.log(freeRoomsList)
+        setFreeRooms(freeRoomsList)
       }
     }catch(err){
       console.log(err)
@@ -36,9 +49,9 @@ export default function RoomSelect() {
         <div className='signup position-absolute top-50 start-50 translate-middle dropdown-center' >
           <h1 className="btn-text btn dropdown-toggle" style={{ color: '#37319D' }} type="button" data-bs-toggle="dropdown" aria-expanded="false">Select a room</h1>
           <ul className="dropdown-menu">
-            <li><Link to="/game/1" className="dropdown-item" >Join Room 1</Link></li>
-            <li><Link to="/game/2" className="dropdown-item" >Join Room 2</Link></li>
-            <li><Link to="/game/3" className="dropdown-item" >Join Room 3</Link></li>
+            <li><Link to="/game/1" className="dropdown-item" id="room1" >Join Room 1</Link></li>
+            <li ><Link to="/game/2" className="dropdown-item" id="room2" >Join Room 2</Link></li>
+            <li ><Link to="/game/3" className="dropdown-item" id="room3">Join Room 3</Link></li>
           </ul>
         </div>
         {/* </div> */}
