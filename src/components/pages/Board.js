@@ -115,7 +115,7 @@ export default function Board({ socket, roomId }) {
       canvas.width =  boardS.getBoundingClientRect().width;
       canvas.height =  boardS.getBoundingClientRect().height;
     };
-    console.log(whiteboard)
+    // console.log(whiteboard)
     boardS.addEventListener('resize', onResize, false);
     onResize();
 
