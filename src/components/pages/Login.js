@@ -41,9 +41,6 @@ export default function Login({ setUsername }) {
             console.log('login failed', err)
         }
     }
-    const handleLogout = () => {
-        localStorage.removeItem('token')
-      }
     useEffect(() =>  {
         if (localStorage.getItem('token')){
             navigate('/room')
