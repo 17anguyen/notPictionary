@@ -7,11 +7,11 @@ import { useParams } from "react-router-dom";
 import Word from "./Word";
 import "../css/InGame.css";
 
-//const local_url = 'http://localhost:4000'
-const server_url = "https://doodledash.herokuapp.com/";
+const local_url = 'http://localhost:4000'
+// const server_url = "https://doodledash.herokuapp.com/";
 
-//const socket = io(local_url);;
-const socket = io(server_url);
+const socket = io(local_url);;
+// const socket = io(server_url);
 
 function InGame({ username }) {
   console.log("=====Username:" + username);
@@ -25,6 +25,8 @@ function InGame({ username }) {
   const [correctAnswer, setCorrectAnswer] = useState("");
   const [selectedUser, setSelectedUser] = useState("");
   const [isDrawerReady, setDrawerReady] = useState(false);
+  const [winnerUser, setWinnerUser] = useState(false);
+
 
   // figure what room were in by urlparams
   const params = useParams();
@@ -49,10 +51,14 @@ function InGame({ username }) {
       };
       if (answers === correctAnswer) {
         console.log(answers);
-        const winnerUser = answersData.sender;
-
+        setWinnerUser(answersData.sender);
+        socket.emit('round-over', answersData)
         //end round
         //+1 pt
+     //clear whiteboard
+    const canvas = document.getElementById("whiteboard");
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
       }
       console.log(correctAnswer);
       // console.log(answers)
