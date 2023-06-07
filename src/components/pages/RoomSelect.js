@@ -7,20 +7,32 @@ import planet from '../../Assets/page elements/planet.svg'
 // import { Dropdown } from 'bootstrap';
 
 export default function RoomSelect() {
-  const navigate = useNavigate();
+  const [roomList,setFreeRooms] = useState([])
+  const allLi = document.querySelectorAll(".dropdown-item");
+  const navigate = useNavigate()
+
+  allLi.forEach((item)=>{
+    console.log("allLi"+ roomList)
+    
+    if(roomList.includes(item.id)&&roomList[0]){
+      console.log(item.id)
+      item.style.color = 'blue'
+      item.style.display = 'block'
+    }else{
+      item.style.display = 'none'
+    }
+  })
 
   const freeRooms = async () => {
     try {
       
       const freeRoomsList = await API.getRooms();
-      const li = document.querySelectorAll('.test')
-      li[0].setAttribute("style", "")
       console.log(freeRoomsList)
-
-      if (!freeRoomsList) {
+      if (!freeRoomsList[0]) {
         alert("No rooms available")
-      } else {
-        console.log(freeRoomsList)
+        setFreeRooms([" "])
+      }else{
+        setFreeRooms(freeRoomsList)
       }
     } catch (err) {
       console.log(err)
@@ -49,9 +61,9 @@ export default function RoomSelect() {
         <div className='signup position-absolute top-50 start-50 translate-middle dropdown-center' >
           <h1 className="btn-text btn dropdown-toggle" style={{ color: '#37319D' }} type="button" data-bs-toggle="dropdown" aria-expanded="false">Select a room</h1>
           <ul className="dropdown-menu">
-            <li className='test dropdown-item'><Link to="/game/1" >Join Room 1</Link></li>
-            <li className='test dropdown-item'><Link to="/game/2" >Join Room 2</Link></li>
-            <li className='test dropdown-item'><Link to="/game/3" >Join Room 3</Link></li>
+            <li><Link to="/game/1" className="dropdown-item" id="room1" >Join Room 1</Link></li>
+            <li ><Link to="/game/2" className="dropdown-item" id="room2" >Join Room 2</Link></li>
+            <li ><Link to="/game/3" className="dropdown-item" id="room3">Join Room 3</Link></li>
           </ul>
         </div>
         {/* </div> */}

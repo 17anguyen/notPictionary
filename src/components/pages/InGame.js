@@ -10,8 +10,8 @@ import "../css/InGame.css";
 // const local_url = 'http://localhost:4000'
 const server_url = 'https://doodledash.herokuapp.com/'
 
-//const socket = io(local_url);
-const socket = io(server_url);
+// const socket = io(local_url);
+ const socket = io(server_url);
 
 
 function InGame({ username }) {
@@ -69,7 +69,7 @@ function InGame({ username }) {
     useEffect(() => {
         console.log("running")
         socket.on('receive-answer', (data) => {
-            console.log("responseData", data)
+            console.log( data.message)
             setAnswerReceived((list) => [...list, data]);
         });
     }, [])
@@ -84,7 +84,7 @@ function InGame({ username }) {
     socket.on("selected-props", (data) => {
         setCorrectAnswer(data.selectedWord);
         setSelectedUser(data.userSelected);
-        console.log(data);
+      
         setPregame(false)
     })
 
@@ -118,6 +118,56 @@ function InGame({ username }) {
                                         <div style={styleBoard}>
                                             <Board socket={socket} roomId={roomId} />
 
+                                    </div>
+                                </div>
+
+                                <div className='col-lg-6' style={{ color: 'white' }}>
+                                    <h1 className='round'>ROUND # HERE</h1>
+                                    <marquee
+                                        className='blink text-center'
+                                        behavior="slide"
+                                        direction="up">
+                                        <h3
+                                            style={{
+                                                textAlign: 'center',
+                                                paddingTop: '10%',
+                                                fontWeight: 'bold',
+                                                fontSize: '50px',
+                                                color: '#DEFE47'
+                                            }}>
+                                            {selectedUser} is drawing
+                                        </h3>
+                                    </marquee>
+                                    <div className='answerbox'>
+                                        <h3>Answers: </h3>
+                                        {answerReceived.map((item) => {
+                                            
+                                            return (
+                                                <div className='message-bubbles' key={item.sender} id={username === item.sender ? 'sender' : 'receiver'}>
+                                                    <div>{item.message}</div>
+                                                    <h3>{item.sender}</h3>
+                                                </div>
+
+                                            )
+                                        })}
+
+                                        <div className='userinput-game'>
+                                            <input
+                                                className='userinput-body'
+                                                type="text"
+                                                name='answers'
+                                                value={answers}
+                                                placeholder='type your guess'
+                                                onChange={(e) => {
+                                                    setAnswerMessage(e.target.value)
+                                                }} />
+
+                                            <button
+                                                className='userinput-submitgame'
+                                                type='submit'
+                                                onClick={sendAnswers}>
+                                                send
+                                            </button>
                                         </div>
                                     </div>
 
@@ -171,13 +221,11 @@ function InGame({ username }) {
                                             </div>
                                         </div>
 
-
-
-
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
                     )}
 
                 </>
