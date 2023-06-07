@@ -7,6 +7,7 @@
     display: block;
 }
 
+/*  */
 /* 
 .right {
     background-image: url('../../Assets/backgrounds/gamebg.svg');
@@ -23,7 +24,7 @@
     border-radius: 35px;
     height: 100%;
     width: auto;
-    margin: 2%;
+    /* margin: 2%; */
 }
 
 .answerbox {
