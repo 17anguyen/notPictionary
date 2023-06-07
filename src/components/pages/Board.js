@@ -116,9 +116,8 @@ export default function Board({ socket, roomId }) {
         }
       };
     };
-
+    
     // -----------------add event listeners to our canvas ----------------------
-
     canvas.addEventListener("mousedown", onMouseDown, false);
     canvas.addEventListener("mouseup", onMouseUp, false);
     canvas.addEventListener("mouseout", onMouseUp, false);
@@ -159,6 +158,7 @@ export default function Board({ socket, roomId }) {
       <div className="board-controller">
         <canvas
           ref={canvasRef}
+          id="whiteboard"
           className="whiteboard"
           style={{ borderRadius: "30px", backgroundColor: "white" }}
         />
