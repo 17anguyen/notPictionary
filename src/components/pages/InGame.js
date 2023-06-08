@@ -52,6 +52,7 @@ function InGame({ username }) {
         sender: username,
         message: answers,
       };
+      console.log(correctAnswer)
       if (answers === correctAnswer) {
         console.log(answers);
         setWinnerUser(answersData.sender);
