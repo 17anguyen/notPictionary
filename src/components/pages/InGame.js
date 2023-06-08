@@ -29,7 +29,7 @@ function InGame({ username }) {
   const [isDrawerReady, setDrawerReady] = useState(false);
   const [winnerUser, setWinnerUser] = useState("");
   const [isWinner, setIsWinner] = useState(false);
-  const [round, setRound] =useState(1)
+  const [round, setRound] = useState(1)
   const [isTimeout, setTimeout] = useState(false)
   const [isCorrect, setCorrect] = useState(false)
   const [endgame, setEndgame] = useState(false)
@@ -54,9 +54,9 @@ function InGame({ username }) {
       };
       console.log(correctAnswer)
       console.log(correctAnswer);
-     
+
       console.log("answers" + answersData);
-      socket.emit("send-answers", answersData,correctAnswer);
+      socket.emit("send-answers", answersData, correctAnswer);
       setAnswerReceived((list) => [...list, answersData]);
       setAnswerMessage("");
     }
@@ -70,7 +70,7 @@ function InGame({ username }) {
       console.log(data.message);
       setAnswerReceived((list) => [...list, data]);
     });
-    socket.on("round-over", (data) =>{
+    socket.on("round-over", (data) => {
       // display winner and secret word,
       setWinnerUser(data.sender);
       setIsWinner(true)
@@ -80,14 +80,14 @@ function InGame({ username }) {
   const startGame = async (e) => {
     e.preventDefault();
     socket.emit("start-game", roomId);
-    
+
   };
   //click for next round on correct word page
-  const nextRound= (e) =>{
+  const nextRound = (e) => {
     e.preventDefault();
     socket.emit("start-game", roomId);
 
-}
+  }
   //socket.on get selected player and word and show to selected user
   socket.on("selected-props", (data) => {
     setCorrectAnswer(data.selectedWord);
@@ -125,95 +125,95 @@ function InGame({ username }) {
       ) : (
         <>
           {(username == selectedUser && !isDrawerReady) ? (
-            
-              <Word
-                setDrawerReady={setDrawerReady}
-                correctAnswer={correctAnswer}
-              />
-          ) : (
-          <>
-           {(isWinner || isTimeout) ? (
-             
-            <CorrectAnswer correctAnswer={correctAnswer} winnerUser={winnerUser} nextRound={nextRound}/>
-           
-           ):(
-            <>
-            {endgame?(
-              <FinalWinner endGame={endGame}/>
-            ):(
-             <div className="InGamebg" style={{ height: "100vh" }}>
-            <div className="row container-ingame">
-              <div className="col-lg-6">
-           
-                <div style={styleBoard}>
-                  <Board socket={socket} roomId={roomId} />
-                </div>
-              </div>
-              <div className="col-lg-6" style={{ color: "white" }}>
-                <h1 className="round">ROUND {round} HERE</h1>
-                <marquee
-                  className="blink text-center"
-                  behavior="slide"
-                  direction="up"
-                >
-                  <h3
-                    style={{
-                      textAlign: "center",
-                      paddingTop: "10%",
-                      fontWeight: "bold",
-                      fontSize: "50px",
-                      color: "#DEFE47",
-                    }}
-                  >
-                    {selectedUser} is drawing
-                  </h3>
-                </marquee>
-                <div className="answerbox">
-                  <h3>Answers: </h3>
-                  {answerReceived.map((item,i) => {
-                    return (
-                      <div
-                        className="message-bubbles"
-                        key={i}
-                        id={
-                          username === item.sender ? "sender" : "receiver"
-                        }
-                      >
-                        <h4>{item.sender}</h4>
-                        <h3>{item.message}</h3>
-                      </div>
-                    );
-                  })}
-                </div>
-                <div className="userinput-game">
-                  <input
-                    className="userinput-body"
-                    type="text"
-                    name="answers"
-                    value={answers}
-                    placeholder="type your guess"
-                    onChange={(e) => {
-                      setAnswerMessage(e.target.value);
-                    }}
-                  />
-                  <button
-                    className="userinput-submitgame"
-                    type="submit"
-                    onClick={sendAnswers}
-                  >
-                    send
-                  </button>
-                </div>
-              </div>
-            </div>
-            </div>
-            )}
-            
-             
-          </>
 
-           )}
-          </>
+            <Word
+              setDrawerReady={setDrawerReady}
+              correctAnswer={correctAnswer}
+            />
+          ) : (
+            <>
+              {(isWinner || isTimeout) ? (
+
+                <CorrectAnswer correctAnswer={correctAnswer} winnerUser={winnerUser} nextRound={nextRound} />
+
+              ) : (
+                <>
+                  {endgame ? (
+                    <FinalWinner endGame={endGame} />
+                  ) : (
+                    <div className="InGamebg" style={{ height: "100vh" }}>
+                      <div className="row container-ingame">
+                        <div className="col-lg-6">
+
+                          <div style={styleBoard}>
+                            <Board socket={socket} roomId={roomId} />
+                          </div>
+                        </div>
+                        <div className="col-lg-6" style={{ color: "white" }}>
+                          <h1 className="round">ROUND {round} HERE</h1>
+                          <marquee
+                            className="blink text-center"
+                            behavior="slide"
+                            direction="up"
+                          >
+                            <h3
+                              style={{
+                                textAlign: "center",
+                                paddingTop: "10%",
+                                fontWeight: "bold",
+                                fontSize: "50px",
+                                color: "#DEFE47",
+                              }}
+                            >
+                              {selectedUser} is drawing
+                            </h3>
+                          </marquee>
+                          <div className="answerbox">
+                            <h3>Answers: </h3>
+                            {answerReceived.map((item, i) => {
+                              return (
+                                <div
+                                  className="message-bubbles"
+                                  key={i}
+                                  id={
+                                    username === item.sender ? "sender" : "receiver"
+                                  }
+                                >
+                                  <h4>{item.sender}</h4>
+                                  <h3>{item.message}</h3>
+                                </div>
+                              );
+                            })}
+                          </div>
+                          <div className="userinput-game">
+                            <input
+                              className="userinput-body"
+                              type="text"
+                              name="answers"
+                              value={answers}
+                              placeholder="type your guess"
+                              onChange={(e) => {
+                                setAnswerMessage(e.target.value);
+                              }}
+                            />
+                            <button
+                              className="userinput-submitgame"
+                              type="submit"
+                              onClick={sendAnswers}
+                            >
+                              send
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+
+                </>
+
+              )}
+            </>
           )}
         </>
       )}
