@@ -50,19 +50,22 @@ function InGame({ username }) {
         message: answers,
       };
       if (answers === correctAnswer) {
+
         console.log(answers);
         setWinnerUser(answersData.sender);
         socket.emit('round-over', answersData)
         //end round
         //+1 pt
-     //clear whiteboard
-    const canvas = document.getElementById("whiteboard");
-    const ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //clear whiteboard
+        const canvas = document.getElementById("whiteboard");
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+
       }
       console.log(correctAnswer);
       // console.log(answers)
-      console.log("answers" + answersData);
+      console.log("answers", answersData);
       socket.emit("send-answers", answersData);
       setAnswerReceived((list) => [...list, answersData]);
       setAnswerMessage("");
@@ -73,6 +76,10 @@ function InGame({ username }) {
     console.log("running");
     socket.on("receive-answer", (data) => {
       console.log(data.message);
+      console.log("correct answer");
+      console.log(correctAnswer);
+      setAnswerMessage(data.message);
+
       setAnswerReceived((list) => [...list, data]);
     });
   }, []);
