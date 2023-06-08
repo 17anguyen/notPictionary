@@ -38,9 +38,9 @@ function App() {
   useEffect(() => {
     setToken(localStorage.getItem("token"));
     setUsername(localStorage.getItem("username"));
-    console.log("tokem"+token)
+    console.log("tokem" + token)
     if (token) {
-      console.log("tokem"+token)
+      console.log("tokem" + token)
       setLoading(true)
       API.getTokenData(token)
         .then((data) => {

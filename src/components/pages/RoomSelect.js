@@ -43,9 +43,10 @@ export default function RoomSelect() {
     localStorage.removeItem('username')
     navigate('/userselect')
   };
-  
+
   return (
     <div className="UserSelectbg z-n1">
+      <button onClick={handleLogout} className="logout-btn position-absolute top-0 end-0">logout</button>
       <img
         className="z-1 position-absolute top-0 start-0 mx-auto"
         src={planet}
@@ -57,7 +58,7 @@ export default function RoomSelect() {
         style={{ width: "10%" }}
       />
       <div className="select container ">
-        <button onClick={handleLogout}>logout</button>
+
         {/* <div className='container-signup '> */}
         <div className="signup position-absolute top-50 start-50 translate-middle dropdown-center">
           <h1
