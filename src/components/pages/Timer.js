@@ -5,7 +5,7 @@ import "../css/word.css";
 import React, { useState, useEffect } from "react";
 
 export default function Timer({ setDrawerReady }) {
-  const [seconds, setSeconds] = useState(10);
+  const [seconds, setSeconds] = useState(5);
 
   useEffect(() => {
     const timer = setInterval(() => {

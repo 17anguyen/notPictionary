@@ -22,7 +22,7 @@ export default function CorrectAnswer({ correctAnswer, winnerUser, nextRound }) 
                     ) : (
                         <h3>No winners!</h3>
                     )}
-                    <button onClick={nextRound}>Next Round?</button>
+                    <button onClick={nextRound} className='correct-button'>Next Round?</button>
                 </div>
             </div>
         </div>
