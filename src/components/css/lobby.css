@@ -98,3 +98,51 @@ h2.startbutton {
     overflow-x: hidden;
     height: 80%;
 }
+
+.message-bubbles {
+    color: #0016EE;
+    background-color: #DEFE47;
+    height: fit-content;
+    width: fit-content;
+    padding: 2px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 25px;
+    margin: 10px;
+}
+
+.message-bubbles h4 {
+    font-size: 15px;
+}
+
+.userinput-lobby {
+    position: sticky;
+    display: block;
+    flex-wrap: wrap;
+    width: 100%;
+    /* position: sticky; */
+    /* margin: 1%; */
+    /* bottom: 6%; */
+}
+
+.lobby-body {
+    line-height: 40px;
+    width: 55%;
+    /* margin-left: 1%; */
+    border-radius: 25px;
+    background-color: #DEFE47;
+    font-family: 'Sniglet';
+    font-size: 30px;
+    padding: 2px;
+}
+
+.userinput-subitlobby {
+    line-height: 40px;
+    width: 25%;
+    margin-left: 1%;
+    border-radius: 25px;
+    background-color: #DEFE47;
+    font-family: 'Sniglet';
+    font-size: 30px;
+    padding: 2px;
+}

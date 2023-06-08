@@ -59,39 +59,43 @@ function Lobby({ startGame, socket, userName, roomId }) {
               {messageReceived.map((item) => {
                 return (
                   <div
-                    className="row"
+                    className="message-bubbles"
                     key={item.sender}
                     id={userName === item.sender ? "sender" : "receiver"}
                   >
-                    <p className="col-sm-3">--{item.sender}</p>
-                    <div className="col-sm-9">{item.message}</div>
+                    <h4>{item.sender}</h4>
+                    <h3>{item.message}</h3>
                   </div>
+
                 );
               })}
             </div>
             <div className="message-input">
-              <input
-                type="text"
-                className="user-text"
-                name="message"
-                value={message}
-                placeholder="message"
-                onChange={(e) => {
-                  setSendMessage(e.target.value);
-                }}
-              />
-              <button
-                className="user-submit"
-                type="submit"
-                onClick={sendMessage}
-              >
-                send
-              </button>
+              <div className="userinput-lobby">
+
+                <input
+                  type="text"
+                  className="lobby-body"
+                  name="message"
+                  value={message}
+                  placeholder="message"
+                  onChange={(e) => {
+                    setSendMessage(e.target.value);
+                  }} />
+
+                <button
+                  className="userinput-subitlobby"
+                  type="submit"
+                  onClick={sendMessage}
+                >
+                  send
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div >
     // <div className='UserSelectbg z-n1'>
     //     <div className='lobby container'>
     //         <div className="container">

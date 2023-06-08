@@ -116,7 +116,7 @@ export default function Board({ socket, roomId }) {
         }
       };
     };
-    
+
     // -----------------add event listeners to our canvas ----------------------
     canvas.addEventListener("mousedown", onMouseDown, false);
     canvas.addEventListener("mouseup", onMouseUp, false);
@@ -164,11 +164,12 @@ export default function Board({ socket, roomId }) {
         />
       </div>
       <div ref={colorsRef} className="colors">
-        <div className="color black" />
         <div className="color red" />
+        <div className="color orange" />
+        <div className="color yellow" />
         <div className="color green" />
         <div className="color blue" />
-        <div className="color yellow" />
+        <div className="color black" />
       </div>
     </>
   );
