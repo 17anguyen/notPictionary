@@ -18,7 +18,7 @@ function Lobby({ startGame, socket, userName, roomId }) {
         message: message,
       };
       socket.emit("send-message", messageData);
-      setMessageReceived((list) => [...list, messageData]);
+      // setMessageReceived((list) => [...list, messageData]);
       setSendMessage("");
     }
   };
