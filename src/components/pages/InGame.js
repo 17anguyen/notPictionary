@@ -10,7 +10,9 @@ import "../css/InGame.css";
 const local_url = 'http://localhost:4000'
 // const server_url = "https://doodledash.herokuapp.com/";
 
-const socket = io(local_url);;
+const socket = io(local_url);
+// const socket = io(server_url);
+
 // const socket = io(server_url);
 
 function InGame({ username }) {
@@ -26,6 +28,7 @@ function InGame({ username }) {
   const [selectedUser, setSelectedUser] = useState("");
   const [isDrawerReady, setDrawerReady] = useState(false);
   const [winnerUser, setWinnerUser] = useState(false);
+    const [isWinner, setIsWinner] = useState(false)
 
 
   // figure what room were in by urlparams
@@ -49,6 +52,7 @@ function InGame({ username }) {
         sender: username,
         message: answers,
       };
+      console.log(correctAnswer)
       if (answers === correctAnswer) {
         console.log(answers);
         setWinnerUser(answersData.sender);
@@ -108,7 +112,7 @@ function InGame({ username }) {
         </div>
       ) : (
         <>
-          {username == selectedUser && !isDrawerReady ? (
+          {(username == selectedUser && !isDrawerReady )? (
             <>
               <Word
                 setDrawerReady={setDrawerReady}
