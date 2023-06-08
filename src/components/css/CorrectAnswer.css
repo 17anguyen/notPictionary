@@ -1,8 +1,36 @@
 .winninganswer {
-    background-image: url('../../Assets/backgrounds/winninganswer.svg');
-    background-repeat: no-repeat;
-    background-size: cover;
+    display: block;
+    background-color: #FF6E27;
     height: 100vh;
     width: auto;
-    display: block;
+    padding: 2%;
+    /* z-index: -10; */
+}
+
+.cansweroutline {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: black;
+    border: 5px solid #21EF80;
+    border-radius: 35px;
+    height: 92vh;
+    width: 98vw;
+    justify-content: center;
+    position: absolute;
+    z-index: 0;
+}
+
+.answerbox-correct {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    height: 35%;
+}
+
+.namebox-correct {}
+
+.ring {
+    margin: auto;
+    z-index: 1;
+    position: relative;
 }
