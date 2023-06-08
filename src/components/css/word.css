@@ -1,10 +1,94 @@
 .wordbg {
+    display: block;
     background-color: black;
+    height: 100vh;
+    width: auto;
+    padding: 2%;
 }
 
 .wordbox {
+    display: flex;
+    flex-wrap: wrap;
     border: 5px solid #21EF80;
     border-radius: 35px;
-    height: 98%;
-    width: 98%;
+    height: 92vh;
+    width: 94%;
+    justify-content: center;
+    position: absolute;
+}
+
+
+.letterbox {
+    position: relative;
+    background-color: #00B3FE;
+    border: 3px solid #37319D;
+    border-radius: 35px;
+    width: 150px;
+    height: 150px;
+    margin: 3%;
+}
+
+.letterbox h3 {
+    font-size: 128px;
+}
+
+.header {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    height: 35%;
+
+}
+
+.header-text {
+    position: relative;
+    font-size: 60px;
+    background-color: #FF6E27;
+    border-radius: 35px;
+    box-shadow: 10px 5px #37319D;
+    color: #37319D;
+    /*  */
+    padding: 2%;
+    height: fit-content;
+    width: fit-content;
+    bottom: 90%;
+    z-index: 2;
+}
+
+.starsRight {
+    position: relative;
+    left: 30%;
+    margin: 3%;
+    /* z-index: 1; */
+}
+
+.starsLeft {
+    position: relative;
+    right: 30%;
+    margin: 3%;
+    /* z-index: 1; */
+}
+
+.instructions h4 {
+    background-color: white;
+    color: black;
+    padding: 1%;
+    border: black solid 1px;
+    border-radius: 25px;
+    width: 50%;
+}
+
+.instructions {
+    width: 100%;
+}
+
+.timer {
+    color: white;
+    width: 50px;
+}
+
+.wordMarq {
+    animation: blinker 1.5s linear infinite;
+    color: rgb(213, 227, 208);
+    font-size: 40px;
 }

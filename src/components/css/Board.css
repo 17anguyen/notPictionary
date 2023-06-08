@@ -1,20 +1,14 @@
 .board-controller {
-  height: 695px;
-  width: 600px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  /* margin: 1%;  */
-
+  height: 1000px;
+  width: 100%;
 }
 
 .whiteboard {
   box-sizing: border-box;
-  /* height: auto;
-  width: 100%;  */
   border: 1px;
   border-color: solid red;
   position: relative;
+
 }
 
 .colors {
@@ -22,22 +16,23 @@
   position: relative;
   background-color: #FE00FE;
   border-radius: 35px;
-  width: 95%;
-  margin-top: 1%;
+  width: 98%;
+  margin: 1%;
+
 }
 
 .color {
   display: inline-block;
   height: 60px;
   width: 60px;
-  margin-left: 11%;
-  margin-top: 1%;
-  margin-bottom: 1%;
   border-radius: 50%;
+  margin: 4%;
+  margin-left: 5%;
 }
 
 .color.black {
   background-color: black;
+  /* margin-left: 8%; */
 }
 
 .color.red {
@@ -54,4 +49,8 @@
 
 .color.yellow {
   background-color: yellow;
+}
+
+.color.orange {
+  background-color: orange;
 }
