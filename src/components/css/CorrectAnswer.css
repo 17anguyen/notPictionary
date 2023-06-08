@@ -1,8 +1,85 @@
 .winninganswer {
-    background-image: url('../../Assets/backgrounds/winninganswer.svg');
-    background-repeat: no-repeat;
-    background-size: cover;
+    display: block;
+    background-color: #FF6E27;
     height: 100vh;
     width: auto;
-    display: block;
+    padding: 2%;
+    /* z-index: -10; */
+}
+
+.cansweroutline {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: black;
+    border: 5px solid #21EF80;
+    border-radius: 35px;
+    height: 92vh;
+    width: 98vw;
+    justify-content: center;
+    position: absolute;
+    z-index: 0;
+}
+
+.answerbox-correct {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    /* height: 40%; */
+}
+
+.answerbox-correct h1 {
+    margin: auto;
+    margin-top: 30%;
+    font-size: 80px;
+    letter-spacing: 20px;
+    background-color: #FE00FE;
+    border-radius: 35px;
+    box-shadow: 15px 15px #0016EE;
+    width: 80%;
+    padding: 3%;
+
+
+}
+
+.namebox-correct {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin: 1%;
+    margin-bottom: 10%;
+    /* height: 35%; */
+}
+
+.namebox-correct h3 {
+    margin: auto;
+    font-size: 35px;
+    letter-spacing: 15px;
+    background-color: #00B3FE;
+    box-shadow: 15px 15px #0016EE;
+    color: #0016EE;
+    border-radius: 25px;
+    width: 65%;
+    padding: 1%;
+}
+
+
+.ring {
+    margin: auto;
+    z-index: 1;
+    position: relative;
+    width: 80%;
+}
+
+.glowtop {
+    /* z-index: 10; */
+    position: relative;
+    bottom: 35%;
+    left: 50%;
+}
+
+.glowbottom {
+    /* z-index: 10; */
+    position: relative;
+    bottom: 5%;
+    right: 48%;
 }

@@ -31,7 +31,7 @@
 }
 
 .answerbox {
-    margin: 1%;
+    margin: auto;
     position: relative;
     background-color: black;
     border: 5px solid#FE00FE;
@@ -40,8 +40,8 @@
     text-align: start;
     overflow-y: auto;
     overflow-x: hidden;
-    height: 800px;
-    width: 100%;
+    height: 700px;
+    width: 90%;
 }
 
 .message-bubbles {
