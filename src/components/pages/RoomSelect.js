@@ -33,13 +33,17 @@ export default function RoomSelect() {
       console.log(err);
     }
   };
+
   useEffect(() => {
     freeRooms();
   }, []);
+
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/userselect");
+    localStorage.removeItem('token')
+    localStorage.removeItem('username')
+    navigate('/userselect')
   };
+  
   return (
     <div className="UserSelectbg z-n1">
       <img

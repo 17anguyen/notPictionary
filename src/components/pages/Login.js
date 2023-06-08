@@ -1,49 +1,58 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import API from "../../utils/api";
-import "../css/login.css";
-import banner from "../../Assets/buttons/loginsignupbanner.svg";
-export default function Login({ setUsername }) {
-  // username,
-  // loggedIn,
-  // loggedOut,
-  // handleInputChange
-  const [loginInfo, setLoginInfo] = useState({
-    username: "",
-    password: "",
-  });
-  const navigate = useNavigate();
-  const handleInputChange = (e) =>
-    setLoginInfo((prvState) => ({
-      ...prvState,
-      [e.target.name]: e.target.value,
-    }));
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await API.login(loginInfo.username, loginInfo.password);
-      console.log(response);
-      if (response.status === 200) {
-        console.log("login successful!");
-        setUsername(loginInfo.username);
-        localStorage.setItem("token", response.token);
-        localStorage.setItem("username", loginInfo.username);
-        navigate("/room");
-      }
-      if (response.status === 400) {
-        alert("wrong login info!");
-      }
-      console.log(response);
-    } catch (err) {
-      alert("login failed!");
-      console.log("login failed", err);
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import API from "../../utils/api"
+import '../css/login.css';
+import banner from '../../Assets/buttons/loginsignupbanner.svg'
+
+export default function Login({ setUsername , setToken}) {
+    // username,
+    // loggedIn,
+    // loggedOut,
+    // handleInputChange   
+  
+    const [loginInfo, setLoginInfo] = useState({
+        username: '',
+        password: '',
+    })
+    const navigate = useNavigate();
+    const handleInputChange = (e) =>
+        setLoginInfo((prvState) => ({
+            ...prvState, [e.target.name]: e.target.value
+        }));
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await API.login(
+                loginInfo.username,
+                loginInfo.password
+            );
+            
+            if (response.token) {
+                console.log('login successful!')
+                setUsername(loginInfo.username)
+                setToken(response.token)
+                localStorage.setItem('token', response.token)
+                localStorage.setItem('username', loginInfo.username)
+                navigate('/room')
+            }
+            if (!response.token) {
+                alert("wrong login info!")
+            }
+
+        } catch (err) {
+            alert("login failed!")
+            console.log('login failed', err)
+        }
     }
-  };
+ 
+
   useEffect(() => {
     if (localStorage.getItem("token")) {
       navigate("/room");
     }
   }, []);
+
   return (
     <div className="loginbg">
       <div className="container" style={{ width: "100%" }}>
