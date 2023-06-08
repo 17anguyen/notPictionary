@@ -7,11 +7,11 @@ import { useParams } from "react-router-dom";
 import Word from "./Word"
 import "../css/InGame.css";
 
-//const local_url = 'http://localhost:4000'
-const server_url = 'https://doodledash.herokuapp.com/'
+const local_url = 'http://localhost:4000'
+//  const server_url = 'https://doodledash.herokuapp.com/'
 
-//const socket = io(local_url);;
- const socket = io(server_url);
+const socket = io(local_url);;
+// const socket = io(server_url);
 
 
 function InGame({ username }) {
@@ -26,19 +26,21 @@ function InGame({ username }) {
     const [correctAnswer, setCorrectAnswer] = useState("")
     const [selectedUser, setSelectedUser] = useState("")
     const [isDrawerReady, setDrawerReady] = useState(false)
+    const [isWinner, setIsWinner] = useState(false)
 
 
     // figure what room were in by urlparams
     const params = useParams();
     const roomId = `room${params.roomId}`
     console.log(roomId)
+    console.log("user.."+username)
 
 
     // socket.join that room
 
     const joinRoom = () => {
         if (roomId !== '' && username) {
-
+            
             socket.emit("join-room", roomId, username)
         }
     }
@@ -53,7 +55,6 @@ function InGame({ username }) {
                 message: answers
             };
             if (answers === correctAnswer) {
-                console.log(answers)
                 const winnerUser = answersData.sender
 
                 //end round
@@ -112,6 +113,7 @@ function InGame({ username }) {
                             <Word setDrawerReady={setDrawerReady} correctAnswer={correctAnswer} />
                         </>
                     ) : (
+
                         <div className='InGamebg' style={{ height: '100vh' }}>
                             <div className='container-ingame'>
                                 <div className='row'>

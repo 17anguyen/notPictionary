@@ -3,11 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import API from "../../utils/api"
 import '../css/login.css';
 import banner from '../../Assets/buttons/loginsignupbanner.svg'
-export default function Login({ setUsername }) {
+
+export default function Login({ setUsername , setToken}) {
     // username,
     // loggedIn,
     // loggedOut,
     // handleInputChange   
+  
     const [loginInfo, setLoginInfo] = useState({
         username: '',
         password: '',
@@ -24,18 +26,19 @@ export default function Login({ setUsername }) {
                 loginInfo.username,
                 loginInfo.password
             );
-            console.log(response)
-            if (response.status===200) {
+            
+            if (response.token) {
                 console.log('login successful!')
                 setUsername(loginInfo.username)
+                setToken(response.token)
                 localStorage.setItem('token', response.token)
                 localStorage.setItem('username', loginInfo.username)
                 navigate('/room')
             }
-            if (response.status===400) {
+            if (!response.token) {
                 alert("wrong login info!")
             }
-            console.log(response)
+
         } catch (err) {
             alert("login failed!")
             console.log('login failed', err)

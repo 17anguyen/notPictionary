@@ -6,9 +6,8 @@ import { useNavigate } from "react-router-dom/dist";
 
 
 export default function SignUp({
-  username,
+  setToken,
   setLoading,
-  loading,
   setUsername
 }) {
   const [registerInfo, setRegisterInfo] = useState({
@@ -27,15 +26,17 @@ export default function SignUp({
       const checkUser = await API.getSingleUser(
         registerInfo.username
       )
-      if (checkUser.username) {
+      console.log(checkUser)
+      if (checkUser) {
         return alert("username taken!")
       }
-      console.log(checkUser)
       const response = await API.createUser(
         registerInfo.username,
         registerInfo.password
       );
       setLoading(false)
+      console.log("response below")
+      console.log(response.token)
       if (!response) {
         alert("please enter valid credentials");
         setRegisterInfo({
@@ -45,10 +46,13 @@ export default function SignUp({
       } else {        
         console.log(registerInfo)
         setUsername(registerInfo.username)
+        setToken(response.token)
+        localStorage.setItem('token', response.token)
+        localStorage.setItem('username', registerInfo.username)
+        navigate('/room')
       }} catch (err) {
         console.log(err)
       }
-      navigate('/room')
     } 
   console.log(registerInfo)
   useEffect(() =>  {
