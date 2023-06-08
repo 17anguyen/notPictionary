@@ -28,7 +28,7 @@ function InGame({ username }) {
   const [selectedUser, setSelectedUser] = useState("");
   const [isDrawerReady, setDrawerReady] = useState(false);
   const [winnerUser, setWinnerUser] = useState(false);
-    const [isWinner, setIsWinner] = useState(false)
+  const [isWinner, setIsWinner] = useState(false)
 
 
   // figure what room were in by urlparams
@@ -119,7 +119,7 @@ function InGame({ username }) {
         </div>
       ) : (
         <>
-          {(username == selectedUser && !isDrawerReady )? (
+          {(username == selectedUser && !isDrawerReady) ? (
             <>
               <Word
                 setDrawerReady={setDrawerReady}

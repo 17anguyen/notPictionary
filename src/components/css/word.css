@@ -1,0 +1,10 @@
+.wordbg {
+    background-color: black;
+}
+
+.wordbox {
+    border: 5px solid #21EF80;
+    border-radius: 35px;
+    height: 98%;
+    width: 98%;
+}

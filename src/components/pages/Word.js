@@ -10,8 +10,15 @@ export default function Word({ setDrawerReady, correctAnswer }) {
       {letterList.map((letter, i) => {
         console.log(letter);
         return (
-          <div key={i}>
-            <h1>{letter}</h1>
+          <div className="wordbg">
+            <div className="container wordbox">
+
+              <div key={i}>
+                <h1>{letter}</h1>
+
+              </div>
+            </div>
+
           </div>
         );
       })}

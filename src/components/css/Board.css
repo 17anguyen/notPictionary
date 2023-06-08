@@ -9,10 +9,10 @@
 }
 
 .whiteboard {
-  box-sizing: border-box; 
+  box-sizing: border-box;
   /* height: auto;
   width: 100%;  */
-   border: 1px;
+  border: 1px;
   border-color: solid red;
   position: relative;
 }
