@@ -4,7 +4,12 @@ import banner from "../../Assets/buttons/loginsignupbanner.svg";
 import API from "../../utils/api";
 import { useNavigate } from "react-router-dom/dist";
 
-export default function SignUp({ username, setLoading, loading, setUsername }) {
+
+export default function SignUp({
+  setToken,
+  setLoading,
+  setUsername
+}) {
   const [registerInfo, setRegisterInfo] = useState({
     username: "",
     password: "",
@@ -19,38 +24,47 @@ export default function SignUp({ username, setLoading, loading, setUsername }) {
     e.preventDefault();
     console.log("testing submit", registerInfo);
     try {
-      setLoading(true);
-      const checkUser = await API.getSingleUser(registerInfo.username);
-      if (checkUser.username) {
-        return alert("username taken!");
+      setLoading(true)
+      const checkUser = await API.getSingleUser(
+        registerInfo.username
+      )
+     
+      if (checkUser) {
+        return alert("username taken!")
       }
-      console.log(checkUser);
       const response = await API.createUser(
         registerInfo.username,
         registerInfo.password
       );
-      setLoading(false);
+
+      setLoading(false)
+      
       if (!response) {
         alert("please enter valid credentials");
         setRegisterInfo({
           username: "",
           password: "",
         });
-      } else {
-        console.log(registerInfo);
-        setUsername(registerInfo.username);
+      } else {        
+        console.log(registerInfo)
+        setUsername(registerInfo.username)
+        setToken(response.token)
+        localStorage.setItem('token', response.token)
+        localStorage.setItem('username', registerInfo.username)
+        navigate('/room')
+      }} catch (err) {
+        console.log(err)
       }
-    } catch (err) {
-      console.log(err);
-    }
-    navigate("/room");
-  };
+    } ;
+
   console.log(registerInfo);
+
   useEffect(() => {
     if (localStorage.getItem("token")) {
       navigate("/room");
     }
   }, []);
+  
   return (
     <div className="SignUpbg">
       <div className="container" style={{ width: "100%" }}>

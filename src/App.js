@@ -38,8 +38,9 @@ function App() {
   useEffect(() => {
     setToken(localStorage.getItem("token"));
     setUsername(localStorage.getItem("username"));
-
+    console.log("tokem"+token)
     if (token) {
+      console.log("tokem"+token)
       setLoading(true)
       API.getTokenData(token)
         .then((data) => {
@@ -47,6 +48,7 @@ function App() {
           if (data.err) {
             console.log(data.err);
             localStorage.removeItem("token");
+            localStorage.removeItem("username");
           } else {
             setUsername(data.username);
             setToken(token);
@@ -59,7 +61,7 @@ function App() {
         });
     }
     console.log("USERNAME!!!!!!!!!!!!!!!!", username)
-  }, [username]);
+  }, []);
 
   return (
     <BrowserRouter>
@@ -71,15 +73,13 @@ function App() {
         <Route path="/lead" element={<Lead />} />
         {/* <Route path="/lobby" element={<Lobby />} /> */}
         <Route path="/login" element={<Login
-          username={username}
-          setUsername={setUsername} />} />
+          setUsername={setUsername}
+          setToken={setToken} />} />
         <Route path="/room" element={<RoomSelect />} />
         <Route path="/signup" element={<Signup
-          username={username}
           setUsername={setUsername}
           setLoading={setLoading}
-          loading={loading}
-          registerInfo={registerInfo}
+          setToken={setToken}
         />} />
         <Route path="/userselect" element={<UserSelect />} />
         <Route path="/word" element={<Word />} />

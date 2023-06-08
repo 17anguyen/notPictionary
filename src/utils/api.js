@@ -1,9 +1,9 @@
-const BASEURL = "https://doodledash.herokuapp.com"
-// const BASEURL ="http://localhost:4000"
+//  const BASEURL = "https://doodledash.herokuapp.com"
+const BASEURL ="http://localhost:4000"
 
 const API = {
   getTokenData: async (token) => {
-    const response = await fetch(`${BASEURL}/verifytoken`, {
+    const response = await fetch(`${BASEURL}/api/users/verifytoken`, {
       method: "POST",
       headers: {
         authorization: `Bearer ${token}`
@@ -23,8 +23,7 @@ const API = {
           "Content-Type": "application/json"
         }
       });
-      // return await response.json();
-      return response;
+       return await response.json();
     } catch (err) {
       console.log(err)
       console.log("not working")
