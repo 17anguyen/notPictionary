@@ -1,5 +1,6 @@
 // const word = words[Math.floor(Math.random()*words.length)];
 // alert('You got ' + word);
+import "../css/word.css";
 
 import React, { useState, useEffect } from "react";
 

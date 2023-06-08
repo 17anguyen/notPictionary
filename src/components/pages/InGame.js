@@ -6,11 +6,13 @@ import { io } from "socket.io-client";
 import { useParams } from "react-router-dom";
 import Word from "./Word";
 import "../css/InGame.css";
-const local_url = 'http://localhost:4000'
-// const server_url = "https://doodledash.herokuapp.com/";
-const socket = io(local_url);
-// const socket = io(server_url);
-// const socket = io(server_url);
+
+// const local_url = 'http://localhost:4000'
+// const socket = io(local_url);
+
+const server_url = "https://doodledash.herokuapp.com/";
+const socket = io(server_url);
+
 function InGame({ username }) {
   console.log("=====Username:" + username);
   const styleBoard = {
