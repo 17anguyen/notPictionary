@@ -78,3 +78,22 @@
     justify-content: center;
 
 }
+
+.logout-btn {
+    background-color: #FF6E27;
+    width: 100px;
+    height: 50px;
+    z-index: 1;
+    border-radius: 25px;
+    margin: 2%;
+    box-shadow: 6px 4px #37319D;
+    border: 0px;
+    font-family: 'Sniglet';
+    font-size: 30px;
+    color: #37319D;
+}
+
+.logout-btn:hover {
+    background-color: #f4a279;
+    box-shadow: 6px 4px #5d5a96;
+}

@@ -22,8 +22,11 @@
     background-color: black;
     border: 5px solid #FE00FE;
     border-radius: 35px;
-    height: 100%;
-    width: auto;
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    /* padding: ; */
     /* margin: 2%; */
 }
 
@@ -37,7 +40,8 @@
     text-align: start;
     overflow-y: auto;
     overflow-x: hidden;
-    height: 500px;
+    height: 800px;
+    width: 100%;
 }
 
 .message-bubbles {
@@ -74,7 +78,7 @@
     flex-wrap: wrap;
     width: 100%;
     /* position: sticky; */
-    /* margin: 1%; */
+    margin: 1%;
     /* bottom: 6%; */
 }
 
@@ -91,7 +95,7 @@
 
 .userinput-submitgame {
     line-height: 40px;
-    width: 10%;
+    width: 12%;
     margin-left: 1%;
     border-radius: 25px;
     background-color: #DEFE47;
