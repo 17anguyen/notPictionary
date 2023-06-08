@@ -1,8 +1,44 @@
 .finalWinner {
-    background-image: url('../../Assets/backgrounds/final-with\ image.svg');
+    background-image: url('../../Assets/backgrounds/finalbg.svg');
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
     width: auto;
     display: block;
+}
+
+
+.banner {
+    text-align: center;
+    height: fit-content;
+    width: 87%;
+    /* margin: 5%; */
+}
+
+.finalWinner h2 {
+    margin-bottom: 10%;
+    font-family: 'Sniglet';
+    font-size: 80px;
+    font-weight: bold;
+
+    background-color: #FF6E27;
+    box-shadow: #37319D 15px 15px;
+    border-radius: 35px;
+    color: #37319D;
+    width: 50%;
+    padding: 2%;
+}
+
+.final-banner {
+    width: 60%;
+}
+
+.yoyo {
+    width: auto;
+    height: 40%;
+}
+
+.gameOver {
+    height: auto;
+    width: 20%;
 }
