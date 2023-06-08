@@ -1,20 +1,31 @@
 import React from 'react';
 import '../css/CorrectAnswer.css';
+import ring from '../../Assets/page elements/glowingRing.svg'
+import top from '../../Assets/page elements/accentTop.svg'
+import bottom from '../../Assets/page elements/accentBottom.svg'
 
 export default function CorrectAnswer({correctAnswer,winnerUser,nextRound}) {
+    return (
 
-    
-    return  (
-    <div className='winninganswer'>
+    <div className='winninganswer z-n1'>
 
-        <h2>{correctAnswer}</h2>
-        {winnerUser?(
-            <h4>{winnerUser}</h4>
-        ):(
-            <h4>No winners :C</h4>
-        )}
-        <button onClick={nextRound}>Next Round?</button>
-        
+        <div className='container cansweroutline'>
+            <img className='ring position-absolute top-50 start-50 translate-middle' src={ring} />
+
+            <div className='answerbox-correct z-2'>
+                <h1>{correctAnswer}</h1>
+            </div>
+            <div className='namebox-correct z-2'>
+                {winnerUser?(
+                    <h3>{winnerUser}</h3>
+
+                ):( 
+                    <h3>No winners!</h3>
+                )}
+            </div>
+            {/* <button onClick={nextRound}>Next Round?</button> */}
+        </div>
     </div>
-    );
+    ) 
+
 }
