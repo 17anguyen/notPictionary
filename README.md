@@ -5,7 +5,7 @@ https://www.canva.com/design/DAFlQ4sqGr8/BBrhqQq2MvAnAH-UhpGQEQ/view?utm_content
 
 deployed frontend link: https://doodledash.netlify.app/ 
 
-# NotPictionary-backend
+# DoodleDash
 ![github license](https://img.shields.io/badge/license-MIT-blue.svg)
 
 ## Description
