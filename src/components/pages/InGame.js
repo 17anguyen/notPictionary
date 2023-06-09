@@ -13,8 +13,8 @@ import Countdown from "./Countdown"
 // const local_url = 'http://localhost:4000'
 // const socket = io(local_url);
 
- const server_url = "https://doodledash.herokuapp.com/";
- const socket = io(server_url);
+const server_url = "https://doodledash.herokuapp.com/";
+const socket = io(server_url);
 
 function InGame({ username }) {
   const styleBoard = {
@@ -86,7 +86,7 @@ function InGame({ username }) {
     setTimeout(false)
     socket.emit("start-game", roomId);
   }
-  
+
 
 
   socket.on("user-join", (data) => {
@@ -113,7 +113,7 @@ function InGame({ username }) {
     setEndgame(true)
     setTimeout(false)
   };
-  socket.on("game-over",(data)=>{
+  socket.on("game-over", (data) => {
     console.log("game over set variables")
     console.log(data)
     setFinalWinner(data.username)
@@ -133,9 +133,9 @@ function InGame({ username }) {
   }, []);
 
   useEffect(() => {
-   
+
     if (isDrawerReady && !endgame) {
-     
+
       socket.emit("countdown", isDrawerReady, roomId);
     }
   }, [isDrawerReady]);
@@ -148,7 +148,7 @@ function InGame({ username }) {
       console.log("countdown off")
       setCountdown(show)
       setTimeout(true)
-    }    
+    }
   });
 
 
@@ -176,19 +176,19 @@ function InGame({ username }) {
             <>
               {(isWinner || isTimeout) ? (
 
-                <CorrectAnswer 
-                    correctAnswer={correctAnswer} 
-                    winnerUser={winnerUser} 
-                    nextRound={nextRound} 
-                    endGame={endGame} 
-                    />
+                <CorrectAnswer
+                  correctAnswer={correctAnswer}
+                  winnerUser={winnerUser}
+                  nextRound={nextRound}
+                  endGame={endGame}
+                />
 
               ) : (
                 <>
                   {endgame ? (
-                    <FinalWinner 
-                    finalWinner={finalWinner}
-                    finalScore ={finalScore}
+                    <FinalWinner
+                      finalWinner={finalWinner}
+                      finalScore={finalScore}
                     />
                   ) : (
 
