@@ -2,7 +2,7 @@ import "../css/word.css";
 
 import React, { useState, useEffect } from "react";
 
-export default function Countdown({setTimeout}) {
+export default function Countdown({ setTimeout }) {
   const [seconds, setSeconds] = useState(20);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export default function Countdown({setTimeout}) {
 
   return (
     <div>
-      <h1>{seconds}s</h1>
+      <h1>{seconds}</h1>
     </div>
   );
 }
