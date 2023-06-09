@@ -35,6 +35,7 @@ function InGame({ username }) {
   const [isTimeout, setTimeout] = useState(false)
   const [isCorrect, setCorrect] = useState(false)
   const [finalWinner, setFinalWinner] = useState("")
+  const [finalScore, setFinalScore] = useState(0)
   const [endgame, setEndgame] = useState(false)
   const [countdown, setCountdown] = useState(false)
 
@@ -106,13 +107,19 @@ function InGame({ username }) {
     setPregame(false);
   });
 
-  const endGame = async (e) => {
+  const endGame = (e) => {
     e.preventDefault();
-    // socket.emit("gameover", data)
-    setFinalWinner("")
+    socket.emit("gameover", roomId)
     setEndgame(true)
-    //clear round
-  }
+  };
+  socket.on("game-over",(data)=>{
+    setWinnerUser(data.userName)
+    setFinalScore(data.score)
+    setRound(1)
+    setEndgame(true)
+  })
+
+
 
 
   useEffect(() => {
@@ -162,6 +169,7 @@ function InGame({ username }) {
                     correctAnswer={correctAnswer} 
                     winnerUser={winnerUser} 
                     nextRound={nextRound} 
+                    endGame={endGame} 
                     />
 
               ) : (
@@ -169,7 +177,7 @@ function InGame({ username }) {
                   {endgame ? (
                     <FinalWinner 
                     finalWinner={finalWinner}
-                    endGame={endGame} 
+                    finalScore ={finalScore}
                     />
                   ) : (
 

@@ -5,7 +5,7 @@ import gameOver from '../../Assets/page elements/gameover.svg'
 import yoyo from '../../Assets/page elements/yoyo.svg'
 
 
-export default function CorrectAnswer() {
+export default function FinalWinner({finalWinner,score}) {
     return <div className='finalWinner'>
 
         <img className='gameOver position-absolute bottom-0 start-0' src={gameOver} />
@@ -14,7 +14,8 @@ export default function CorrectAnswer() {
 
 
         <div className='banner'>
-            <h2 className="position-absolute bottom-0 start-50 translate-middle-x">winner name</h2>
+            <h2 className="position-absolute bottom-0 start-50 translate-middle-x">{finalWinner}</h2>
+            <h2 className="position-absolute bottom-0 start-50 translate-middle-x">{score}</h2>
         </div>
 
     </div>
