@@ -1,5 +1,5 @@
-const BASEURL = "https://doodledash.herokuapp.com"
-// const BASEURL = "http://localhost:4000"
+// const BASEURL = "https://doodledash.herokuapp.com"
+ const BASEURL = "http://localhost:4000"
 
 const API = {
   getTokenData: async (token) => {

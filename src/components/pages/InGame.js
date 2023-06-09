@@ -10,11 +10,11 @@ import CorrectAnswer from "./CorrectAnswer";
 import FinalWinner from "./FinalWinner";
 import Countdown from "./Countdown"
 
-// const local_url = 'http://localhost:4000'
-// const socket = io(local_url);
+const local_url = 'http://localhost:4000'
+const socket = io(local_url);
 
-const server_url = "https://doodledash.herokuapp.com/";
-const socket = io(server_url);
+// const server_url = "https://doodledash.herokuapp.com/";
+// const socket = io(server_url);
 
 function InGame({ username }) {
   console.log("=====Username:" + username);
@@ -90,9 +90,9 @@ function InGame({ username }) {
   const nextRound = (e) => {
     e.preventDefault();
     setTimeout(false)
-    setCountdown(false)
     socket.emit("start-game", roomId);
   }
+  
 
   //socket.on get selected player and word and show to selected user
   socket.on("selected-props", (data) => {
@@ -109,12 +109,19 @@ function InGame({ username }) {
 
   const endGame = (e) => {
     e.preventDefault();
+    console.log("end game button")
     socket.emit("gameover", roomId)
     setEndgame(true)
+    setTimeout(false)
   };
   socket.on("game-over",(data)=>{
-    setWinnerUser(data.userName)
+    console.log("game over set variables")
+    console.log(data)
+    setFinalWinner(data.username)
     setFinalScore(data.score)
+    setIsWinner(false)
+    setCountdown(false)
+    setTimeout(false)
     setRound(1)
     setEndgame(true)
   })
@@ -127,18 +134,22 @@ function InGame({ username }) {
   }, []);
 
   useEffect(() => {
-    if (isDrawerReady && roomId) {
-
+   
+    if (isDrawerReady && !endgame) {
+     
       socket.emit("countdown", isDrawerReady, roomId);
     }
   }, [isDrawerReady]);
 
   socket.on("setCountdown", (show) => {
     if (show) {
+      console.log("countdown starts")
       setCountdown(show)
     } else {
+      console.log("countdown off")
+      setCountdown(show)
       setTimeout(true)
-    }
+    }    
   });
 
 
