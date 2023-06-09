@@ -2,8 +2,8 @@ import "../css/word.css";
 
 import React, { useState, useEffect } from "react";
 
-export default function Countdown({ setTimeout }) {
-  const [seconds, setSeconds] = useState(30);
+export default function Countdown({ setIsTimeout }) {
+  const [seconds, setSeconds] = useState(10);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -11,7 +11,7 @@ export default function Countdown({ setTimeout }) {
         setSeconds((prevSeconds) => prevSeconds - 1);
       } 
       else {
-        setTimeout(true);
+        setIsTimeout(true);
       }
     }, 1000);
 

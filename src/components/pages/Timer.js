@@ -13,6 +13,7 @@ export default function Timer({ setDrawerReady }) {
         setSeconds((prevSeconds) => prevSeconds - 1);
       } else {
         setDrawerReady(true);
+        
       }
     }, 1000);
 

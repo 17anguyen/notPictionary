@@ -10,11 +10,11 @@ import CorrectAnswer from "./CorrectAnswer";
 import FinalWinner from "./FinalWinner";
 import Countdown from "./Countdown"
 
-// const local_url = 'http://localhost:4000'
-// const socket = io(local_url);
+const local_url = 'http://localhost:4000'
+const socket = io(local_url);
 
- const server_url = "https://doodledash.herokuapp.com/";
- const socket = io(server_url);
+//  const server_url = "https://doodledash.herokuapp.com/";
+//  const socket = io(server_url);
 
 function InGame({ username }) {
   const styleBoard = {
@@ -31,13 +31,13 @@ function InGame({ username }) {
   const [winnerUser, setWinnerUser] = useState("");
   const [isWinner, setIsWinner] = useState(false);
   const [round, setRound] = useState(1)
-  const [isTimeout, setTimeout] = useState(false)
-  const [isCorrect, setCorrect] = useState(false)
+  const [isTimeout, setIsTimeout] = useState(false)
   const [finalWinner, setFinalWinner] = useState("")
   const [finalScore, setFinalScore] = useState(0)
   const [endgame, setEndgame] = useState(false)
   const [countdown, setCountdown] = useState(false)
   const [players, setPlayer] = useState([])
+  // let timer
 
   // figure what room were in by urlparams
   const params = useParams();
@@ -72,6 +72,8 @@ function InGame({ username }) {
       // display winner and secret word,
       setWinnerUser(data.sender);
       setIsWinner(true)
+      setCountdown(false)
+      // clearTimeout(timer)
     })
 
   }, []);
@@ -83,7 +85,8 @@ function InGame({ username }) {
   //click for next round on correct word page
   const nextRound = (e) => {
     e.preventDefault();
-    setTimeout(false)
+    setIsTimeout(false)
+    setCountdown(false)
     socket.emit("start-game", roomId);
   }
   
@@ -95,15 +98,21 @@ function InGame({ username }) {
 
   //socket.on get selected player and word and show to selected user
   socket.on("selected-props", (data) => {
+    // console.log(timer)
+    // clearTimeout(timer)
     setCorrectAnswer(data.selectedWord);
     setSelectedUser(data.userSelected);
     setWinnerUser("");
     setIsWinner(false)
     setDrawerReady(false)
-    setCountdown(false)
-    setTimeout(false)
+    setIsTimeout(false)
     setRound(data.round)
     setPregame(false);
+    
+    // start the timer
+  //  timer= setTimeout(() => {
+  //      setCountdown(true) 
+  //   }, 7000);
   });
 
   const endGame = (e) => {
@@ -111,7 +120,7 @@ function InGame({ username }) {
     console.log("end game button")
     socket.emit("gameover", roomId)
     setEndgame(true)
-    setTimeout(false)
+    setIsTimeout(false)
   };
   socket.on("game-over",(data)=>{
     console.log("game over set variables")
@@ -120,7 +129,7 @@ function InGame({ username }) {
     setFinalScore(data.score)
     setIsWinner(false)
     setCountdown(false)
-    setTimeout(false)
+    setIsTimeout(false)
     setRound(1)
     setEndgame(true)
   })
@@ -132,24 +141,28 @@ function InGame({ username }) {
     joinRoom();
   }, []);
 
-  useEffect(() => {
-   
-    if (isDrawerReady && !endgame) {
-     
-      socket.emit("countdown", isDrawerReady, roomId);
-    }
-  }, [isDrawerReady]);
+  socket.on("countdownReady", (show)=>{
+    setCountdown(show)
+  })
 
-  socket.on("setCountdown", (show) => {
-    if (show) {
-      console.log("countdown starts")
-      setCountdown(show)
-    } else {
-      console.log("countdown off")
-      setCountdown(show)
-      setTimeout(true)
-    }    
-  });
+  // useEffect(() => {
+   
+  //   if (isDrawerReady && !endgame) {
+  //    console.log(""+isDrawerReady)
+  //     socket.emit("countdown", isDrawerReady, roomId);
+  //   }
+  // }, [isDrawerReady]);
+
+  // socket.on("setCountdown", (show) => {
+  //   if (show) {
+  //     console.log("countdown starts")
+  //     setCountdown(show)
+  //   } else {
+  //     console.log("countdown off")
+  //     setCountdown(show)
+  //     setIsTimeout(true)
+  //   }    
+  // });
 
 
   return (
@@ -203,7 +216,7 @@ function InGame({ username }) {
                         <div className="col-lg-6" style={{ color: "white" }}>
                           {countdown ? (
                             <div className="position-absolute top-0 end-0" style={{ marginRight: '1%' }}>
-                              <Countdown setTimeout={setTimeout} />
+                              <Countdown setIsTimeout={setIsTimeout} />
 
                             </div>
                           ) : null}
