@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import '../css/FinalWinner.css';
 import { Link } from 'react-router-dom';
 import center from '../../Assets/page elements/finalpage-banner.svg'

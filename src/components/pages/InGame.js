@@ -10,14 +10,13 @@ import CorrectAnswer from "./CorrectAnswer";
 import FinalWinner from "./FinalWinner";
 import Countdown from "./Countdown"
 
-const local_url = 'http://localhost:4000'
-const socket = io(local_url);
+// const local_url = 'http://localhost:4000'
+// const socket = io(local_url);
 
-// const server_url = "https://doodledash.herokuapp.com/";
-// const socket = io(server_url);
+ const server_url = "https://doodledash.herokuapp.com/";
+ const socket = io(server_url);
 
 function InGame({ username }) {
-  console.log("=====Username:" + username);
   const styleBoard = {
     border: "2px",
     borderColor: "red",
@@ -29,7 +28,7 @@ function InGame({ username }) {
   const [selectedUser, setSelectedUser] = useState("");
   const [isDrawerReady, setDrawerReady] = useState(false);
   //who won the round
-  const [winnerUser, setWinnerUser] = useState("");  
+  const [winnerUser, setWinnerUser] = useState("");
   const [isWinner, setIsWinner] = useState(false);
   const [round, setRound] = useState(1)
   const [isTimeout, setTimeout] = useState(false)
@@ -38,11 +37,11 @@ function InGame({ username }) {
   const [finalScore, setFinalScore] = useState(0)
   const [endgame, setEndgame] = useState(false)
   const [countdown, setCountdown] = useState(false)
+  const [players, setPlayer] = useState([])
 
   // figure what room were in by urlparams
   const params = useParams();
   const roomId = `room${params.roomId}`;
-  console.log(roomId);
   // socket.join that room
   const joinRoom = () => {
     if (roomId !== "" && username) {
@@ -57,10 +56,7 @@ function InGame({ username }) {
         sender: username,
         message: answers,
       };
-      console.log(correctAnswer)
-      console.log(correctAnswer);
 
-      console.log("answers" + answersData);
       socket.emit("send-answers", answersData, correctAnswer);
       setAnswerReceived((list) => [...list, answersData]);
       setAnswerMessage("");
@@ -69,9 +65,7 @@ function InGame({ username }) {
 
 
   useEffect(() => {
-    console.log("running");
     socket.on("receive-answer", (data) => {
-      console.log(data.message);
       setAnswerReceived((list) => [...list, data]);
     });
     socket.on("round-over", (data) => {
@@ -93,6 +87,11 @@ function InGame({ username }) {
     socket.emit("start-game", roomId);
   }
   
+
+
+  socket.on("user-join", (data) => {
+    setPlayer((list) => [...list, data])
+  })
 
   //socket.on get selected player and word and show to selected user
   socket.on("selected-props", (data) => {
@@ -162,6 +161,7 @@ function InGame({ username }) {
             socket={socket}
             userName={username}
             roomId={roomId}
+            players={players}
           />
         </div>
       ) : (
@@ -202,11 +202,12 @@ function InGame({ username }) {
                         </div>
                         <div className="col-lg-6" style={{ color: "white" }}>
                           {countdown ? (
-                            <div className="position-absolute top-0 end-0">
+                            <div className="position-absolute top-0 end-0" style={{ marginRight: '1%' }}>
                               <Countdown setTimeout={setTimeout} />
 
                             </div>
                           ) : null}
+
                           <h1 className="round">ROUND {round}</h1>
 
                           <marquee
@@ -217,7 +218,7 @@ function InGame({ username }) {
                             <h3
                               style={{
                                 textAlign: "center",
-                                paddingTop: "10%",
+                                // paddingTop: "10%",
                                 fontWeight: "bold",
                                 fontSize: "50px",
                                 color: "#DEFE47",

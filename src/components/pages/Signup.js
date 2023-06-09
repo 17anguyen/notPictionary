@@ -22,13 +22,12 @@ export default function SignUp({
     }));
   const registered = async (e) => {
     e.preventDefault();
-    console.log("testing submit", registerInfo);
     try {
       setLoading(true)
       const checkUser = await API.getSingleUser(
         registerInfo.username
       )
-     
+
       if (checkUser) {
         return alert("username taken!")
       }
@@ -38,33 +37,32 @@ export default function SignUp({
       );
 
       setLoading(false)
-      
+
       if (!response) {
         alert("please enter valid credentials");
         setRegisterInfo({
           username: "",
           password: "",
         });
-      } else {        
-        console.log(registerInfo)
+      } else {
         setUsername(registerInfo.username)
         setToken(response.token)
         localStorage.setItem('token', response.token)
         localStorage.setItem('username', registerInfo.username)
         navigate('/room')
-      }} catch (err) {
-        console.log(err)
       }
-    } ;
+    } catch (err) {
+      console.log(err)
+    }
+  };
 
-  console.log(registerInfo);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
       navigate("/room");
     }
   }, []);
-  
+
   return (
     <div className="SignUpbg">
       <div className="container" style={{ width: "100%" }}>

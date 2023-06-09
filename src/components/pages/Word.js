@@ -12,7 +12,6 @@ export default function Word
 
   ({ setDrawerReady, correctAnswer }) {
   const letterList = Array.from(correctAnswer);
-  console.log(letterList);
   return (
     <>
 
@@ -42,7 +41,6 @@ export default function Word
 
 
             {letterList.map((letter, i) => {
-              console.log(letter);
               return (
                 <div className="letterbox mx-auto" key={i}>
                   <h3>{letter}</h3>
@@ -52,7 +50,7 @@ export default function Word
 
             <div className="instructions">
               <h4 className="mx-auto">
-                you have 20 seconds to draw this word and attempt to get a correct guess
+                you have 30 seconds to draw this word and attempt to get a correct guess
               </h4>
             </div>
 

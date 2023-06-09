@@ -10,9 +10,7 @@ export default function RoomSelect() {
   const allLi = document.querySelectorAll(".dropdown-item");
   const navigate = useNavigate();
   allLi.forEach((item) => {
-    console.log("allLi" + roomList);
     if (roomList.includes(item.id) && roomList[0]) {
-      console.log(item.id);
       item.style.color = "blue";
       item.style.display = "block";
     } else {
@@ -22,7 +20,6 @@ export default function RoomSelect() {
   const freeRooms = async () => {
     try {
       const freeRoomsList = await API.getRooms();
-      console.log(freeRoomsList);
       if (!freeRoomsList[0]) {
         alert("No rooms available");
         setFreeRooms([" "]);

@@ -1,5 +1,5 @@
 .board-controller {
-  height: 80vh;
+  height: 75vh;
   width: 50vw;
 }
 
@@ -26,8 +26,8 @@
   height: 60px;
   width: 60px;
   border-radius: 50%;
-  margin: 5%;
-  /* margin-left: 5%; */
+  margin: 4%;
+  margin-left: 5%;
 }
 
 .color.black {
