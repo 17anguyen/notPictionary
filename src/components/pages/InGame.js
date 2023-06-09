@@ -34,6 +34,7 @@ function InGame({ username }) {
   const [isTimeout, setTimeout] = useState(false)
   const [isCorrect, setCorrect] = useState(false)
   const [finalWinner, setFinalWinner] = useState("")
+  const [finalScore, setFinalScore] = useState(0)
   const [endgame, setEndgame] = useState(false)
   const [countdown, setCountdown] = useState(false)
   const [players, setPlayer] = useState([])
@@ -83,9 +84,9 @@ function InGame({ username }) {
   const nextRound = (e) => {
     e.preventDefault();
     setTimeout(false)
-    setCountdown(false)
     socket.emit("start-game", roomId);
   }
+  
 
 
   socket.on("user-join", (data) => {
@@ -105,13 +106,26 @@ function InGame({ username }) {
     setPregame(false);
   });
 
-  const endGame = async (e) => {
+  const endGame = (e) => {
     e.preventDefault();
-    // socket.emit("gameover", data)
-    setFinalWinner("")
+    console.log("end game button")
+    socket.emit("gameover", roomId)
     setEndgame(true)
-    //clear round
-  }
+    setTimeout(false)
+  };
+  socket.on("game-over",(data)=>{
+    console.log("game over set variables")
+    console.log(data)
+    setFinalWinner(data.username)
+    setFinalScore(data.score)
+    setIsWinner(false)
+    setCountdown(false)
+    setTimeout(false)
+    setRound(1)
+    setEndgame(true)
+  })
+
+
 
 
   useEffect(() => {
@@ -119,18 +133,22 @@ function InGame({ username }) {
   }, []);
 
   useEffect(() => {
-    if (isDrawerReady && roomId) {
-
+   
+    if (isDrawerReady && !endgame) {
+     
       socket.emit("countdown", isDrawerReady, roomId);
     }
   }, [isDrawerReady]);
 
   socket.on("setCountdown", (show) => {
     if (show) {
+      console.log("countdown starts")
       setCountdown(show)
     } else {
+      console.log("countdown off")
+      setCountdown(show)
       setTimeout(true)
-    }
+    }    
   });
 
 
@@ -158,18 +176,19 @@ function InGame({ username }) {
             <>
               {(isWinner || isTimeout) ? (
 
-                <CorrectAnswer
-                  correctAnswer={correctAnswer}
-                  winnerUser={winnerUser}
-                  nextRound={nextRound}
-                />
+                <CorrectAnswer 
+                    correctAnswer={correctAnswer} 
+                    winnerUser={winnerUser} 
+                    nextRound={nextRound} 
+                    endGame={endGame} 
+                    />
 
               ) : (
                 <>
                   {endgame ? (
-                    <FinalWinner
-                      finalWinner={finalWinner}
-                      endGame={endGame}
+                    <FinalWinner 
+                    finalWinner={finalWinner}
+                    finalScore ={finalScore}
                     />
                   ) : (
 

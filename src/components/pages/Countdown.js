@@ -9,7 +9,8 @@ export default function Countdown({ setTimeout }) {
     const timer = setInterval(() => {
       if (seconds > 0) {
         setSeconds((prevSeconds) => prevSeconds - 1);
-      } else {
+      } 
+      else {
         setTimeout(true);
       }
     }, 1000);

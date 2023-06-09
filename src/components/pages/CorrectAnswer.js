@@ -4,7 +4,7 @@ import ring from '../../Assets/page elements/glowingRing.svg'
 import top from '../../Assets/page elements/accentTop.svg'
 import bottom from '../../Assets/page elements/accentBottom.svg'
 
-export default function CorrectAnswer({ correctAnswer, winnerUser, nextRound }) {
+export default function CorrectAnswer({ correctAnswer, winnerUser, nextRound, endGame}) {
     return (
 
         <div className='winninganswer z-n1'>
@@ -23,6 +23,7 @@ export default function CorrectAnswer({ correctAnswer, winnerUser, nextRound }) 
                         <h3>No winners!</h3>
                     )}
                     <button onClick={nextRound} className='correct-button'>Next Round?</button>
+                    <button onClick={endGame} className='correct-button'>End Game?</button>
                 </div>
             </div>
         </div>
