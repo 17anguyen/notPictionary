@@ -1,6 +1,10 @@
 # Presentation
 https://www.canva.com/design/DAFlQ4sqGr8/BBrhqQq2MvAnAH-UhpGQEQ/view?utm_content=DAFlQ4sqGr8&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink
 
+# Deployed Links
+
+deployed frontend link: https://doodledash.netlify.app/ \
+
 # NotPictionary-backend
 ![github license](https://img.shields.io/badge/license-MIT-blue.svg)
 
@@ -37,7 +41,7 @@ To install this project you need to clone both frontend and backend repos
 
 ## Usage
 
-To use this application, simply follow the netlify link found below to launch the Heroku page. If you'd like to set up this project on your end, you need to:
+To use this application, simply follow the netlify link to launch the game. If you'd like to set up this project on your end, you need to:
 
 Install the two repos listed above in the installation section
 Open your terminal in each repo once installed, and type npm i to install all related packages
@@ -50,11 +54,6 @@ Start up both your front and back end repos with npm start
 ![Word Select](./src/Assets/images/WordSelect.png)
 ![In Game](./src/Assets/images/InGame.png)
 ![Winner](./src/Assets/images/Winner.png)
-
-## Link
-
-deployed frontend link: https://doodledash.netlify.app/ \
-deployed backend link: https://doodledash.herokuapp.com/
 
 ## Credits
 
