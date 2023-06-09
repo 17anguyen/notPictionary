@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from "react";
 import "../css/Board.css";
 
 export default function Board({ socket, roomId }) {
-  console.log("rooommmmmm===" + roomId);
   const canvasRef = useRef(null);
   const colorsRef = useRef(null);
   const socketRef = useRef();
@@ -16,8 +15,6 @@ export default function Board({ socket, roomId }) {
     // ----------------------- Colors --------------------------------------------------
 
     const colors = document.getElementsByClassName("color");
-    console.log(colors, "the colors");
-    console.log(test);
     // set the current color
     const current = {
       color: "black",
@@ -137,7 +134,6 @@ export default function Board({ socket, roomId }) {
       canvas.width = boardS.getBoundingClientRect().width;
       canvas.height = boardS.getBoundingClientRect().height;
     };
-    // console.log(whiteboard)
     boardS.addEventListener("resize", onResize, false);
     onResize();
 
