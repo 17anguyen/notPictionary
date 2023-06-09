@@ -10,11 +10,11 @@ import CorrectAnswer from "./CorrectAnswer";
 import FinalWinner from "./FinalWinner";
 import Countdown from "./Countdown"
 
-// const local_url = 'http://localhost:4000'
-// const socket = io(local_url);
+const local_url = 'http://localhost:4000'
+const socket = io(local_url);
 
-const server_url = "https://doodledash.herokuapp.com/";
-const socket = io(server_url);
+// const server_url = "https://doodledash.herokuapp.com/";
+// const socket = io(server_url);
 
 function InGame({ username }) {
   console.log("=====Username:" + username);
