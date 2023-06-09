@@ -16,7 +16,7 @@
 }
 
 .finalWinner h2 {
-    margin-bottom: 12%;
+    margin-bottom: 5%;
     font-family: 'Sniglet';
     font-size: 80px;
     font-weight: bold;
@@ -43,13 +43,4 @@
 .gameOver {
     height: auto;
     width: 20%;
-}
-
-.finalscore {
-    font-size: 100px;
-    font-weight: bold;
-    position: absolute;
-    top: 80%;
-    left: 48%;
-    margin: auto;
 }
