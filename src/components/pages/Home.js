@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../css/home.css';
 import banner from '../../Assets/page elements/doodledashbanner.svg'
 import cd from '../../Assets/page elements/cdplayer.svg'
 import gameboy from '../../Assets/page elements/gameboy.png'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 export default function Home() {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (localStorage.getItem("token")) {
+          navigate("/room");
+        }
+      }, []);
+
     return (
         <Link to='/userselect'>
             <div className='homebg'>

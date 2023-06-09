@@ -5,7 +5,7 @@ https://www.canva.com/design/DAFlQ4sqGr8/BBrhqQq2MvAnAH-UhpGQEQ/view?utm_content
 
 deployed frontend link: https://doodledash.netlify.app/ 
 
-# NotPictionary-backend
+# DoodleDash
 ![github license](https://img.shields.io/badge/license-MIT-blue.svg)
 
 ## Description
@@ -19,7 +19,6 @@ Select a room, guess or draw the chosen random word, and most of all have fun!
 - [Tech](#tech)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Link](#link)
 - [Credits](#credits)
 - [License](#license)
 
