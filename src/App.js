@@ -70,7 +70,7 @@ function App() {
         <Route path="/correctanswer" element={<CorrectAnswer />} />
         <Route path="/final" element={<Final />} />
         <Route path="/game/:roomId" element={<InGame username={username} />} />
-        <Route path="/lead" element={<Lead />} />
+        {/* <Route path="/lead" element={<Lead />} /> */}
         {/* <Route path="/lobby" element={<Lobby />} /> */}
         <Route path="/login" element={<Login
           setUsername={setUsername}

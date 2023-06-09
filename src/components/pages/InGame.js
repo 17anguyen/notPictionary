@@ -27,11 +27,13 @@ function InGame({ username }) {
   const [correctAnswer, setCorrectAnswer] = useState("");
   const [selectedUser, setSelectedUser] = useState("");
   const [isDrawerReady, setDrawerReady] = useState(false);
-  const [winnerUser, setWinnerUser] = useState("");
+  //who won the round
+  const [winnerUser, setWinnerUser] = useState("");  
   const [isWinner, setIsWinner] = useState(false);
   const [round, setRound] = useState(1)
   const [isTimeout, setTimeout] = useState(false)
   const [isCorrect, setCorrect] = useState(false)
+  const [finalWinner, setFinalWinner] = useState("")
   const [endgame, setEndgame] = useState(false)
 
   // figure what room were in by urlparams
@@ -86,8 +88,8 @@ function InGame({ username }) {
   const nextRound = (e) => {
     e.preventDefault();
     socket.emit("start-game", roomId);
-
   }
+
   //socket.on get selected player and word and show to selected user
   socket.on("selected-props", (data) => {
     setCorrectAnswer(data.selectedWord);
@@ -102,7 +104,7 @@ function InGame({ username }) {
   const endGame = async (e) => {
     e.preventDefault();
     // socket.emit("gameover", data)
-    setIsWinner(true)
+    setFinalWinner("")
     setEndgame(true)
   }
 
@@ -134,12 +136,19 @@ function InGame({ username }) {
             <>
               {(isWinner || isTimeout) ? (
 
-                <CorrectAnswer correctAnswer={correctAnswer} winnerUser={winnerUser} nextRound={nextRound} />
+                <CorrectAnswer 
+                    correctAnswer={correctAnswer} 
+                    winnerUser={winnerUser} 
+                    nextRound={nextRound} 
+                    />
 
               ) : (
                 <>
                   {endgame ? (
-                    <FinalWinner endGame={endGame} />
+                    <FinalWinner 
+                    finalWinner={finalWinner}
+                    endGame={endGame} 
+                    />
                   ) : (
                     <div className="InGamebg" style={{ height: "100vh" }}>
                       <div className="row container-ingame">
