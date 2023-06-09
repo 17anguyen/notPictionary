@@ -13,7 +13,7 @@ export default function Timer({ setDrawerReady }) {
         setSeconds((prevSeconds) => prevSeconds - 1);
       } else {
         setDrawerReady(true);
-      
+
 
       }
     }, 1000);
@@ -25,7 +25,7 @@ export default function Timer({ setDrawerReady }) {
 
   return (
     <div>
-      <h1>{seconds}s</h1>
+      <h1>{seconds}</h1>
     </div>
   );
 }
