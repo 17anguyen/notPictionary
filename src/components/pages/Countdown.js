@@ -3,7 +3,7 @@ import "../css/word.css";
 import React, { useState, useEffect } from "react";
 
 export default function Countdown({ setTimeout }) {
-  const [seconds, setSeconds] = useState(20);
+  const [seconds, setSeconds] = useState(30);
 
   useEffect(() => {
     const timer = setInterval(() => {
