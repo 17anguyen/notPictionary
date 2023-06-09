@@ -1,73 +1,68 @@
-# Deployed 
-deployed link: https://doodledash.netlify.app/
+# Presentation
+https://www.canva.com/design/DAFlQ4sqGr8/BBrhqQq2MvAnAH-UhpGQEQ/view?utm_content=DAFlQ4sqGr8&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink
 
-# Getting Started with Create React App
+# NotPictionary-backend
+![github license](https://img.shields.io/badge/license-MIT-blue.svg)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+We got our concept from a similar game on Discord called Gartic Phone who was promoting for their birthday event. Basing our game on Pictionary and Draw something, we wanted a fun multi-player game you can play with friends to pass the time! 
 
-In the project directory, you can run:
+Select a room, guess or draw the chosen random word, and most of all have fun!
 
-### `npm start`
+## Table of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [Tech](#tech)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Link](#link)
+- [Credits](#credits)
+- [License](#license)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tech
 
-### `npm test`
+Socket.io
+React
+Bootstrap
+Node.js
+MySQL
+Heroku
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation
 
-### `npm run build`
+To install this project you need to clone both frontend and backend repos
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- The front end application: https://github.com/17anguyen/notPictionary
+- The back end application: https://github.com/17anguyen/NotPictionary-backend
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To use this application, simply follow the netlify link found below to launch the Heroku page. If you'd like to set up this project on your end, you need to:
 
-### `npm run eject`
+Install the two repos listed above in the installation section
+Open your terminal in each repo once installed, and type npm i to install all related packages
+Start up both your front and back end repos with npm start
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![Screen Load](./src/Assets/images/ScreenLoad.png)
+![Login Signup](./src/Assets/images/LoginSignUp.png)
+![Room Select](./src/Assets/images/RoomSelect.png)
+![Pregame](./src/Assets/images/Pregame.png)
+![Word Select](./src/Assets/images/WordSelect.png)
+![In Game](./src/Assets/images/InGame.png)
+![Winner](./src/Assets/images/Winner.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Link
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+deployed frontend link: https://doodledash.netlify.app/ \
+deployed backend link: https://doodledash.herokuapp.com/
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Credits
 
-## Learn More
+Carolina Haggerty https://github.com/caroHagg \
+Alivia Thomas https://github.com/17anguyen \
+Veronica Griggs https://github.com/DevManCryBB \
+Anna Riley https://github.com/mercurybased 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## License
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT
