@@ -17,7 +17,6 @@ const socket = io(local_url);
 // const socket = io(server_url);
 
 function InGame({ username }) {
-  console.log("=====Username:" + username);
   const styleBoard = {
     border: "2px",
     borderColor: "red",
@@ -42,7 +41,6 @@ function InGame({ username }) {
   // figure what room were in by urlparams
   const params = useParams();
   const roomId = `room${params.roomId}`;
-  console.log(roomId);
   // socket.join that room
   const joinRoom = () => {
     if (roomId !== "" && username) {
@@ -57,10 +55,7 @@ function InGame({ username }) {
         sender: username,
         message: answers,
       };
-      console.log(correctAnswer)
-      console.log(correctAnswer);
 
-      console.log("answers" + answersData);
       socket.emit("send-answers", answersData, correctAnswer);
       setAnswerReceived((list) => [...list, answersData]);
       setAnswerMessage("");
@@ -69,9 +64,7 @@ function InGame({ username }) {
 
 
   useEffect(() => {
-    console.log("running");
     socket.on("receive-answer", (data) => {
-      console.log(data.message);
       setAnswerReceived((list) => [...list, data]);
     });
     socket.on("round-over", (data) => {

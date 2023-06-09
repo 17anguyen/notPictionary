@@ -4,48 +4,48 @@ import API from "../../utils/api"
 import '../css/login.css';
 import banner from '../../Assets/buttons/loginsignupbanner.svg'
 
-export default function Login({ setUsername , setToken}) {
-    // username,
-    // loggedIn,
-    // loggedOut,
-    // handleInputChange   
-  
-    const [loginInfo, setLoginInfo] = useState({
-        username: '',
-        password: '',
-    })
-    const navigate = useNavigate();
-    const handleInputChange = (e) =>
-        setLoginInfo((prvState) => ({
-            ...prvState, [e.target.name]: e.target.value
-        }));
+export default function Login({ setUsername, setToken }) {
+  // username,
+  // loggedIn,
+  // loggedOut,
+  // handleInputChange   
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await API.login(
-                loginInfo.username,
-                loginInfo.password
-            );
-            
-            if (response.token) {
-                console.log('login successful!')
-                setUsername(loginInfo.username)
-                setToken(response.token)
-                localStorage.setItem('token', response.token)
-                localStorage.setItem('username', loginInfo.username)
-                navigate('/room')
-            }
-            if (!response.token) {
-                alert("wrong login info!")
-            }
+  const [loginInfo, setLoginInfo] = useState({
+    username: '',
+    password: '',
+  })
+  const navigate = useNavigate();
+  const handleInputChange = (e) =>
+    setLoginInfo((prvState) => ({
+      ...prvState, [e.target.name]: e.target.value
+    }));
 
-        } catch (err) {
-            alert("login failed!")
-            console.log('login failed', err)
-        }
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await API.login(
+        loginInfo.username,
+        loginInfo.password
+      );
+
+      if (response.token) {
+        console.log('login successful!')
+        setUsername(loginInfo.username)
+        setToken(response.token)
+        localStorage.setItem('token', response.token)
+        localStorage.setItem('username', loginInfo.username)
+        navigate('/room')
+      }
+      if (!response.token) {
+        alert("wrong login info!")
+      }
+
+    } catch (err) {
+      alert("login failed!")
+      console.log('login failed', err)
     }
- 
+  }
+
 
   useEffect(() => {
     if (localStorage.getItem("token")) {

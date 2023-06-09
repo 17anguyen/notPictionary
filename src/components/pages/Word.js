@@ -12,7 +12,6 @@ export default function Word
 
   ({ setDrawerReady, correctAnswer }) {
   const letterList = Array.from(correctAnswer);
-  console.log(letterList);
   return (
     <>
 
@@ -42,7 +41,6 @@ export default function Word
 
 
             {letterList.map((letter, i) => {
-              console.log(letter);
               return (
                 <div className="letterbox mx-auto" key={i}>
                   <h3>{letter}</h3>
