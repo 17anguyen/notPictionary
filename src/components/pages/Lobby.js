@@ -47,7 +47,7 @@ function Lobby({ startGame, socket, userName, roomId, players }) {
               return (
                 <div
                   className="users-bubbles"
-                  key={item}
+                  key={item.username}
                 >
                   <h3>{item}</h3>
                 </div>
