@@ -7,7 +7,8 @@ import { useParams } from "react-router-dom";
 import Word from "./Word";
 import "../css/InGame.css";
 import CorrectAnswer from "./CorrectAnswer";
-import FinalWinner from "./FinalWinner"
+import FinalWinner from "./FinalWinner";
+import Countdown from "./Countdown"
 
 // const local_url = 'http://localhost:4000'
 // const socket = io(local_url);
@@ -31,8 +32,8 @@ function InGame({ username }) {
   const [isWinner, setIsWinner] = useState(false);
   const [round, setRound] = useState(1)
   const [isTimeout, setTimeout] = useState(false)
-  const [isCorrect, setCorrect] = useState(false)
   const [endgame, setEndgame] = useState(false)
+  const [countdown, setCountdown] = useState(false)
 
   // figure what room were in by urlparams
   const params = useParams();
@@ -61,8 +62,7 @@ function InGame({ username }) {
       setAnswerMessage("");
     }
   };
-
-
+  
 
   useEffect(() => {
     console.log("running");
@@ -85,6 +85,8 @@ function InGame({ username }) {
   //click for next round on correct word page
   const nextRound = (e) => {
     e.preventDefault();
+    setTimeout(false)
+    setCountdown(false)
     socket.emit("start-game", roomId);
 
   }
@@ -95,6 +97,8 @@ function InGame({ username }) {
     setWinnerUser("");
     setIsWinner(false)
     setDrawerReady(false)
+    setCountdown(false)
+    setTimeout(false)
     setRound(data.round)
     setPregame(false);
   });
@@ -104,12 +108,29 @@ function InGame({ username }) {
     // socket.emit("gameover", data)
     setIsWinner(true)
     setEndgame(true)
+    //clear round
   }
 
 
   useEffect(() => {
     joinRoom();
   }, []);
+
+  useEffect(() => {
+    if(isDrawerReady && roomId){
+
+      socket.emit("countdown",isDrawerReady,roomId);
+    }
+  }, [isDrawerReady]);
+
+  socket.on("setCountdown",(show)=>{
+    if(show){
+      setCountdown(show)
+    }else{ 
+      setTimeout(true)
+    }
+  });
+
 
   return (
     <>
@@ -141,6 +162,7 @@ function InGame({ username }) {
                   {endgame ? (
                     <FinalWinner endGame={endGame} />
                   ) : (
+
                     <div className="InGamebg" style={{ height: "100vh" }}>
                       <div className="row container-ingame">
                         <div className="col-lg-6">
@@ -150,7 +172,13 @@ function InGame({ username }) {
                           </div>
                         </div>
                         <div className="col-lg-6" style={{ color: "white" }}>
-                          <h1 className="round">ROUND {round} HERE</h1>
+                          <h1 className="round">ROUND {round}</h1>
+                          {countdown?(
+                            <div>
+                              <Countdown setTimeout={setTimeout}/>
+
+                            </div>
+                          ): null}
                           <marquee
                             className="blink text-center"
                             behavior="slide"
