@@ -25,7 +25,6 @@ function Lobby({ startGame, socket, userName, roomId, players }) {
 
   useEffect(() => {
     socket.on("receive-message", (data) => {
-      console.log(data);
       setMessageReceived((list) => [...list, data]);
     });
   }, []);
