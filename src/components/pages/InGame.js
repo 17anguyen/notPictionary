@@ -89,7 +89,7 @@ function InGame({ username }) {
     setCountdown(false)
     socket.emit("start-game", roomId);
   }
-  
+
 
 
   socket.on("user-join", (data) => {
@@ -122,7 +122,7 @@ function InGame({ username }) {
     setEndgame(true)
     setIsTimeout(false)
   };
-  socket.on("game-over",(data)=>{
+  socket.on("game-over", (data) => {
     console.log("game over set variables")
     console.log(data)
     setFinalWinner(data.username)
@@ -189,19 +189,19 @@ function InGame({ username }) {
             <>
               {(isWinner || isTimeout) ? (
 
-                <CorrectAnswer 
-                    correctAnswer={correctAnswer} 
-                    winnerUser={winnerUser} 
-                    nextRound={nextRound} 
-                    endGame={endGame} 
-                    />
+                <CorrectAnswer
+                  correctAnswer={correctAnswer}
+                  winnerUser={winnerUser}
+                  nextRound={nextRound}
+                  endGame={endGame}
+                />
 
               ) : (
                 <>
                   {endgame ? (
-                    <FinalWinner 
-                    finalWinner={finalWinner}
-                    finalScore ={finalScore}
+                    <FinalWinner
+                      finalWinner={finalWinner}
+                      finalScore={finalScore}
                     />
                   ) : (
 
