@@ -50,15 +50,15 @@ Start up both your front and back end repos with npm start
 
 ## Link
 
-deployed frontend link: https://doodledash.netlify.app/
+deployed frontend link: https://doodledash.netlify.app/ \
 deployed backend link: https://doodledash.herokuapp.com/
 
 ## Credits
 
-Carolina Haggerty https://github.com/caroHagg
-Alivia Thomas https://github.com/17anguyen
-Veronica Griggs https://github.com/DevManCryBB
-Anna Riley https://github.com/mercurybased
+Carolina Haggerty https://github.com/caroHagg \
+Alivia Thomas https://github.com/17anguyen \
+Veronica Griggs https://github.com/DevManCryBB \
+Anna Riley https://github.com/mercurybased 
 
 ## License
 
