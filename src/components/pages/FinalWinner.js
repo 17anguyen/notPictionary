@@ -21,8 +21,7 @@ export default function FinalWinner({finalWinner,finalScore}) {
 
         <div className='banner'>
             <h2 >{finalWinner}</h2>
-            <h2>{finalScore}</h2>
-            
+            <h2>{finalScore}</h2>    
         </div>
         <Link to='/'>Home</Link>
     </div>
