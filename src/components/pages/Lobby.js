@@ -107,42 +107,9 @@ function Lobby({ startGame, socket, userName, roomId, players }) {
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div >
-    // <div className='UserSelectbg z-n1'>
-    //     <div className='lobby container'>
-    //         <div className="container">
-    //             <button type='submit' onClick={startGame}>Start Game</button>
-    //             <div className="container smolbox">
-    //                 <input
-    //                     type="text"
-    //                     name='message'
-    //                     value={message}
-    //                     placeholder='message'
-    //                     onChange={(e) => {
-    //                         setSendMessage(e.target.value)
-    //                     }} />
-    //                 <button type='submit' onClick={sendMessage}>send</button>
-    //                 <h1>Message: </h1>
-    //                 {messageReceived.map((item) => {
-    //                     return (
-    //                         <div key={item.sender} id={userName === item.sender ? 'sender' : 'receiver'}>
-    //                             <div>{item.message}</div>
-    //                             <p>--{item.sender}</p>
-    //                         </div>)
-    //                 })}
-    //                 {isHost ? (
-    //                     <button type='submit' onClick={startGame}>Start Game</button>
-
-    //                 ) : null}
-
-    //             </div>
-
-    //         </div>
-    //     </div>
-    // </div>
   );
 }
 export default Lobby;

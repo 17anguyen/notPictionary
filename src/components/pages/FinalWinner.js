@@ -6,6 +6,7 @@ import yoyo from '../../Assets/page elements/yoyo.svg'
 
 
 export default function CorrectAnswer() {
+    
     return <div className='finalWinner'>
 
         <img className='gameOver position-absolute bottom-0 start-0' src={gameOver} />
