@@ -20,11 +20,12 @@
 }
 
 .smolbox {
+    margin: auto;
     background-color: black;
     border: solid 2px #FE00FE;
     border-radius: 25px;
     height: 60%;
-    width: 90%;
+    width: 100%;
     top: 6%;
 }
 
@@ -60,18 +61,16 @@ h2.startbutton {
     background-color: white;
     color: black;
     justify-content: center;
-    top: 5%;
-    left: 25%;
 }
 
 .container .message-box {
-    width: 50%;
-    height: 90%;
+    margin: auto;
+    width: 100%;
+    height: 400px;
     border-radius: 30px;
 }
 
 .message-input {
-    position: absolute;
     display: block;
     flex-wrap: wrap;
     bottom: 3%;
@@ -84,7 +83,7 @@ h2.startbutton {
 }
 
 .user-submit {
-    width: 15%;
+    width: 20%;
     flex-wrap: wrap;
     border-radius: 20px;
 
@@ -116,18 +115,14 @@ h2.startbutton {
 }
 
 .userinput-lobby {
-    position: sticky;
     display: block;
     flex-wrap: wrap;
     width: 100%;
-    /* position: sticky; */
-    /* margin: 1%; */
-    /* bottom: 6%; */
 }
 
 .lobby-body {
     line-height: 40px;
-    width: 55%;
+    width: 80%;
     /* margin-left: 1%; */
     border-radius: 25px;
     background-color: #DEFE47;
@@ -138,11 +133,38 @@ h2.startbutton {
 
 .userinput-subitlobby {
     line-height: 40px;
-    width: 25%;
+    width: 15%;
     margin-left: 1%;
     border-radius: 25px;
     background-color: #DEFE47;
     font-family: 'Sniglet';
-    font-size: 30px;
+    font-size: 22px;
     padding: 2px;
+}
+
+.users-body {
+    position: relative;
+    color: black;
+    text-align: start;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 80%;
+    padding-top: 2%;
+}
+
+.users-bubbles {
+    color: #0016EE;
+    background-color: #FF6E27;
+    height: fit-content;
+    width: fit-content;
+    padding: 2px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 25px;
+    margin: auto;
+}
+
+.users-bubbles h3 {
+    font-weight: bold;
+    font-size: 30px;
 }

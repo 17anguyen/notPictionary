@@ -4,7 +4,7 @@ import "../css/UserSelect.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function Lobby({ startGame, socket, userName, roomId }) {
+function Lobby({ startGame, socket, userName, roomId, players }) {
   const [message, setSendMessage] = useState("");
   const [messageReceived, setMessageReceived] = useState([]);
   const isHost = true;
@@ -42,33 +42,48 @@ function Lobby({ startGame, socket, userName, roomId }) {
             Start Game?
           </h1>
         </div>
-        <div className="container smolbox">
-          <div className="container message-box">
-            <h3
-              style={{
-                color: "black",
-                fontWeight: "bold",
-                fontSize: "40px",
-                color: "#37319D",
-              }}
-            >
-              CHAT
-            </h3>
+        <div className="container smolbox row">
+          <div className="users-body col-sm-6">
+            {players.map((item, i) => {
+              return (
+                <div
+                  className="users-bubbles"
+                  key={i}
+                >
+                  <h3>{item}</h3>
+                </div>
+              );
+            })}
+          </div>
+          <div className="col-sm-6" style={{ marginTop: '2%' }}>
+            <div className="container message-box">
+              <h3
+                style={{
+                  color: "black",
+                  fontWeight: "bold",
+                  fontSize: "40px",
+                  color: "#37319D",
+                }}
+              >
+                CHAT
+              </h3>
 
-            <div className="message-body">
-              {messageReceived.map((item) => {
-                return (
-                  <div
-                    className="message-bubbles"
-                    key={item.sender}
-                    id={userName === item.sender ? "sender" : "receiver"}
-                  >
-                    <h4>{item.sender}</h4>
-                    <h3>{item.message}</h3>
-                  </div>
+              <div className="message-body">
+                {messageReceived.map((item) => {
+                  return (
+                    <div
+                      className="message-bubbles"
+                      key={item.sender}
+                      id={userName === item.sender ? "sender" : "receiver"}
+                    >
+                      <h4>{item.sender}</h4>
+                      <h3>{item.message}</h3>
+                    </div>
 
-                );
-              })}
+                  );
+                })}
+              </div>
+
             </div>
             <div className="message-input">
               <div className="userinput-lobby">
@@ -93,6 +108,7 @@ function Lobby({ startGame, socket, userName, roomId }) {
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </div >
