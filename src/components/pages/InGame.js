@@ -62,7 +62,7 @@ function InGame({ username }) {
       setAnswerMessage("");
     }
   };
-  
+
 
   useEffect(() => {
     console.log("running");
@@ -117,16 +117,16 @@ function InGame({ username }) {
   }, []);
 
   useEffect(() => {
-    if(isDrawerReady && roomId){
+    if (isDrawerReady && roomId) {
 
-      socket.emit("countdown",isDrawerReady,roomId);
+      socket.emit("countdown", isDrawerReady, roomId);
     }
   }, [isDrawerReady]);
 
-  socket.on("setCountdown",(show)=>{
-    if(show){
+  socket.on("setCountdown", (show) => {
+    if (show) {
       setCountdown(show)
-    }else{ 
+    } else {
       setTimeout(true)
     }
   });
@@ -172,13 +172,14 @@ function InGame({ username }) {
                           </div>
                         </div>
                         <div className="col-lg-6" style={{ color: "white" }}>
-                          <h1 className="round">ROUND {round}</h1>
-                          {countdown?(
-                            <div>
-                              <Countdown setTimeout={setTimeout}/>
+                          {countdown ? (
+                            <div className="position-absolute top-0 end-0">
+                              <Countdown setTimeout={setTimeout} />
 
                             </div>
-                          ): null}
+                          ) : null}
+                          <h1 className="round">ROUND {round}</h1>
+
                           <marquee
                             className="blink text-center"
                             behavior="slide"
