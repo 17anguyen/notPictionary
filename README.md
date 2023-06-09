@@ -19,7 +19,6 @@ Select a room, guess or draw the chosen random word, and most of all have fun!
 - [Tech](#tech)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Link](#link)
 - [Credits](#credits)
 - [License](#license)
 
