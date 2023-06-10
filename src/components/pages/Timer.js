@@ -4,7 +4,7 @@ import "../css/word.css";
 
 import React, { useState, useEffect } from "react";
 
-export default function Timer({ setDrawerReady }) {
+export default function Timer({ setDrawerReady , socket,roomId }) {
   const [seconds, setSeconds] = useState(5);
 
   useEffect(() => {
@@ -13,6 +13,7 @@ export default function Timer({ setDrawerReady }) {
         setSeconds((prevSeconds) => prevSeconds - 1);
       } else {
         setDrawerReady(true);
+        socket.emit("start-countdown",true,roomId)
         
       }
     }, 1000);

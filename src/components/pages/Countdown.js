@@ -2,7 +2,7 @@ import "../css/word.css";
 
 import React, { useState, useEffect } from "react";
 
-export default function Countdown({ setIsTimeout }) {
+export default function Countdown({ setIsTimeout,socket, roomId }) {
   const [seconds, setSeconds] = useState(10);
 
   useEffect(() => {
@@ -11,7 +11,9 @@ export default function Countdown({ setIsTimeout }) {
         setSeconds((prevSeconds) => prevSeconds - 1);
       } 
       else {
+        console.log("timer is up")
         setIsTimeout(true);
+        socket.emit("start-countdown",false,roomId)
       }
     }, 1000);
 
