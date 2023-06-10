@@ -37,7 +37,7 @@ function InGame({ username }) {
   const [endgame, setEndgame] = useState(false)
   const [countdown, setCountdown] = useState(false)
   const [players, setPlayer] = useState([])
-  // let timer
+  
 
   // figure what room were in by urlparams
   const params = useParams();
@@ -88,9 +88,11 @@ function InGame({ username }) {
     socket.emit("start-game", roomId);
   }
 
+  useEffect(() => {
   socket.on("user-join", (data) => {
-    setPlayer((list) => [...list, data])
+      setPlayer((list) => [...list, data]) 
   })
+}, []);
 
   //socket.on get selected player and word and show to selected user
   socket.on("selected-props", (data) => {
