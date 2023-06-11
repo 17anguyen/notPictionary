@@ -43,11 +43,11 @@ function Lobby({ startGame, socket, userName, roomId, players }) {
         </div>
         <div className="container smolbox row">
           <div className="users-body col-sm-6">
-            {players.map((item, i) => {
+            {players.map((item) => {
               return (
                 <div
                   className="users-bubbles"
-                  key={i}
+                  key={item}
                 >
                   <h3>{item}</h3>
                 </div>
@@ -107,9 +107,11 @@ function Lobby({ startGame, socket, userName, roomId, players }) {
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </div >
+   
   );
 }
 export default Lobby;

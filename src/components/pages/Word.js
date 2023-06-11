@@ -10,7 +10,7 @@ export default function Word
   // testing code out
   // () {
 
-  ({ setDrawerReady, correctAnswer }) {
+  ({ setDrawerReady, correctAnswer, socket, roomId }) {
   const letterList = Array.from(correctAnswer);
   return (
     <>
@@ -34,7 +34,7 @@ export default function Word
                 behavior="slide"
                 direction="up"
               >
-                <Timer setDrawerReady={setDrawerReady} />
+                <Timer setDrawerReady={setDrawerReady} socket={socket} roomId={roomId}/>
               </marquee>
             </div>
 
