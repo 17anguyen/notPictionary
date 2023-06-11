@@ -1,4 +1,4 @@
- const BASEURL = "https://doodledash.herokuapp.com"
+const BASEURL = "https://doodledash.herokuapp.com/"
 //  const BASEURL = "http://localhost:4000"
 
 const API = {
