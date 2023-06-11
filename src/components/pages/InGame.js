@@ -13,8 +13,8 @@ import Countdown from "./Countdown"
 // const local_url = 'http://localhost:4000'
 // const socket = io(local_url);
 
-const server_url = "https://doodledash.herokuapp.com/";
-const socket = io(server_url);
+ const server_url = "https://doodledash.herokuapp.com/";
+ const socket = io(server_url);
 
 function InGame({ username }) {
   const styleBoard = {
@@ -31,13 +31,13 @@ function InGame({ username }) {
   const [winnerUser, setWinnerUser] = useState("");
   const [isWinner, setIsWinner] = useState(false);
   const [round, setRound] = useState(1)
-  const [isTimeout, setTimeout] = useState(false)
-  const [isCorrect, setCorrect] = useState(false)
+  const [isTimeout, setIsTimeout] = useState(false)
   const [finalWinner, setFinalWinner] = useState("")
   const [finalScore, setFinalScore] = useState(0)
   const [endgame, setEndgame] = useState(false)
   const [countdown, setCountdown] = useState(false)
   const [players, setPlayer] = useState([])
+  // let timer
 
   // figure what room were in by urlparams
   const params = useParams();
@@ -72,6 +72,8 @@ function InGame({ username }) {
       // display winner and secret word,
       setWinnerUser(data.sender);
       setIsWinner(true)
+      setCountdown(false)
+     
     })
 
   }, []);
@@ -83,11 +85,8 @@ function InGame({ username }) {
   //click for next round on correct word page
   const nextRound = (e) => {
     e.preventDefault();
-    setTimeout(false)
     socket.emit("start-game", roomId);
   }
-
-
 
   socket.on("user-join", (data) => {
     setPlayer((list) => [...list, data])
@@ -100,10 +99,10 @@ function InGame({ username }) {
     setWinnerUser("");
     setIsWinner(false)
     setDrawerReady(false)
-    setCountdown(false)
-    setTimeout(false)
+    setIsTimeout(false)
     setRound(data.round)
     setPregame(false);
+
   });
 
   const endGame = (e) => {
@@ -111,7 +110,7 @@ function InGame({ username }) {
     console.log("end game button")
     socket.emit("gameover", roomId)
     setEndgame(true)
-    setTimeout(false)
+    setIsTimeout(false)
   };
   socket.on("game-over", (data) => {
     console.log("game over set variables")
@@ -120,35 +119,22 @@ function InGame({ username }) {
     setFinalScore(data.score)
     setIsWinner(false)
     setCountdown(false)
-    setTimeout(false)
+    setIsTimeout(false)
     setRound(1)
     setEndgame(true)
   })
-
-
 
 
   useEffect(() => {
     joinRoom();
   }, []);
 
-  useEffect(() => {
-
-    if (isDrawerReady && !endgame) {
-
-      socket.emit("countdown", isDrawerReady, roomId);
-    }
-  }, [isDrawerReady]);
 
   socket.on("setCountdown", (show) => {
-    if (show) {
-      console.log("countdown starts")
-      setCountdown(show)
-    } else {
-      console.log("countdown off")
-      setCountdown(show)
-      setTimeout(true)
-    }
+    setCountdown(show)
+    if(!show){
+      setIsTimeout(true)
+    }    
   });
 
 
@@ -171,6 +157,8 @@ function InGame({ username }) {
             <Word
               setDrawerReady={setDrawerReady}
               correctAnswer={correctAnswer}
+              socket={socket}
+              roomId={roomId}
             />
           ) : (
             <>
@@ -203,7 +191,7 @@ function InGame({ username }) {
                         <div className="col-lg-6" style={{ color: "white" }}>
                           {countdown ? (
                             <div className="position-absolute top-0 end-0" style={{ marginRight: '1%' }}>
-                              <Countdown setTimeout={setTimeout} />
+                              <Countdown setIsTimeout={setIsTimeout} socket={socket} roomId={roomId}/>
 
                             </div>
                           ) : null}
