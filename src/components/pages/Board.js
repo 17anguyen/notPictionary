@@ -166,6 +166,7 @@ export default function Board({ socket, roomId }) {
         <div className="color yellow" />
         <div className="color green" />
         <div className="color blue" />
+        <div className="color brown" />
         <div className="color black" />
       </div>
     </>
