@@ -51,6 +51,10 @@
   background-color: rgb(229, 229, 19);
 }
 
+.color.brown {
+  background-color: rgb(74, 49, 25);
+}
+
 .color.orange {
   background-color: orange;
 }
