@@ -1,11 +1,11 @@
-# Presentation
-https://www.canva.com/design/DAFlQ4sqGr8/BBrhqQq2MvAnAH-UhpGQEQ/view?utm_content=DAFlQ4sqGr8&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink
+# DoodleDash
 
-# Deployed Links
+## Deployed Links
 
 deployed frontend link: https://doodledash.netlify.app/ 
+## Presentation
+https://www.canva.com/design/DAFlQ4sqGr8/BBrhqQq2MvAnAH-UhpGQEQ/view?utm_content=DAFlQ4sqGr8&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink
 
-# DoodleDash
 ![github license](https://img.shields.io/badge/license-MIT-blue.svg)
 
 ## Description
