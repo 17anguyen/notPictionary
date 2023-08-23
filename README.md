@@ -1,15 +1,13 @@
-# Presentation
+# DoodleDash
+
+## Deployed Links
+[deployed link]: https://doodledash.netlify.app/ 
+
+## Presentation
 https://www.canva.com/design/DAFlQ4sqGr8/BBrhqQq2MvAnAH-UhpGQEQ/view?utm_content=DAFlQ4sqGr8&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink
 
-# Deployed Links
-
-deployed frontend link: https://doodledash.netlify.app/ 
-
-# DoodleDash
-![github license](https://img.shields.io/badge/license-MIT-blue.svg)
 
 ## Description
-
 We got our concept from a similar game on Discord called Gartic Phone who was promoting for their birthday event. Basing our game on Pictionary and Draw something, we wanted a fun multi-player game you can play with friends to pass the time! 
 
 Select a room, guess or draw the chosen random word, and most of all have fun!
